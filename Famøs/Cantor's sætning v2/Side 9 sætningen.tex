@@ -1,0 +1,78 @@
+\documentclass{simplefamos}
+\usepackage[danish]{babel} 
+
+% Specielle pakker/makroer til din artikel indlæses her
+% I dette eksempel benyttes følgende:
+\newcommand{\makropakke}[1]{{\normalfont\ttfamily\bfseries #1}}
+\newcommand{\AmSLaTeX}{{\protect\the\textfont2 A}
+  \kern-.1667em\lower.5ex\hbox {\protect\the\textfont2 M}
+  \kern-.125em{\protect\the\textfont2 S}-\LaTeX}
+
+\begin{document}
+
+\famosarticle{Side 9 Sætningen}{Cantor's sætning v.2}{}{Dan Saattrup Nielsen}{}
+\famosprecistoc{Cantor's sætning v.2}
+
+% Her begynder din artikel
+De fleste af os kender Cantor's sætning, som siger, at der ikke er nogen surjektiv afbildning fra en given mængde $A$ til $\mathcal{P}(A)$, hvor $\mathcal{P}(A)$ er potensmængden af $A$. Ækvivalent kan det siges at $|\mathcal{P}(A)|>|A|$, hvor $|X|$ er kardinaliteten af $X$, som medfører $|\mathbb{R}|>|\mathbb{N}|$. En generalisering af denne sætning vil her vises, som bevist af Julius König i den anden halvdel af det 19. århundrede. Først starter vi med en definition.
+
+\begin{definition}
+Givet et uendeligt kardinaltal $\lambda$, defineres \textit{kofinaliteten} $cf(\lambda)$, til at være det mindste kardinaltal $\kappa$ således, at der eksisterer en afbildning $f:\kappa\to\lambda$, som opfylder, at $\sup(f(\kappa))=\lambda$.
+\end{definition}
+
+Man kan se kofinaliteten som en form for størrelsesbetragtning. Som et eksempel vil $\aleph_\omega$, foreningen af de $\omega$ første uendelige kardinaltal $\aleph_0,\aleph_1,\hdots$, virke uoverskueligt stort, og det vil være svært at have en intuition omkring størrelsesforskellen mellem $\aleph_\omega$ og $\aleph_{\omega+1}$ f.eks. Men da vi kan konstruere en funktion $f:\aleph_0\to\aleph_\omega$ givet ved $f(n):=\aleph_n$, vil det netop være tilfældet at $\sup(f(\aleph_0))=\aleph_\omega$, så $cf(\aleph_\omega)\leq\aleph_0$; på den anden side kan nævnes at $cf(\aleph_{\omega+1})=\aleph_{\omega+1}$. Pludselig virker $\aleph_{\omega+1}$ derfor meget større end $\aleph_\omega$, som også afspejler sig ift. forskellige egenskaber ved de to, som vi dog ikke vil komme ind på her. Det bemærkes også at $cf(\lambda)\leq\lambda$, da vi altid som minimum kan tage identitetsafbildningen $f:\lambda\to\lambda$ med $\sup(f(\lambda))=\lambda$. Vi kan herefter formulere sætningen som
+
+\begin{saetning}[Königs sætning]
+Hvis $\lambda$ er et uendeligt kardinaltal, gælder $\lambda^{cf(\lambda)}>\lambda$.
+\end{saetning}
+
+\begin{proof}
+Lad $\kappa:=cf(\lambda)$ og konstruér $f:\kappa\to\lambda$, så billedet af $f$ er ubegrænset i $\lambda$. Betragt nu en arbitrær afbildning $G:\lambda\to{^\kappa\lambda}$.\footnote{$^\kappa\lambda$ er mængden af funktioner fra $\kappa$ til $\lambda$.} Det er nok at vise, at $G$ ikke er surjektiv. For alle $\alpha<\kappa$, lad
+\begin{align*}
+A_\alpha=\{G_\eta(\alpha)\mid \eta<f(\alpha)\}.
+\end{align*}
+
+Da gælder det for alle $\alpha<\kappa$ at $A_\alpha\subseteq\lambda$ og $|A_\alpha|\leq f(\alpha)<\lambda$. Specielt gælder det for $\alpha<\kappa$ at $\lambda\backslash A_\alpha\neq\emptyset$. Definér nu $h(\alpha)$, til at være det mindste element af $\lambda\backslash A_\alpha$ for alle $\alpha<\kappa$. Da gælder det, for alle $\alpha<\kappa$ og $\eta< f(\alpha)$, at
+\begin{align*}
+h(\alpha)\neq G_\eta(\alpha).
+\end{align*}
+
+Derudover ses det klart ud fra vores konstruktion af $f$, at der for enhvert $\eta<\lambda$ findes et $\alpha<\kappa$ således at $\eta<f(\alpha)$. Derfor gælder det, at $h\neq G_\eta$, for alle $\eta<\lambda$. Altså er $G$ ikke surjektiv, og $|^\kappa\lambda|>|\lambda|$. Men da $\kappa$ var defineret til at være $cf(\lambda)$, samt at $|^{cf(\lambda)}\lambda|=|\lambda|^{|cf(\lambda)|}$ ved hjælp af kardinaltalsregning, fås at $|\lambda|^{|cf(\lambda)|}>|\lambda|$. Men da $\lambda$ og $cf(\lambda)$ begge er kardinaltal, gælder $|\lambda|=\lambda$ og $|cf(\lambda)|=cf(\lambda)$, så vi har at $\lambda^{cf(\lambda)}>\lambda$.
+\end{proof}
+
+\begin{korollar}
+Hvis $\kappa$ er et uendeligt kardinaltal, gælder $cf(2^\kappa)>\kappa$.
+\end{korollar}
+
+\begin{proof}
+Benyt König's sætning med $\lambda:=2^\kappa$, til at få uligheden
+\begin{align*}
+(2^\kappa)^{cf(2^\kappa)}>2^\kappa.
+\end{align*}
+
+Men, hvis $\mu\leq\kappa$, gælder det at
+\begin{align*}
+(2^\kappa)^\mu=2^{\kappa\otimes\mu}=2^\kappa,
+\end{align*}
+
+hvor regneregler for kardinaltal blev benyttet undervejs. Dette medfører, at $cf(2^\kappa)\nleq\kappa$, som dermed giver $cf(2^\kappa)>\kappa$, fordi ordinaltallene er totalt ordnede.
+\end{proof}
+
+Hermed kan Cantor's sætning bevises, som et korollar.
+
+\begin{korollar}[Cantor's sætning]
+$|\mathcal{P}(A)|>|A|$ for alle mængder $A$.
+\end{korollar}
+
+\begin{proof}
+Det er klart for endelige $A$, så antag $A$ er uendelig. Lad $\kappa:=|A|$. Da det vides, at $|\mathcal{P}(A)|=2^\kappa$ og, at det per definition gælder, at $2^\kappa\geq cf(2^\kappa)$, fås, ved brug af Korollar 3, at
+\begin{align*}
+|\mathcal{P}(A)|=2^\kappa\geq cf(2^\kappa)>\kappa=|A|.
+\end{align*}
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem[1]{amsldoc}{Schimmerling, Ernest. \textsl{A Course on Set Theory}. Cambridge University Press, 2011.}
+\end{thebibliography}
+
+\end{document}

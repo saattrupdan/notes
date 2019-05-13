@@ -1,0 +1,123 @@
+\documentclass{simplefamos}
+\usepackage[danish]{babel} 
+\usepackage{tikz}
+
+% Specielle pakker/makroer til din artikel indlæses her
+% I dette eksempel benyttes følgende:
+\usepackage{mathdots}
+
+\begin{document}
+
+\famosarticle{}{Induktion: fra naturlige tal til generaliseret skønhed}{}{Dan Saattrup Nielsen}{}
+\famosprecistoc{Induktion: fra naturlige tal til generaliseret skønhed}
+
+% Her begynder din artikel
+{\footnotesize\textit{En artikel om induktion, hvordan er det overhovedet muligt? Det er jo trivielt!}}\\
+
+Bevis ved induktion er en af de ældeste matematiske bevismetoder - selv Euklid's bevis for, at der findes uendelig mange primtal, benytter metoden. Normalt er induktionsbeviser udelukkende introduceret for naturlige tal, som f.eks. fra [1]:
+
+\begin{saetning}[Princippet om simpel induktion]
+Lad $p(x)$ være et prædikat, hvor den frie variabel kan løbe over de naturlige tal $\mathbb{N}$. Såfremt $p(x)$ har følgende 2 egenskaber:
+\begin{enumerate}
+\item $p(1)$ er sand,
+\item for hvert $m\in\mathbb{N}$, kan man af $p(m)$ slutte $p(m+1)$,
+\end{enumerate}
+da gælder $p(n)$ for alle $n\in\mathbb{N}$.
+\end{saetning}
+
+Grundlaget for, at sådanne principper oftest kun defineres for de naturlige tal, er fordi de udspringer af \textit{induktionsaksiomet}, som er en del af Peano aksiomerne for de naturlige tal, her taget fra [1] igen:
+
+\begin{definition}[Induktionsaksiomet]
+Hvis det om en delmængde\\ $A\subseteq\mathbb{N}$ gælder, at $1\in A$ og $m\in A\Rightarrow S(m)\in A$,\footnote{Her er $S:\mathbb{N}\to\mathbb{N}$ efterfølgerfunktionen $S(n):=n+1$} så gælder at $A=\mathbb{N}$.
+\end{definition}
+
+Fra dette aksiom bevises princippet om simpel induktion, ved blot at benytte aksiomet på mængden $\{x\in\mathbb{N}\mid p(x)\}$. Men allerede her begynder vi, at bevæge os \textit{væk} fra tallene, da vores aksiom omhandler \textit{mængder} og ikke tal. Burde dette princip så ikke kunne formuleres anderledes, så det også gælder for andre mængder end lige delmængder af $\mathbb{N}$?\footnote{Den opmærksomme læser har måske allerede spottet et plausibelt positivt svar, efter at have nærlæst artiklens overskrift.} Da aksiomet omhandlede mængder, vil vi prøve, at gå i denne retning. Vi husker, at mængdelæren kan danne grundlaget for al matematik, så der må være aksiomer indenfor mængdelærens aksiomer ZFC, der medfører induktionen. Ganske rigtigt finder vi \textit{uendelighedsaksiomet}:
+
+\begin{definition}[Uendelighedsaksiomet]
+Der findes en mængde $x$, således at $\emptyset\in x$ og hvis $y\in x$, gælder også at $\{y\}\cup y\in x$.
+\end{definition}
+
+Her er $\emptyset$ og $\{y\}\cup y$ mængdelærens svar på hhv. $0$ og $y+1$ (forklaring følger om lidt). Altså ses det med denne konvention, at aksiomet medfører at de naturlige tal findes, som vi definerer til at være den mindste mængde, som opfylder de to betingelser.\footnote{Det skal lige nævnes, at aksiomet ikke medfører, at der findes mere end én mængde, der opfylder det - dette kommer fra et andet aksiom i ZFC (potensmængdeaksiomet).} Herfra kan det bevises, at hvis $X\subseteq\mathbb{N}$ og $X$ opfylder de to krav i uendelighedsaksiomet, må $X=\mathbb{N}$, da $\mathbb{N}$ som sagt er den mindste mængde, der opfylder kravene.
+
+Men igen, vi er ikke rigtig kommet videre; vi arbejder stadig kun med de naturlige tal. Dette kan dog generaliseres til de ``generaliserede'' naturlige tal, kaldet \textit{ordinaltallene}. Inden den formelle definition, forsøger jeg først med en intuitiv forståelse. De naturlige tal forstår vi som tallene $0,1,\hdots$, men hvis vi i stedet vælger, at se dem som mængder $0=\emptyset$, $1=\{0\}$, $2=\{0,1\}$ osv., ses det, at $\mathbb{N}=\{0,1,\hdots\}$ \textit{selv} må være et ``tal'', da den består af alle tidligere tal - dette tal $\mathbb{N}$ bliver normalt indenfor mængdelæren kaldt $\omega$.\footnote{Dette gøres for at adskille den fra algebraiske strukturer over de naturlige tal, da vi ikke har operationer såsom + og $\cdot$ i denne mængde.} Hvis vi nu fortsætter af samme mønster, kan vi konstruere mængden $\omega+1=\{0,1,\hdots,\}\cup\{\omega\}$, altså alle de naturlige tal efterfulgt af mængden af alle de naturlige tal, og ligeledes $\omega+2=\{0,1,\hdots\}\cup\{\omega,\omega+1\}$. Det ses, at vi kan fortsætte i en uendelighed på denne måde - men selv ``efter'' uendelig lang tid når vi bare til $\omega+\omega$, og så kan vi begynde forfra igen. På samme vis kan vi opnå tal såsom $\omega\cdot\omega$, $\omega^\omega$ og såvel tal som
+\begin{align*}
+\epsilon_0:=\omega^{\omega^{\omega^{\iddots}}},
+\end{align*}
+
+der har specielle vigtige egenskaber.\footnote{Dette tal har vigtige egenskaber indenfor en del af bevisteorien, som prøver, at analysere præcis hvor kraftige konsekvenser induktionsaksiomet (i talteoretisk forstand) har; denne gren kaldes \textit{ordinal analysis}.} Alle disse nævnte tal er ordinaltal. For at definere generelt, hvad et sådan tal (eller rettere, mængde) er, definerer vi først et par småting:
+
+\begin{definition}
+En mængde $X$ kaldes \textit{transitiv}, hvis $x\in y\in X$ medfører $x\in X$. Ækvivalent er $X$ transitiv hvis $x\in X$ medfører $x\subseteq X$.\footnote{Beviset for at disse definitioner er ækvivalente udgør en god øvelse for læseren til en bedre forståelse af konceptet.}
+\end{definition}
+
+\begin{definition}
+En relation $R$ kaldes \textit{velordnet} på $X$ hvis det er en lineær ordningsrelation på $X$, samt at enhver ikke-tom delmængde $x\subseteq X$ har et $R$-minimalt element $x_0$. Altså at der ikke findes $y\in X$, som opfylder $yRx_0$.
+\end{definition}
+
+Herfra definerer vores ordinaltal som transitive mængder, der er velordnet efter relationen $\in$. F.eks. kan vi se eksempler på transitiviteten ved at $0\in 1\in 2$ og samtidig også at $0\in 2$. Denne ordningsrelation skrives også ofte som $<$; altså eksempelvis $0<1<2$.
+
+Men det var et lille sidespring, det var jo induktionen vi kom fra! Vi prøver nu, at generalisere vores induktion fra at vise noget gælder for alle naturlige tal, til at noget gælder for alle ordinaltal. Det kommer ret naturligt ved følgende sætning, oversat fra [2]:
+
+\begin{saetning}[Generalisering 1: Induktion på ordinaltal]
+Lad $P(x)$ være et prædikat omkring en variabel $x$. Antag at der for alle ordinaltal $\beta$ gælder
+\begin{align*}
+(\forall \alpha<\beta) P(\alpha))\Rightarrow P(\beta).
+\end{align*}
+
+Da gælder $P(\gamma)$ for alle ordinaltal $\gamma$.
+\end{saetning}
+
+Det ses, at hvis $\beta=\omega$, er det vores velkendte induktion over de naturlige tal. Man kan undre sig, hvordan at sætningen kan gøres så meget pænere ved ``normal'' induktion, hvor man slipper for, at vise, at det gælder for alle $\beta$ \textit{og} alle $\alpha<\beta$, hvor vi normalt bare kan fikse $\beta$ og kun udføre sidste trin. Grunden til dette er, at samlingen af alle ordinaltal ikke er en mængde - dette modstrider ZFC, hvorfor vi ikke bare kan bruge dette argument.
+
+Man kan dog simplificere denne induktionssætning lidt, så beviserne er mere overskuelige. Det drejer sig om en generaliseret egenskab ved de naturlige tal: disse tal kan alle deles op i to typer: enten er $n=0$, ellers findes $m\in\mathbb{N}$ så $n=m+1$. Ordinaltal har foruden disse to også en tredje type, som sker, når $n=\bigcup_{m<n}m$. Det ses f.eks. at $\omega$ er af denne tredje type. Et induktionsbevis kan derfor udføres, hvor at prædikatet vises for de tre typer.
+
+Vi har altså nu generaliseret vores induktionsargument fra de små små naturlige tal til en uendelig gange større samling af ordinaltal - det er noget af et skridt! Men kan vi gøre det endnu bedre? Ordinaltal er jo blot specielle mængder, så kan vi generalisere det til endnu mere generelle mængder? Svaret er JA, men det bliver faktisk endnu vildere: vi kan generalisere det til samlinger, der ikke engang er i nærheden af, at være mængder\footnote{Som nævnt er ordinaltallene ej heller en mængde, men de er lige på grænsen. Dette kommer til udtryk ved, at hvis der tages et vilkårligt ordinaltal $\alpha$, vil $\{\beta\mid\beta<\alpha\}$, hvor $\beta$ er ordinaltal, være en mængde. Man siger, at ordinaltallene er \textit{mængdeagtige}.}. Igen skal vi lige have en definition på plads:
+
+\begin{definition}
+En relation $R$ er velfunderet på $A$, hvis enhver ikke-tom delmængde $X\subseteq A$ har et $R$-minimalt element.
+\end{definition}
+
+Bemærk at $A$ ikke behøver, at være en mængde selv. Vi bemærker også, at en velordnet relation er en velfunderet lineær ordningsrelation. Nu kan vi nå til den store finale, og opskrive vores elegante generaliserede induktionssætning, oversat fra [3]:
+
+\begin{saetning}[Generalisering 2: Induktion på velfunderede relationer]
+Antag, at relationen $R$ er velfunderet på $A$, og at $X\subseteq A$ er en ikke-tom delklasse. Så har $X$ et $R$-minimalt element.
+\end{saetning}
+
+Ved første øjenkast virker det slet ikke som noget, der har relevans til induktion. Men der er to måder, induktion kan virke på: enten viser man, at et prædikat holder for alle elementer i sin samling, eller også viser man, at hvis der fandtes et prædikat i samlingen, som \textit{ikke} opfylder prædikatet, giver dette en modstrid. Her er vi ude i sidste mulighed, da vores samlinger ikke er ordnet på nogen måde (ikke engang partielt ordnede). Et induktionsbevis for et prædikat $P(x)$ på denne måde vil foregå ved, at antage at samlingen $X:=\{x\in A\mid \lnot P(x)\}$ ikke er tom, lade $a\in X$ være et $R$-minimalt element, givet fra sætningen, og så vise, at dette giver modstrid.
+
+Kan vi generalisere dette endnu mere? Svaret er nej, ikke indenfor vores aksiomer. I forvejen arbejder vi med potentielle samlinger, der ligger udenfor rækkevidde (ægte klasser), så hvis vi gik længere ud, vil vi ikke rigtig kunne bevise noget indenfor ZFC. Faktisk eksisterer\footnote{Her defineres eksistens som at samlingen kan bevises fra ZFC - dvs. kun mængder eksisterer.} $A$, $R$ og $X$ ikke nødvendigvis, hvis disse ikke er mængder. Dette løser vi, ved at sige, at vi kun bruger disse bogstaver som \textit{forkortelser} for logiske formler $\rho(x,y)$ (der definerer $R$), $\alpha(x)$ (der definerer $A$) og $\chi(x)$ (der definerer $X$) - disse vil bare give nogle ret uoverskuelige sætninger, så vi foretrækker vores forkortelser, og behandler dem som om, at de eksisterer.
+
+For at afslutte dette, kan vi gå helt overkill, og bevise følgende sætning fra [1]:
+
+\begin{saetning}
+For ethvert $n\in\mathbb{N}$ gælder, at summen af de første $n$ ulige tal er lig med $n^2$, altså:
+\begin{align*}
+1+3+5+\hdots+(2n-1)=n^2.
+\end{align*}
+\end{saetning}
+\begin{proof}
+Vi bemærker, at $<$ relationen er velfunderet på $\mathbb{N}$. Konstruér nu
+\begin{align*}
+X:=\{n\in\mathbb{N}\mid 1+3+5+\hdots+(2n-1)\neq n^2\},
+\end{align*}
+
+og antag at $X\neq\emptyset$. Lad $x$ være et $<$-minimalt element af $X$. På grund af minimalitet gælder sætningen for alle $n<x$. Vi ved, at enten er $x=0$ ellers findes $n\in\mathbb{N}$ så $x=n+1$. Hvis $x=0$ er de første $0$ naturlige tal ikke lig med $0$, modstrid; så lad $x=n+1$. Nu ser vi, at
+\begin{align*}
+&1+3+5+\hdots+(2n-1)=n^2\\
+\Rightarrow &1+3+5+\hdots+(2(n+1)-1)=1+3+5+\hdots+(2n+1)\\
+&\stackrel{(*)}{\neq}(n+1)^2=n^2+2n+1\\
+\Rightarrow &1+3+5+\hdots+(2n-1)\neq n^2
+\end{align*}
+
+Ved (*) brugte vi, at $x=n+1$ og at sætningen ikke gælder for $x$. Men nu modstrider den første og sidste linje hinanden, og vi konluderer, at $X=\emptyset$, hvilket beviser sætningen.
+\end{proof}
+
+Altså kan vi se, at selvom det generelle induktionsprincip virker, er vi stadig ude i noget basistilfælde og efterfølgertilfælde - så det gør det ikke ligefrem lettere, at bevise ting vedrørende de naturlige tal på denne måde. Men nu ved vi i hvert fald, at lige meget hvad vi får smidt i hovedet (næsten), kan vi bevise prædikater induktivt på dem. Endnu vigtigere, så ved vi, at bag det knap så pæne princip om induktion på de naturlige tal, ligger et elegant princip om generel induktion. Inducér alt hvad du ser!
+
+\begin{thebibliography}{9}
+\bibitem[1]{amsldoc}{J. Lützen. \textsl{Diskrete Matematiske Metoder}. MATH, KU, 2012.}
+\bibitem[2]{amsldoc}{E. Schimmerling. \textsl{A Course on Set Theory}. Cambridge University Press, 2011.}
+\bibitem[3]{amsldoc}{K. Kunen. \textsl{Set Theory}, revised edition. College Publications, 2013.}
+\end{thebibliography}
+
+\end{document}

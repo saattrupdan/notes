@@ -1,0 +1,37 @@
+\newcommand{\mytitle}{The forcing category}
+\newcommand{\myauthor}{Dan Saattrup Nielsen}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\abstract{
+	I'm an abstract
+}
+
+\defi{
+	Let $\mathbb F$ be the category of separative forcing posets and complete embeddings between them.
+}
+
+Note that when we're dealing with \textit{separative} posets then complete embeddings are really embeddings; i.e. they're injective.
+
+\prop{
+	Define $\mathcal D:=\{f\in\text{Mor}(\mathbb F)\mid\text{$f$ is dense}\}$. Then $\mathcal D$ is a right multiplicative system for $\mathbb F$.
+}
+\proof{
+	(S1) For any forcing poset $\mathbb P$ it trivally holds that $\id_{\mathbb P}:\mathbb P\to\mathbb P$ is dense.
+
+	\qquad (S2) Let $f:\mathbb P\to\mathbb Q$ and $g:\mathbb Q\to\mathbb R$ be dense, and let $r\in\mathbb R$. Use density of $g$ to pick $q\in\mathbb Q$ with $g(q)\leq r$, and then use density of $f$ to pick $p\in\mathbb P$ such that $f(p)\leq q$. Then $(g\circ f)(p)=g(f(p))\leq g(q)\leq r$ by order-preservation of $g$, making $g\circ f$ dense.
+
+	\qquad (S3) Let $f:\mathbb P\to\mathbb Q$ be complete and $i:\mathbb P\to\hat{\mathbb P}$ dense. We have to find a forcing $\hat{\mathbb Q}$, a complete $g:\hat{\mathbb P}\to\hat{\mathbb Q}$ and a dense $j:\mathbb Q\to\hat{\mathbb Q}$ such that
+	\eq{
+		\xymatrix{
+			\hat{\mathbb P}\ar[r]^g & \hat{\mathbb Q}\\
+			\mathbb P\ar[u]^i\ar[r]_f & \mathbb Q\ar[u]_j
+		}
+	}
+
+	commutes.
+}
+
+\end{document}

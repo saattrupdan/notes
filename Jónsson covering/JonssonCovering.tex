@@ -1,0 +1,233 @@
+\newcommand{\mytitle}{Jónsson Covering below a Woodin}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\abstract{
+	We modify the proof in \cite{Welch} of the weak covering lemma at Jónsson cardinals below a Woodin cardinal to the measurable-free context from \cite{KwoM}.
+}
+
+This note is dedicated to proving the following theorem.
+
+\theo{
+	\label{theorem}
+	Assume that there is no inner model with a Woodin cardinal. Let $K$ be the Jensen-Steel core model and $\kappa$ a Jónsson cardinal. Then $\kappa^+=\kappa^{+K}$.
+}
+
+And immediate consequence of the theorem is then the following.
+
+\coro{
+	Assume that there is no inner model with a Woodin cardinal and let $\kappa$ be a Jónsson cardinal. Then $\Box_\kappa$ holds.\\
+}
+
+	\section{Setting the scene}
+	We start by setting up the scene and giving an overview of what is to come. By the weak covering lemma in $K$, we can assume that $\kappa$ is regular. Set $\lambda:=\kappa^{+K}$ and assume towards a contradiction that $\lambda<\kappa^+$, so that the weak covering lemma in $K$ implies that $\cof\lambda=|\lambda|=\kappa$. Fix some monotone cofinal map $D:\kappa\to\lambda$.
+
+	\qquad For some suitably large $\Omega>\kappa$ we can ensure that $\tilde K(\kappa^+,\Omega)$ contains $\kappa^+$, so fix a ``very soundness'' witness $\W$ for $\tilde K(\kappa^+,\Omega)|\kappa^+$, i.e. a weasel such that $S(\W)$ is $\W$-thick and $\kappa^+\subset\W$ -- note that $\kappa^{+K}=\kappa^{+\W}$. Say $\E$ is $\W$'s extender sequence and let $X\prec\bra{V_\eta,\in,\E,D}$ for some sufficiently large $\eta$ and with $|X|=\kappa$ and $X\cap\kappa\neq\kappa$; $X$ exists by the Jónsson property.
+
+	\qquad Let $\pi:\bra{\H,\in,\bar{\E},\bar D}\cong\bra{X,\in,\E,D}$ be the uncollapse. Set $\bar x:=\pi^{-1}(x)$ for every $x\in X$. Then by virtue of $D$ we get that $\cof\bar\lambda=\kappa>\crit\pi$, so that $\pi$ is continuous at $\bar\lambda$. Note that $\bar{\E}$ is the extender sequence of $\bar\W$ and define $j:=\pi\restr\bar\W:\bar\W\to\W$. We now want to compare $\bar\W$ with $\W$. Our proof strategy will be the following.\\
+
+	\begin{enumerate}
+		\item Compare $\bar\W$ with $\W$ via a non-standard coiteration, yielding trees $\T,\U$ with last models $\P,\Q$, such that $\P$ agrees with $\Q$ below $\kappa$;
+		\item Pick the least $\N\pinit\Q$ such that $\bar\lambda$ is definably collapsed over $\N$;
+		\item Use that $\N$ agrees with $\P$ below $\kappa$ to lift $j:\bar\W\to\W$ to some $j^+:\N\to\M$;
+		\item Show that $\Psi_{\M}:=\Phi(j\T)\widehat{\ }\bra{\M,\kappa}$ is a stable iterable phalanx, which allows us to compare $\M$ with $\W$;
+		\item $\lambda$ is definably collapsed over $\M$, so by an elementarity argument this is also true over $\W$, but $\lambda=\kappa^{+\W}$, $\contr$.\\
+	\end{enumerate}
+
+	The hardest part will be constructing the tree $\U$ in part (i). This is very reminiscent of the proof of the weak covering lemma for $K$, but to construct $\U$ in that scenario they use that $\kappa$ is singular and a strong limit. In our case we could tweak the argument so that the Jónsson property achieves the result that would normally use the singularity of $\kappa$, but the argument using that $\kappa$ is a strong limit does not prima facie admit such a tweak. Instead we will follow Mitchell's idea of ``special drops'', also described in \cite{Welch}. Here is an illustration of the proof to come.
+
+  \begin{center}
+		\begin{tikzcd}[column sep=0cm, row sep=0.6cm]
+			&&&&&&& \R & \init & \S\\\\
+			\P & \mathrel{\overset{<\kappa}{\scalebox{3}[1]{$\thicksim$}}} & \Q & \unrhd & \N\ar{rrr}{j^+} & \ & \ & \M\ar[uu,tree={}{}] && \W\ar[uu,tree={}{}]\\\\
+			\bar\W\ar[uu,tree={}{\T}]\ar{rr}{j} && \W\ar[uu,tree={}{\U}]
+		\end{tikzcd}
+	\end{center}
+
+
+	\section{Constructing $\U$}
+
+	We now provide the definition of $\U$. Simultaneously we will define trees $\T$ on $\bar\W$ and $\bar\U$ on $\W$, and $\deg^{\U}(\alpha)$-embeddings $\pi_\alpha:\M_\alpha^{\U}\to\M_\alpha^{\bar\U}$. The tree $\bar\U$ and the $\pi_\alpha$'s are only there to make sure that the models in $\U$ are wellfounded.
+
+	\qquad Let us now say that $\lambda$ is a limit and $\T\restr\lambda$, $\U\restr\lambda$ and $\bar\U\restr\lambda$ have been constructed. Then $\bar\U\restr\lambda$ is an $\omega$-iteration tree and $\W$'s iteration strategy picks the unique cofinal wellfounded branch $\bar b$ of $\bar\U$. Fix some $\gamma\in\bar b$ such that $\bar b-\gamma$ has no drops, and set $\M_\lambda^{\bar\U}$ to be the direct limit of the models along $\bar b$. Then set $\M_\lambda^{\U}$ to be the direct limit of all the $\M_\alpha^{\U}$ such that $\alpha\in\bar b$.
+	
+	\quad If $\alpha=\beta+1$ and $\T\restr\alpha$, $\bar\U\restr\alpha$ and $\U\restr\alpha$ are defined then we have models $\M_\alpha^{\T}$, $\M_\beta^{\bar\U}$ and $\M_\beta^{\U}$. Let $j_\alpha:\M_\alpha^{\T}\to\M_\alpha^{j\T}$ be the copy maps and define the set
+	\eq{
+		\Sigma:=\{\delta\leq\kappa\mid\delta\text{ is a regular $V$-cardinal}\land j_\delta"\delta\subset\delta\land\delta\geq\sup_{\gamma<\delta}\nu_\gamma^{\U}\}.
+	}
+
+	Note that $\Sigma$ is stationary below $\kappa$ since $\kappa$ is Mahlo by \cite{Shelah}. Furthermore define for $\alpha<\theta$ the phalanxes
+	\eq{
+		\Psi_\alpha:=\Phi(j\T\restr\alpha)\widehat{\ }\bra{\ult(\M_\alpha^{\U},E_{j_\alpha}\restr\alpha),\alpha}.
+	}
+
+
+	%%% CASE 1
+	\quad\framebox{\textbf{Case 1}: $\beta\notin\Sigma$.}
+	\vspace{0.3cm}
+
+	If $\M_\beta^{\T}$ agrees with $\M_\beta^{\U}$ below $\kappa$ then pad one more step, meaning that we set $\M_\alpha^{\T}:=\M_\beta^{\T}$, $\M_\alpha^{\bar\U}:=\M_\beta^{\bar\U}$, $\M_\alpha^{\U}:=\M_\beta^{\U}$ and $\pi_\alpha:=\pi_\beta$. Otherwise let $\eta$ be the least disagreement between $\M_\beta^{\T}$ and $\M_\beta^{\U}$. If $E_\beta^{\U}\neq\emptyset$ then set $E_\beta^{\bar\U}:=\dot E_{\pi_\beta(\eta)}^{\M_\beta^{\bar\U}}$ and note that $(\M_\alpha^{\U})^*\init\M_{\pred^{\U}(\alpha)}^{\U}$ implies that $(\M_\alpha^{\bar\U})^*\init\M_{\pred^{\bar\U}(\alpha)}^{\bar\U}$. Set $\pi_\alpha[a,f]:=[\pi_\beta(a),\pi_{\pred^{\U}(\alpha)}(f)]$. Then $\pi_\alpha$ is a $\deg^{\U}(\alpha)$-embedding. If $E^{\U}_\beta=\emptyset$ then set $\pi_\alpha:=\pi_\beta$ and follow the rules of the iteration game.\\
+	
+
+	%%% CASE 2
+	%\quad\framebox{\parbox{\dimexpr\linewidth-6\fboxsep-2\fboxrule}{\textbf{Case 2}: $\M_\beta^{\U}$ is a stable weasel and $\Psi_\beta$ is not iterable.}}
+	\quad\framebox{\textbf{Case 2}: $\M_\beta^{\U}$ is a stable weasel and $\Psi_\beta$ is not iterable.}
+	\vspace{0.3cm}
+
+	Here we call $\beta+1$ a \textbf{special drop}. Let $\V$ be a bad tree on $\Psi_\beta$ and let
+	\eq{
+		\pi_+:\chull^{V_{\Omega+1}}(\alpha\cup\{j_\beta,\V,\T\restr\alpha,\U\restr\alpha,\M(\V),\Q(\V)\})\to V_{\Omega+1}
+	}
+
+	be the uncollapse. Then set $\M_\alpha^{\U}:=\pi_+^{-1}(\M_\beta^{\U})$, $D^{\U\restr\alpha+1}:=D^{\U\restr\alpha}\cup\{\alpha\}$, $\nu_\beta^{\U}:=0$, $\deg^{\U}(\alpha)=\omega$, $\beta<_{\U}\alpha$, $\pi_\alpha:=\pi_\beta\circ\pi_+$ and pad $\T$ and $\bar\U$. Note that we still have that $\M_\alpha^{\U}$ agrees with $\M_\alpha^{\T}$ below $\sup\{\max(\nu_\gamma^{\U},\nu_\gamma^{\U})\mid\gamma<\beta\}$ since this supremum is $\leq\beta$ (and thus $<\alpha$) by case hypothesis.\\
+
+
+	%%% CASE 3
+	\quad\framebox{\textbf{Case 3}: otherwise.\vphantom{$\M_\beta^{\U}$}}
+	\vspace{0.3cm}
+
+	If the $\M_\beta^{\T}$ agrees with $\M_\beta^{\U}$ below $\kappa$ then halt. Otherwise pick the least disagreement and proceed as in case 1.\\
+
+	\lemm{
+		\label{lemm.specialdrop}
+		If $\theta\geq\kappa$ and $\Psi_\kappa$ is not iterable then there is some $\delta\in[0,\kappa)_{\U}\cap\Sigma$ such that $\Psi_\delta$ is not iterable.
+	}
+	\proof{
+		Let $\V$ be a bad tree on $\Psi_\kappa$. As there is no inner model with a Woodin, we can without loss of generality assume that $\Psi_\kappa$ is properly 1-small. Use that $\Sigma$ is stationary in $\kappa$ to pick some $\delta\in[0,\kappa)_{\U}\cap\Sigma$, which is possible as $[0,\kappa)_{\U}$ is club in $\kappa$. Now let
+		\eq{
+			\H:=\chull^{\V_{\Omega+1}}(\{j_\kappa,\V,\T\restr\kappa+1,\U\restr\kappa+1,\delta,\M(\V),\Q_{\V}\})
+		}
+
+		with $\Q_{\V}$ the $\Q$-structure looking for branches in $\V$. Then by the absoluteness argument in \cite[Theorem 6.21]{MSc}, using that $\H$ is countable and also again that no inner model with a Woodin exists if $\bar\V$ had a cofinal wellfounded branch (in $V$) then so would $\V$ -- therefore $\bar\V$ is truly a bad tree on $\bar\Psi_\kappa$. Now define
+		\eq{
+			\H^+:=\chull^{V_{\Omega+1}}(\delta\cup\{j_\kappa,\V,\T\restr\kappa+1,\U\restr\kappa+1,\M(\V),\Q_{\V}\})
+		}
+		
+		and let $\psi:\H\to\H^+$ be the canonical embedding. Then $\psi\bar\V$ is a bad tree on the phalanx
+		\eq{
+			\psi(\bar\Psi_\kappa)&=\psi(\overline{\Phi(j\T\restr\kappa)})\widehat{\ }\bra{\psi(\overline{\ult(M_\kappa^{\U},E_{j_\kappa}\restr\kappa)}),\psi(\bar\kappa)}\\
+			&=\pi_+^{-1}(\Phi(j\T\restr\kappa))\widehat{\ }\bra{\ult(\pi_+^{-1}(\M_\kappa^{\U}),E_{j_{\pi_+^{-1}(\kappa)}}\restr\pi_+^{-1}(\kappa)),\pi_+^{-1}(\kappa)},\\
+				&=\Phi(j\T\restr\delta)\widehat{\ }\bra{\ult(\pi_+^{-1}(\M_\kappa^{\U}),E_{j_\delta}\restr\delta),\delta},
+		}
+
+		where $\pi_+:\H^+\to V_{\Omega+1}$ is the uncollapse. But now define $\tau:\pi_+^{-1}(\M_\kappa^{\U})\to\M_\delta^{\U}$ as $\tau:=(i_{\delta\kappa}^{\U})^{-1}\circ\pi_+$. To show that this is well-defined we have to show that $\pi_+"\pi_+^{-1}(\M_\kappa^{\U})\subset\ran i_{\delta\kappa}^{\U}$, so let $x=\pi_+(\bar x)$ for $\bar x\in\pi_+^{-1}(\M_\kappa^{\U})$. By elementarity we get that $\bar x\in\M_\delta^{\U}\cap\H^+$, so since $\delta\in[0,\kappa)_{\U}$ there is some $\eta<_{\U}\delta$ and $z\in\M_\eta^{\U}$ such that $\bar x=i_{\eta\delta}^{\U}(z)$. But then
+		\eq{
+			x=\pi_+(\bar x)=\pi_+(i_{\eta\delta}^{\U}(z))=i_{\eta\kappa}^{\U}(z)=i_{\delta\kappa}^{\U}(i_{\eta\delta}^{\U}(z))\in\ran i_{\delta\kappa}^{\U}
+		}
+		
+		and $\tau$ is well-defined. Lift $\tau$ to $\tilde\tau:\ult(\pi_+^{-1}(\M_\kappa^{\U}),E_{j_\delta}\restr\delta)\to\ult(\M_\delta^{\U},E_{j_\delta}\restr\delta)$, so that $\tilde\tau\psi\bar\V$ is then a bad tree on $\Phi(j\T\restr\delta)\widehat{\ }\bra{\ult(\M_\delta^{\U},E_{j_\delta}\restr\delta),\delta}=\Psi_\delta$.
+	}
+
+	\prop{
+		The above procedure halts at some $\theta\leq\kappa$.
+	}
+	\proof{
+		It suffices to show that $\kappa+1$ does not satisfy cases 1 and 2. But $\kappa\in\Sigma$ since $\kappa$ is regular and $j(\kappa)=\kappa$, and $\sup_{\gamma<\kappa}\nu_\gamma^{\U}\leq\kappa$ by definition of $\U$. Assume thus towards a contradiction that $\kappa+1$ is a special drop. In particular $\M_\kappa^{\U}$ is a weasel (since $\kappa$ is a regular $V$-cardinal), and note that for this to happen we cannot have had any drops on the $\W$-to-$\M^{\U}_\kappa$ branch, special or not. This is purely for cardinality reasons, as otherwise we would have dropped to a structure of cardinality $\leq\kappa<\Omega$. But Lemma \ref{lemm.specialdrop} implies that there is some $\delta\in[0,\kappa)_{\U}\cap\Sigma$ such that $\Psi_\delta$ is not iterable, and as there are no drops on the branch, $\M_\delta^{\U}$ is a weasel (since $\delta$ is a regular $V$-cardinal), making $\delta+1<_{\U}\kappa$ a special drop, $\contr$.
+	}
+
+	This finishes the construction of $\T$, $\U$ and $\bar\U$. Let $\theta\leq\kappa$ be the length of this comparison process and set $\P:=\M_\theta^{\T}$, $\Q:=\M_\theta^{\U}$ and $j^+:=j_\theta$.
+	
+
+	\section{Iterability}
+
+	\lemm{
+		\label{lemma1}
+		If $\Q$ is a stable weasel then $\Psi:=\Phi(j\T)\widehat{\ }\bra{\ult(\Q,E_{j^+}\restr\kappa),\kappa}$ is a stable iterable phalanx.
+	}
+	\proof{
+		Note first that $\Q$ being a weasel implies that there are no drops on the $\W$-to-$\Q$ branch, special or not, just as before. Assume that the lemma fails, which then forces $\theta=\kappa$, as there are cofinally many disagreements below $\kappa$ due to $\crit j<\kappa$. This means that $\kappa+1$ is a special drop, but then Lemma \ref{lemm.specialdrop} implies that there is a special drop $\delta+1\in[0,\kappa)_{\U}$, $\contr$.
+	}
+
+	\lemm{
+		\label{lemma2}
+		If $\Q$ is a set premouse then for any proper initial segment $\N\pinit\Q$ such that $n:=\min\{k<\omega\mid\rho_{k+1}(\N)\leq\theta\}$ exists it holds that
+		\eq{
+			\Psi:=\Phi(j\T)\widehat{\ }\bra{(\ult_n(\N,E_{j^+}\restr\theta),n),\theta}
+		}
+		
+		is a stable and iterable phalanx.
+	}
+	\proof{
+		Since $\Q$ is a set premouse there is a drop on the $\W$-to-$\Q$ branch, so that $\P\init\Q$. As there are no drops on the $\bar\W$-to-$\P$ branch, $|\P|=\kappa$. If $\theta<\kappa$ then regularity of $\kappa$ would entail that $|\Q|<\kappa$, $\contr$, so $\kappa=\theta$.
+		
+		\qquad Suppose the claim fails, so that we have a bad tree $\V$ on $\Psi$. Let $b$ be the $\W$-to-$\Q$ branch, $\gamma\in b$ least above all drops and $\delta\in b\cap\Sigma$ least above $\gamma$, which is possible as $b$ is club in $\kappa$. Then just as in the proof of Lemma \ref{lemm.specialdrop} we get that
+		\eq{
+			\Phi(j\T)\widehat{\ }\bra{(\ult_n(\pi_+^{-1}(\N),E_{j_\delta}\restr\delta),n),\delta}
+		}
+		
+		is not iterable. Since $\delta\in b-\gamma$, $\M_\delta^{\U}$ is the direct limit of previous models, so that elementarity of $\pi_+$ implies that $\pi_+^{-1}(\M_\kappa^{\U})=\M_\delta^{\U}$. Thus $\N_0:=\pi_+^{-1}(\N)\pinit\M_\delta^{\U}$. 
+		
+		\qquad We will show that $\varepsilon+1:=\succ_{\U}(\delta)$ is a drop, which will contradict that $\delta>\gamma$ and $\gamma$ being above all drops in $b$. The extender $E_\varepsilon^{\U}$ is the first one used on $[\delta,\kappa)_{\U}$. We claim that $\lh E_\varepsilon^{\U}\leq o(\N_0)$. If this was not the case then $\N_0\init\M_\varepsilon^{\T}$ and thus also $\N_0\init\P$. But then $\ult_n(\N_0,E_{j_\delta}\restr\delta)$ can be embedded into $\ult_n(\P,E_{j^+}\restr\kappa)$, so that $\Psi':=\Phi(j\T)\widehat{\ }\bra{(\ult_n(\P,E_{j^+}\restr\kappa),n),\kappa}$ is not iterable, but $\Psi'$ is the derived phalanx of an iteration tree on the iterable $\W$, $\contr$. Thus $\lh E_\varepsilon^{\U}\leq o(\N_0)$.
+		
+		\qquad Note also that since $\delta$ is a regular $V$-cardinal it holds that for every extender $E$ used on $\U$, if $\crit E<\delta$ then $\lh E<\delta$. In particular this means that $\mu:=\crit E_\varepsilon^{\U}\geq\delta$, so that $\mu^{+\M_{\varepsilon+1}^{\U}}>\delta$. Say furthermore that $\mu^{+\M_{\varepsilon+1}^{\U}}\geq o(\N_0)$. Then by the result in the above paragraph, $\mu^{+\M_{\varepsilon+1}^{\U}}\geq\lh E_\varepsilon^{\U}>\mu^{+\M_\varepsilon^{\U}}$, which is a contradiction since $\mu^{+\M_{\varepsilon+1}^{\U}}=\mu^{+(\M_{\varepsilon+1}^{\U})^*}\leq\mu^{+\M_\varepsilon^{\U}}$ by definition of $(\M_{\varepsilon+1}^{\U})^*$. Thus $\mu^{+\M_{\varepsilon+1}^{\U}}\in(\delta,o(\N_0))$.
+
+		\qquad But now by definition of $\N_0$, $\rho(\N_0)=\rho(\N)\leq\delta$, so that since $\N_0\pinit\M_\delta^{\U}$, $\N_0$ is sound and $\mu^{+\M_{\varepsilon+1}^{\U}}$ is collapsed in $\M_\delta^{\U}$. This means that $(\M_{\varepsilon+1}^{\U})^*\pinit\M_\delta^{\U}$, making $\varepsilon+1$ a drop, $\contr$.
+	}
+
+
+	\section{The action}
+	
+	\lemm{
+		\label{lemm.notsub}
+		$i_{\U}"\kappa\not\subset\kappa$.
+	}
+	\proofretard
+	Suppose that $i_{\U}"\kappa\subset\kappa$. We claim that there are no drops on the $\W$-to-$\Q$ branch, special or not. If there were only standard drops on the branch then there would not be any drops on the $\bar\W$-to-$\P$ branch, so universality of $\W$ implies that $|\Q|=\kappa$ which in turn requires that $\theta=\kappa$ by regularity of $\kappa$. But then we also get that $i_{\U}"\kappa\not\subset\kappa$, $\contr$.
+	
+	\qquad Suppose now $\varepsilon+1$ is a special drop on the $\W$-to-$\Q$ branch, entailing that $|\M^{\U}_{\varepsilon+1}|<\kappa$ and $\Phi(j\T)\widehat{\ }\bra{(\ult_n(\M^{\U}_\varepsilon,n),E_{j_\varepsilon}\restr\varepsilon),\varepsilon}$ is not iterable, by definition of special drop. As $|\M^{\U}_{\varepsilon+1}|<\kappa$ and $i_{\U}"\kappa\subset\kappa$ we get that $\theta<\kappa$, so the coiteration procedure ends with $\Q\init\P$. This means that $\ult_n(\M^{\U}_\varepsilon,E_{j_\varepsilon}\restr\varepsilon)$ embeds into $\ult_n(\P,E_{j^+}\restr\kappa)$, and then $\Phi(j\T)\widehat{\ }\bra{(\ult_n(\P,E_{j^+}\restr\kappa),n),\kappa}$ is not iterable -- but this phalanx is the derived phalanx of an iteration tree on the iterable $\W$, $\contr$.
+	
+	\qquad Thus there are no drops on the $\W$-to-$\Q$ branch and $\Q$ is thus a weasel. Now by Lemma \ref{lemma1}, setting $\Psi_{\W}:=\Phi(j\T)$, $\M:=\ult(\Q,E_{j^+}\restr\kappa)$ and $\Psi_{\M}:=\Phi(j\T)\widehat{\ }\bra{\M,\kappa}$, we can compare $\Psi_{\W}$ with $\Psi_{\M}$:
+		\begin{center}
+			\begin{tikzcd}[column sep=0cm, row sep=0.6cm]
+				\R & \init & \S\\\\
+				\Psi_{\M}\arrow[uu,tree={}{\V}] && \Psi_{\W}\arrow[uu,tree={}{\V'}]
+			\end{tikzcd}
+		\end{center}
+
+		The thick trick \cite[Lemma 8.6]{MSc} implies that $\M$ is below $\R$ and letting $\iota:\Q\to\M$ be the ultrapower map we have that $\varphi:=i_{\V}\circ\iota\circ i_{\U}:\W\to\R\init\S$, so Dodd-Jensen implies that $\R=\S$. Lastly, we can view $\V'$ as an iteration tree $\V''$ on $\W$. All in all, we now have the coiteration
+		\begin{center}
+			\begin{tikzcd}[column sep=0cm, row sep=0.6cm]
+				\R & = & \S\\\\
+				\M\arrow[uu,tree={}{\V}] && \W\arrow[uu,tree={}{\V''}]
+			\end{tikzcd}
+		\end{center}
+
+		This implies that $\varphi"\Def^{\W}=\Def^{\S}=i_{\V''}"\Def^{\W}$, and as $\kappa^+\subset\Def^{\W}$ we also get $\varphi\restr\kappa=i_{\V''}\restr\kappa$, so that $\crit i_{\V''}=\crit\varphi\leq\crit\iota=\crit j<\kappa$. We will now finish the proof by showing that $i_{\U}(\crit i_{\V''})\geq\kappa$, contradicting $i_{\U}"\kappa\subset\kappa$.
+		
+		\qquad As $\crit i_{\V}\geq\kappa$ (as $\M$ is below $\R$) and $\iota"\kappa\subset\kappa$, it suffices to show that $\varphi(\crit i_{\V''})\geq\kappa$, or equivalently $i_{\V}(\crit i_{\V''})\geq\kappa$. If $i_{\V}(\crit i_{\V''})<\kappa$ and $E$ is the first extender on the $\W$-to-$\S$ branch then $\lh E<i_{\V}(\crit i_{\V''})<\kappa$, but $\M$ agrees with $\W$ up to $\kappa$, $\contr$.
+	$\hfill\qed$\\
+
+
+	Note that Lemma \ref{lemm.notsub} implies that $\theta=\kappa$: indeed, it implies that either
+	\eq{
+		\sup_{\alpha<\theta}\crit E_\alpha^{\U}\geq\kappa\tag*{$(\dagger)$}
+	}
+	
+	or there being an extender $E_\alpha^{\U}$ such that $\crit E_\alpha^{\U}<\kappa$ and $\lh E_\alpha^{\U}\geq\kappa$. But $\U$ has only extenders of length $<\kappa$, so only $(\dagger)$ is possible. Regularity of $\kappa$ then ensures that $\theta=\kappa$. Furthermore, a standard regressive set argument shows that there is a club $C\subset\kappa$ such that for $\alpha,\beta\in C$ with $\alpha<\beta$, it holds that $i_{\alpha\beta}^{\U}(\kappa_\alpha)=\kappa_\beta=\beta$, where $\kappa_\xi:=\crit i_{\xi\kappa}^{\U}$.
+
+	\qquad Now for $\alpha\in C$ we have $i_{\alpha\kappa}(\kappa_\alpha)=\kappa$ and moreover $\sup (i_{\alpha\kappa}^{\U})"\kappa_\alpha^{+\M_\alpha^{\U}}=\kappa^{+\Q}$. Then $\cof\kappa^{+\Q}<\kappa$ while $\cof\bar\lambda=\kappa$, so that $\kappa^{+\Q}\neq\bar\lambda$. Assume for a contradiction that $\kappa^{+\Q}<\bar\lambda$. Then as $\bar\lambda=\kappa^{+\R}$ and no extenders on $\T$ overlap $\kappa$, there would be a drop on $\T$ on the next step in the coiteration, contradicting the universality of $\W$. Thus $\kappa^{+\Q}>\bar\lambda$. This means that there is some least $\N\pinit\Q$ and some $n<\omega$ such that
+	\eq{
+		\rho_{n+1}(\N)=\kappa<\bar\lambda\leq\rho_n(\N).
+	}
+
+	Setting $\M:=\ult_n(\N,E_{j^+}\restr\kappa)$, Lemma \ref{lemma2} entails that $\Psi_{\M}:=\Phi(j\T)\widehat{\ }\bra{\M,\kappa}$ is stable and iterable, so that applying the thick trick \cite[Lemma 8.6]{MSc} to $\bra{\Psi_{\M}, \Phi(j\T)}$ and using that trees on $\Phi(j\T)$ are really trees on $\W$ gives us the coiteration
+		\begin{center}
+			\begin{tikzcd}[column sep=0cm, row sep=0.6cm]
+				\R & \pinit & \S\\\\
+				\M\arrow[uu,tree={}{}] && \W\arrow[uu,tree={}{}]
+			\end{tikzcd}
+		\end{center}
+
+		But now $\sup (j^+)"\bar\lambda=j^+(\bar\lambda)=\lambda$ is definably collapsed in $\M$ and the $(n+1)$'st mastercode $A_{\M}^{n+1}$ is definable over $\R$ so that $\lambda<\kappa^{+\S}$. As it furthermore holds that $\p^{\S}(\kappa)=\p^{\W}(\kappa)$ we get $\lambda<\kappa^{+\W}=\kappa^{+K}=\lambda$, $\contr$. This finishes the proof of Theorem \ref{theorem}.
+
+
+%\section{Rounding off}
+
+%It remains to prove $(ii)$ in Theorem \ref{theorem}. Let thus $D\subset\kappa$ be a club and for some sufficiently large $\eta$, let $j:\bra{\bar V,\in,\bar K,\bar D}\to\bra{V_\eta,\in,K\restr\eta,D}$ be a Jónsson embedding with $|\ran j\cap\kappa|=\kappa$ and $j\restr\kappa\neq\id$. Let $C\subset\kappa$ be the club subset described in the previous section. Note that since $\sup i_{\alpha\beta}^{\U}\kappa_\alpha^{+\M_\alpha^{\U}}=\kappa_\beta^{+\M_\beta^{\U}}$, they all have the same cofinality. Transport this fact to $\bar V$ As $\kappa$ is Mahlo, there exists a regular $\mu\in C\cap D$ which furthermore satisfies that $i_{0\mu}(\mu)=\sup i_{0\mu}"\mu=\mu$.
+
+
+\bibliographystyle{apalike}
+\nocite{*}
+\bibliography{bib}
+
+\end{document}

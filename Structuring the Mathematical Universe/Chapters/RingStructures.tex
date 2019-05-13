@@ -1,0 +1,181 @@
+\chapter{Ring structures}
+\thispagestyle{fancy}
+
+\section{Semirings}
+\defi{
+A \textit{semiring} $\langle A,+,\cdot,e_1,e_2\rangle$ is a set $A\neq\emptyset$ together with two binary operations $+$ and $\cdot$, such that
+\begin{enumerate}
+\item $\langle A,+,e_1\rangle$ is a commutative monoid
+\item $\langle A,\cdot,e_2\rangle$ is a monoid
+\item $\forall a,b,c\in A: a(b+c)=ab+ac$
+\item $\forall a,b,c\in A: (a+b)c=ac+bc$
+\item $\forall a\in A: e_1a=ae_1=e_1$\\
+\end{enumerate}
+}
+
+\exam{
+The natural numbers $\omega$ under ordinary addition and multiplication form a semiring $\langle \omega,+,\cdot,0,1\rangle$.\\
+}
+
+\section{Nonassociative rings}
+\defi{
+A \textit{nonassociative ring} $\langle A,+,\cdot,e,-\rangle$ is a set $A\neq\emptyset$ together with two binary operations $+$ and $\cdot$ such that
+\begin{enumerate}
+\item $\langle A,+,e,-\rangle$ is an Abelian group
+\item $\langle A,\cdot\rangle$ is a magma
+\item $\forall a,b,c\in A: a(b+c)=ab+ac$
+\item $\forall a,b,c\in A: (a+b)c=ac+bc$\\
+\end{enumerate}
+}
+
+\section{Rings}
+\defi{
+A \textit{ring} $\langle A,+,\cdot,e,-\rangle$ is a set $A\neq\emptyset$ together with two binary operations $+$ and $\cdot$ such that
+\begin{enumerate}
+\item[($R_1$)] $\langle A,+,e,-\rangle$ is an Abelian group
+\item[($R_2$)] $\langle A,\cdot\rangle$ is a semigroup
+\item[($R_3$)] $\forall a,b,c\in A: a(b+c)=ab+ac$
+\item[] $\forall a,b,c\in A: (a+b)c=ac+bc$\\
+\end{enumerate}
+}
+
+\rema{
+Every ring reduces to a near-ring, since they only differ on $\langle A,+,e,-\rangle$ being a group or an Abelian group.\\
+}
+
+\rema{
+Every ring reduces to a nonassociative ring, since they only differ on $\langle A,\cdot\rangle$ being associative.\\
+}
+
+\section{Commutative rings}
+\defi{
+A \textit{commutative ring} $\langle A,+,\cdot,e,-\rangle$ is a ring in which $\cdot$ is commutative:
+\eq{
+\forall a,b\in A: ab=ba.
+}
+}
+
+\section{Unitary rings}
+\defi{
+A \textit{unitary ring} $\langle A,+,\cdot,e_1,e_2,-\rangle$ is a ring with a multiplicative identity element $e_2$:
+\eq{
+\forall a\in A: e_2a=ae_2=a.
+}
+}
+
+\rema{
+Every unitary ring is a unitary module, since every ring is a module cf. Theorem \ref{ringismodule}.\\
+}
+
+\section{Division rings}
+\defi{
+An element $a$ in a unitary ring $\langle A,+,\cdot,e_1,e_2,-\rangle$ is said to be \textit{invertible}, or to be a \textit{unit}, if
+\eq{
+\exists a^{-1}\in A: a^{-1}a=aa^{-1}=e_2.
+}
+}
+
+\defi{
+A \textit{division ring} $\langle A,+,\cdot,e_1,e_2,-,^{-1}\rangle$ is a unitary ring satisfying $e_1\neq e_2$ and in which every element $a\neq e_1$ is a unit.\\
+}
+
+\exam{
+The real quaternions $\mathbb{H}$, which extends the complex numbers $\mathbb{C}$, forms a noncommutative division ring $\langle \mathbb{H},+,\cdot,0,1,-\rangle$.\\
+}
+
+\section{Integral domains}
+\defi{
+An element $a\neq e$ in a ring $\langle A,+,\cdot,e,-\rangle$ is said to be a \textit{zero divisor} if
+\eq{
+\exists e\neq b\in A: ab=ba=e.
+}
+}
+
+\defi{
+An \textit{integral domain} $\langle A,+,\cdot,e_1,e_2,-\rangle$ is a commutative unitary ring with $e_1\neq e_2$ and no zero divisors.\\
+}
+
+\rema{
+An equivalent definition of an integral domain is a commutative unitary ring, where the zero rule applies:
+\eq{
+\forall a,b\in A: ab=e_1\Rightarrow (a=e_1)\lor(b=e_1).
+}
+}
+
+\exam{
+The integers $\langle \mathbb{Z},+,\cdot,0,1,-\rangle$ is an example of an integral domain.\\
+}
+
+\section{Fields}
+\defi{
+A \textit{field} $\langle A,+,\cdot,e_1,e_2,-,^{-1}\rangle$ is a commutative division ring.\\
+}
+
+\rema{
+Every field is a vector space, since every ring is a module cf. Theorem \ref{ringismodule}.\\
+}
+
+\exam{
+The real numbers $\langle \mathbb{R},+,\cdot,0,1,-,^{-1}\rangle$, the rational numbers $\langle \mathbb{Q},+,\cdot,0,1,-,^{-1}\rangle$ and the complex numbers $\langle \mathbb{C},+,\cdot,0,1,-,^{-1}\rangle$ are examples of fields.\\
+}
+
+\theo{
+Every field is an integral domain.
+}
+\textit{Proof.}
+Let $\langle A,+,\cdot,e_1,e_2,-,^{-1}\rangle$ be a field. It has to be checked that the zero rule applies. Let $a,b\in A$ and assume $ab=e_1$ and $a\neq e_1$: $b=e_2b=(a^{-1}a)b=a^{-1}(ab)=a^{-1}e_1=e_1$.$\qed$\\
+
+\section{Lie rings}
+\defi{
+A \textit{Lie ring} $\langle A,+,\cdot,e,-\rangle$ is a nonassociative ring which satisfies
+\begin{itemize}
+\item $\forall a,b,c\in A: a(bc)+b(ca)+c(ab)=e$
+\item $\forall a\in A: aa=e$\\
+\end{itemize}
+}
+
+\theo{
+Every ring $\langle A,+,\cdot,e,-\rangle$ induces a Lie ring $\langle A,+,\cdot,e,-,\odot\rangle$.
+}
+\textit{Proof.}
+Let $\b{A}$ be a ring and let $a,b,c\in A$. Then define $\odot:A\times A\to A$, given by $a\odot b:=ab-ba$. It has to be shown that $\odot$ satisfies the two properties of a Lie ring. The first is shown:
+\eq{
+&a\odot(b\odot c)+b\odot(c\odot a)+c\odot(a\odot b)\\
+=&a\odot(bc-cb)+b\odot(ca-ac)+c\odot(ab-ba)\\
+=&a(bc-cb)-(bc-cb)a+b(ca-ac)-(ca-ac)b+c(ab-ba)-(ab-ba)c\\
+=&abc-acb-bca+cba+bca-bac-cab+acb+cab-cba-abc+bac\\
+=&(abc-abc)+(acb-acb)+(bca-bca)+(cba-cba)+(bac-bac)+(cab-cab)\\
+=&e+e+e+e+e+e=e
+}
+
+The second is shown:
+\eq{
+a\odot a=aa-aa=e.
+}
+
+Thus $\langle A,+,\cdot,e,-,\odot\rangle$ is a Lie ring.$\qed$\\
+
+\section{Boolean ring}
+\defi{
+A \textit{Boolean ring} $\langle A,+,\cdot,e,-\rangle$ is a ring, in which $\cdot$ is idempotent:
+\eq{
+\forall a\in A: aa=a.
+}
+}
+
+\exam{
+Let $A$ be a set and $\mathcal{P}(A)$ the powerset. Then $\langle \mathcal{P}(A),\Delta,\cap,\emptyset,Id\rangle$ is a Boolean ring, where $Id$ is the identity map (every element is its own inverse) and $\Delta$ is the \textit{symmetric difference}:
+\eq{
+A\Delta B:=(A\cup B)\backslash(A\cap B).
+}
+}
+
+\section{$^*$-rings}
+\defi{
+A \textit{$^*$-ring} $\langle A,+,\cdot,e,-,*\rangle$ is a ring $\langle A,+,\cdot,e,-\rangle$ equipped with the unary operation $*$, which satisfies for all $a,b\in A$:
+\begin{itemize}
+\item $(a+b)^*=a^*+b^*$
+\item $(ab)^*=b^*a^*$
+\item $a^{**}=a$
+\end{itemize}
+}

@@ -1,0 +1,120 @@
+\chapter{Metric structures}
+\thispagestyle{fancy}
+
+\section{Metric spaces}
+\defi{
+Let $A\neq \emptyset$ be a set. A map $d:A\times A\to\mathbb{R}$ is called a \textit{metric}, if it satisfies the following for arbitrary $a,b,c\in A$:
+\begin{enumerate}
+\item[($M_1$)] $d(a,b)\geq 0$, $d(a,b)=0\lr a=b$
+\item[($M_2$)] $d(a,b)=d(b,a)$
+\item[($M_3$)] $d(a,b)\leq d(a,c)+d(c,b)$\\
+\end{enumerate}
+}
+
+\defi{
+A \textit{metric space} $\langle A,d\rangle$ is a set $A\neq\emptyset$ equipped with a metric $d$.\\
+}
+
+\section{Complete spaces}
+\defi{
+Let $\b{A}$ be a metric space, and let $(m_i)_{i\in\mathbb{N}}\subset A$ be a sequence in $A$. Then $(m_i)_{i\in\mathbb{N}}$ is called a \textit{Cauchy sequence} if
+\eq{
+\forall j,k\in\mathbb{N}:\lim_{j,k\to\omega}d(m_j,m_k)=0.
+}
+}
+
+\defi{
+A \textit{complete space} $\langle A,d\rangle$ is a metric space in which all Cauchy sequences in $A$ converge.\\
+}
+
+\section{Normed vector spaces}
+\defi{
+A \textit{norm} on a vector space $\b{A}$ is a map $||\cdot ||:A\to\mathbb{R}$, which satisfies the following:
+\begin{enumerate}
+\item[($N_1$)] $\forall a\in A: ||a||\geq 0$, $||a||=0\lr a=e_A$
+\item[($N_2$)] $\forall a\in A,r\in\mathbb{R}^n:||\lambda_r(a)||=|r|\times||a||$
+\item[($N_3$)] $\forall a,b\in A: ||a+b||\leq ||a||+||b||$\\
+\end{enumerate}
+}
+
+\defi{
+A \textit{normed }$\mathbb{F}-$\textit{vector space} $\b{A}$ is a vector space where $\mathbb{F}$ is either $\mathbb{R}$ or $\mathbb{C}$, equipped with a norm $\norm{\cdot}$.\\
+}
+
+\theo{
+\label{normedspaceismetricspace}
+Every normed vector space $\b{A}$ induces a metric space $\langle \b{A},d\rangle$.
+}
+\textit{Proof.}
+Define the map $d:A\times A\to\mathbb{F}$ given by
+\eq{
+d(a,b):=||b-a||.
+}
+
+It has to be checked that $d$ is a metric. $(M_1)$ follows directly from $(N_1)$. Let $r=-1$. Then by $(N_2)$, with $a,b\in A$:
+\eq{
+||b-a||=||\lambda_r(a-b)||=|r|\cdot ||a-b||=||a-b||,
+}
+
+which shows $(M_2)$. Lastly, by $(N_3)$, with $a,b,c\in A$:
+\eq{
+d(a,b)=||a-b||=||(a-c)+(c-b)||\stackrel{(N_3)}{\leq}||a-c||+||c-b||=d(a,c)+d(c,b),
+}
+
+which then proves that $d$ is a metric and $\b{A}$ a metric space.$\qed$\\
+
+\section{Banach spaces}
+\defi{
+A \textit{Banach space} is a complete normed vector space.\\
+}
+
+\section{Inner product spaces}
+\defi{
+Let $b{A}$, be an $\mathbb{F}$-vector space. Then an \textit{inner product} on $A$ is a map $\bra{\cdot,\cdot}:A\times A\to\mathbb{F}$ with satisfies the following for all $a,b,c\in A$ and $\alpha,\beta\in\mathbb{F}$:
+\begin{enumerate}
+\item[($IP_1$)] $\bra{a,a}>e\lr a\neq e$
+\item[($IP_2$)] $\bra{a,b}=\overline{\bra{b,a}}$
+\item[($IP_3$)] $\bra{\lambda_\alpha(a)+\lambda_\beta(b),c}=\alpha\bra{a,c}+\beta\bra{b,c}$\\
+\end{enumerate}
+}
+
+\defi{
+An \textit{inner product space} $\bra{\b{A},\bra{\cdot,\cdot}}$ is a vector space $b{A}$ equipped with an inner product $\bra{\cdot,\cdot}$.\\
+}
+
+\theo{
+\label{innerprodisnorm}
+Every inner product space $\b{A}$ induces a normed vector space $\langle \b{A},\norm{\cdot}\rangle$.
+}
+\textit{Proof.}
+Let $\b{A}$ be an inner product space. Define the map $||\cdot ||:A\to [0,\omega)$, given by $\norm{a}:=\sqrt{\ip{a}{a}}$. It has to be shown that $\norm{\cdot}$ is a norm. Because of $(IP_1)$, $\sqrt{\ip{a}{a}}$ is well-defined. $(N_1)$ follows from $(IP_1)$. $(N_2)$ is shown:
+\eq{
+\norm{\alpha a}^2\stackrel{def}{=}\ip{\lambda_\alpha(a)}{\lambda_\alpha(a)}\stackrel{(IP_3),(IP_2)}{=}\alpha\bar{\alpha}\ip{a}{a}=|\alpha|^2\norm{a}^2.
+}
+
+The last $(N_3)$ is shown:
+\eq{
+\norm{a+b}^2=\ip{a+b}{a+b}&=\ip{v}{v}+\ip{v}{w}+\ip{w}{v}+\ip{w}{w}\\
+&=\norm{a}^2+2\text{Re}\ip{a}{b}+\norm{b}^2\\
+&\leq \norm{a}^2+2\left|\ip{a}{b}\right|+\norm{b}^2\\
+&\stackrel{(*)}{\leq}\norm{a}^2+2\norm{a}\norm{b}+\norm{b}^2\\
+&=(\norm{a}+\norm{b})^2
+}
+
+At (*), the Cauchy-Schwarz' inequality is used. By taking the square root of both sides, $(N_3)$ is shown, and thus $\bra{\b{A},\norm{\cdot}}$ is a normed space.$\qed$\\
+
+\section{Hilbert spaces}
+\defi{
+A \textit{Hilbert space} is a complete inner product space.\\
+}
+
+\coro{
+Every Hilbert space $\b{A}$ induces a Banach space $\bra{\b{A},\norm{\cdot}}$.
+}
+\textit{Proof.}
+It follows from the fact that every inner product space induces a normed space cf. Theorem \ref{innerprodisnorm}.$\qed$\\
+
+\section{Euclidean spaces}
+\defi{
+A \textit{Euclidean space} $\b{A}$ is a Hilbert space $\b{A}$ over the field $\mathbb{R}$ where the inner product is the dot product and $e$ is the zero vector $\underline{0}$. Furthermore, $\lambda_r(s)$ is often denoted as $r\cdot s$ without confusion.\\
+}

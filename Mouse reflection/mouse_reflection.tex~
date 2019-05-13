@@ -1,0 +1,28 @@
+\newcommand{\mytitle}{Mouse Reflection is equiconsistent with weakly compacts}
+\newcommand{\myauthor}{Dan Saattrup Nielsen}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\abstract{
+	We show that every uncountable regular cardinal $\kappa$ satisfying mouse reflection is weakly compact in $L$.
+}
+
+\defi{
+	Let $\kappa$ be a cardinal. Then \textbf{mouse reflection} holds at $\kappa$, written $\textsf{MR}(\kappa)$, if every mouse operator $F$ which is total on $H_\kappa$ is also total on $H_{\kappa^+}$.
+}
+
+\theo[N.]{
+	Let $\kappa$ be an uncountable regular cardinal satisfying $\textsf{MR}(\kappa)$. Then $\kappa$ is weakly compact in $L$.
+}
+\proof{
+	We show that $\kappa$ has the tree property in $L$, which by a result of Jensen is equivalent to being weakly compact in $L$.	Let therefore $T\in L$ be a tree of height $\kappa$ where every level has cardinality $<\kappa$. Define a mouse operator $F_T$ as
+	\eq{
+		F_T(x):=L_\gamma\text{, where $\gamma$ is least such that }L_\gamma\models\godel{T\restr\abs{x}\text{ has a branch}}.
+	}
+
+	Note that this is indeed a mouse operator as $L_\gamma$ is a sound and (trivially) countably iterable premouse.	Since $T$ has height $\kappa$ we see that $F_T$ is total on $H_\kappa$, so by $\textsf{MR}(\kappa)$ it's also total on $H_{\kappa^+}$. Since regularity of $\kappa$ implies that $\abs T=\kappa$, $F_T(T)$ exists, so that $T$ has a branch in $L$.
+}
+
+\end{document}

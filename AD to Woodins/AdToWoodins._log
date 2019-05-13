@@ -1,0 +1,4 @@
+Input File::AdToWoodins.tex::0::0::Input File
+LaTeX Error::AdToWoodins.tex::4::0::File `/Users/dn16382/Dropbox/std_preamble.tex' not found. |...ut{/Users/dn16382/Dropbox/std_preamble.tex} ^^M |  Type X to quit or <RETURN> to proceed, or enter new name. (Default extension: tex)  Enter file name:  ! Emergency stop. <read *>  
+LaTeX Error::0::0::0::Emergency stop. (cannot \read from terminal in nonstop modes)
+LaTeX Error::AdToWoodins.tex::0::0:: ==> Fatal error occurred, no output PDF file produced! 

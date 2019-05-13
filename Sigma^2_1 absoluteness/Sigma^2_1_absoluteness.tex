@@ -1,0 +1,225 @@
+\newcommand{\mytitle}{$\bf\Sigma^2_1$-absoluteness}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\abstract{
+This note is a write-up of the theorem independently shown by Woodin and Steel that if there exists a measurable Woodin $\delta$ then $\bf\Sigma^2_1$-sentences are forcing absolute for $\delta$-small forcing notions in which $\ch$ holds. If we improve the assumption of a measurable Woodin to the existence of a model with a countable-in-$V$ measurable Woodin and which is iterable in all forcing extensions, the result holds for all set-sized forcing notions. The former result is proven using Woodin's \textit{stationary tower forcing} and the latter using Woodin's \textit{genericity iterations}.
+}
+
+\section{Introduction}
+
+Sentences of type $\b\Sigma^2_1$ are sentences of the form $\exists A\subset\mathbb R\colon\psi[A,r]$ for some fixed real parameter $r$ and $\psi$ only containing quantifiers ranging over the reals. A famous example of such a sentence is the continuum hypothesis $\ch$, which is known to be highly non-absolute: we can always force $\ch$ to hold and force it to fail. It thus would seem improbable that we could get any forcing absoluteness for these sentences. But it turns out that $\ch$ in a sense \textit{determines} the truth values of $\b\Sigma^2_1$-sentences, in the sense that all such sentences are absolute between generic extensions satisfying $\ch$, assuming large cardinals.
+
+\qquad This is a theorem due to Woodin and Steel independently, which initially was proven using \textit{stationary tower forcing}\footnote{For an introduction to the stationary tower, see \cite{Larson}.}, and another proof using the notion of \textit{genericity iterations}\footnote{Both \cite{Steel} and \cite{Farah} covers the basics of genericity iterations.} was then given later. The latter version requires a slightly stronger hypothesis, but in turn the conclusion will hold for \textit{all} forcing extensions, where the former version only holds for $\delta$-small forcing extensions, where $\delta$ is a measurable Woodin cardinal.
+
+\section{A few forcing facts}
+
+Before we start, we mention a few facts about regular embeddings between forcing notions. These facts will be used in both the stationary tower proof and the genericity iteration proof.
+
+\defi{
+	Let $\mathbb P,\mathbb Q$ be forcing notions. Then $\mathbb P$ \textbf{regularly embeds} into $\mathbb Q$ if there is an order-preserving embedding $i\colon\mathbb P\to\mathbb Q$ such that for every subset $A\subset\mathbb P$, if $\biglor A=1_{\mathbb P}$ then $\biglor i"A=1_{\mathbb Q}$. Furthermore, $\mathbb P$ is a \textbf{regular subordering} of $\mathbb Q$, written $\mathbb P\leq_{\text{reg}}\mathbb Q$, if $\mathbb P$ regularly embeds into $\mathbb Q$ via the inclusion map.
+}
+
+\lemm{
+	\label{lemm.forcing1}
+	Let $\mathbb P, \mathbb Q$ be forcing notions with $\mathbb P\leq_{\text{reg}}\mathbb Q$ and $\p(\mathbb Q)$ countable. Then for every generic $G\subset\mathbb P$ there is a generic $H\subset\mathbb Q$ such that $G\in V[H]$ and $G\subset H$.
+}
+\proof{
+	This is straight-forward, by starting with $G$ and recursively defining $H$ by picking adding element from every maximal antichain not in $\mathbb P$, compatible with previous stages of the construction.
+}
+
+\lemm{
+	\label{lemm.forcing2}
+	Let $\kappa$ be a cardinal, $\mathbb P$ a $\kappa$-cc forcing and $j\colon V\to\M$ an elementary embedding with $\crit j=\kappa$. Then $j"\mathbb P\leq_{\text{reg}}j(\mathbb P)$. In particular, if $|\mathbb P|=\kappa$ then $\mathbb P\leq_{\text{reg}}j(\mathbb P)$.
+}
+\proof{
+	Note that every maximal antichain of $j"\mathbb P$ is the point-wise image of a maximal antichain of $\mathbb P$. Let $\mathcal A\subset\mathbb P$ be such one. Then by the $\kappa$-cc, $|\mathcal A|<\kappa$, so that $j"\mathcal A=j(\mathcal A)$. As $j(\mathcal A)\subset j(\mathbb P)$ is a maximal antichain by elementarity, $j"\mathcal A\subset j(\mathbb P)$ is as well. The last part of the lemma is by assuming without loss of generality that $\mathbb P\subset V_\kappa$, so that every element of $\mathbb P$ isn't moved.
+}
+
+We omit a proof of the following fact -- see the appendix of \cite{Larson}.
+
+\qlemm{
+	\label{lemm.forcing3}
+	Let $\mathbb P$ and $\mathbb Q$ be forcing notions such that $\mathbb Q$ forces $\p(\mathbb P)^V$ to be countable. Then there is a $\mathbb P$-name $\tau$ for a forcing such that $\mathbb Q\cong\mathbb P*\tau$.
+}
+
+\pagebreak
+\section{The stationary tower proof}
+
+The precise statement whose proof will use stationary tower forcing is the following.
+
+\theo[Woodin, Steel]{
+	\label{theo.absforcing}
+	Assume there exists a measurable Woodin cardinal $\kappa$ and let $\varphi(x)$ be a $\Sigma^2_1$-formula, $r$ a real and $\mathbb P,\mathbb Q\in V_\kappa$ forcing notions such that $\Vdash_{\mathbb P}\varphi[r]$ and $\Vdash_{\mathbb Q}\ch$. Then $\Vdash_{\mathbb Q}\varphi[r]$.
+}
+\proof{
+	We will firstly show that we can reduce the problem to assuming $\ch$ holds in $V$ and that a $\kappa$-small forcing forces $\varphi[r]$. Indeed, since $\kappa$ is a limit of Woodins, we can pick some Woodin $\delta<\kappa$ such that $\mathbb P,\mathbb Q\in V_\delta$. Say $G\subset\mathbb P$ is $V$-generic, so that $V[G]\models\varphi[r]$. Note that $\delta$ is still Woodin in $V[G]$ as Woodins are preserved by small forcings. Now let $H\subset\mathbb Q_{<\delta}^{V[G]}$ be $V[G]$-generic and $j\colon V[G]\to\M\subset V[G][H]$ the associated embedding, so that $\M\models\varphi[r]$ by elementarity. As
+	\eq{
+		V[G][H]\models{^{<\delta}}\M\subset\M,
+	}
+
+	$V[G][H]$ and $\M$ has the same reals, so that $V[G][H]\models\varphi[r]$. As $\mathbb Q\in V_\delta$ and $j(\omega_1)=\delta$, we get that $\mathbb P*\mathbb Q_{<\delta}^{V^{\mathbb P}}$ forces $\p(\mathbb Q)^V$ to be countable. Lemma \ref{lemm.forcing3} then implies that there is a $\mathbb Q$-name $\tau$ for a forcing such that $\mathbb P*\mathbb Q_{<\delta}^{V^{\mathbb P}}$ is forcing equivalent to $\mathbb Q*\tau$. We can thus just shift focus to $V^{\mathbb Q}$, which satisfies $\ch$ and which has a $\delta$-small forcing (namely $\tau$) which forces $\varphi[r]$.
+
+	\qquad So, by the above argument we can now assume $\ch$ and that some $\delta$-small forcing $\mathbb P$ forces $\varphi[r]$, and we want to show that $V\models\varphi[r]$. The plan is to find an elementary embedding $j\colon V\to\M$, where $\M$ has a $V$-generic $G\subset\mathbb P$ and has enough structure to enable us to build a forcing extension $V[G][H]$ of $V[G]$ \textit{inside} $\M$, containing all the reals of $\M$ and which agrees with $V[G]$ on all $\Sigma^2_1$ sentences. Since $V[G]$ satisfies $\varphi[r]$ by assumption so will $V[G][H]$, and thus also $\M$ as $V[G][H]$ and $\M$ have the same reals. By elementarity of $j$, $V\models\varphi[r]$.
+
+	\qquad Let's begin with the proof. We'll construct $j\colon V\to\M$ by using the stationary tower $\mathbb P_{<\delta}$. But to make sure that $\M$ has all the above-mentioned properties, we need to pick a suitable $V$-generic $G\subset\mathbb Q_{<\delta}$. To a given ordinal $\lambda$, define $a(\lambda)$ as the set of all $X\prec V_{\lambda+1}$ satisfying
+	\begin{enumerate}
+		\item $\ot(X\cap\lambda)=\omega_1$;
+		\item For every predense $D\subset\mathbb Q_{<\lambda}$ with $D\in X$ there exists some $d\in D\cap X$ such that $X\cap(\cup d)\in d$;\footnote{We say that $X$ \textit{captures} every predense $D\subset\mathbb Q_{<\lambda}$ in $X$}
+		\item If $\bar X$ is the transitive collapse of $X$ then we can find a club $C\subset\omega_1$ such that
+			\begin{itemize}
+				\item every $\delta\in C$ is Woodin in $\bar X$;
+				\item for every limit point $\gamma\in C$ and club subset $E\in\p(\gamma)^{\bar X}$, $E$ contains a tail of $C\cap\gamma$.
+			\end{itemize}
+	\end{enumerate}
+
+	\clai{
+		The set $a(\kappa)$ is stationary.
+	}
+	\cproof{
+		Let $F\colon [V_{\kappa+1}]^{<\omega}\to V_{\kappa+1}$ be any function -- we need to find some $X\in a(\kappa)$ with $F\in X$. Firstly let $Y_0\prec\bra{V_{\kappa+\omega},\in,F}$ be countable. Fix a measure $\mu$ on $\kappa$. Now define a sequence $\bra{Y_\xi\mid\xi<\omega_1}$ of countable elementary substructures of $\bra{V_{\kappa+\omega},\in,F}$, where $Y_0$ is already given, as follows.
+		\begin{itemize}
+			\item Setting $\gamma_\xi:=\min\{A\subset\kappa\mid A\in Y_\xi\cap\mu\}$ for every $\xi<\omega_1$, $Y_{\xi+1}$ end-extends $Y'_\xi:=\{f(\gamma_\xi)\mid f\in{^{\kappa}}V_{\kappa+\omega}\cap Y_\xi\}$ below $\kappa$ and captures every predense $D\subset\mathbb Q_{<\lambda}$ in $Y_{\xi+1}$;
+			\item $Y_\eta:=\bigcup_{\alpha<\eta}Y_\alpha$ for limit $\eta<\omega_1$.\\
+		\end{itemize}
+
+		Such end-extensions always exist by \cite[Corollary 2.7.12]{Larson}. Now let $Y:=\bigcup_{\xi<\omega_1}Y_\xi$. We then claim that $X:=Y\cap V_{\kappa+1}\in a(\kappa)$, which will finish the proof. As we're end-extending below $\kappa$, we've ensured that $\ot(X\cap\kappa)=\omega_1$, satisfying (i). By definition of $X_{\xi+1}$ for every $\xi<\omega_1$, $X$ satisfies (ii) as well. It thus remains to show (iii), so let $\bar X$ be the transitive collapse of $X$. Note that for every limit ordinal $\eta<\omega_1$, $\gamma_\eta$ is the supremum in $X$ of $\gamma_\xi$ for $\xi<\eta$, so that $C:=\{\bar\gamma_\xi\mid\xi<\omega_1\}$ is a club subset of $\omega_1$.
+		
+		\qquad If $j_\mu\colon V\to\M_\mu$ is the embedding associated to $\mu$, note that $\kappa$ is still Woodin in $\M_\mu$, so that in $V$, $\mu$-a.e. $\xi<\kappa$ is Woodin. This means that every $\gamma_\xi$ is Woodin, so that $C$ satisfies the first property. It remains to show that if $\eta<\omega_1$ is a limit ordinal and $E\in\p(\bar\gamma_\eta)^{\bar X}$ is a club subset, then $E$ contains a tail of $C\cap\bar\gamma_\eta$.
+
+		\qquad But a club subset $E\subset\gamma_\eta$ in $X$ satisfies $E\in X_\eta'$, so that we can write $E=f(\gamma_\eta)$ for a function $f\colon \kappa\to V_\kappa$ satisfying $f(\xi)\subset\xi$ being a club subset for every $\xi<\kappa$, and $f\in Y_\alpha$ for some $\alpha<\eta$. But
+		\eq{
+			\{\xi<\kappa\mid \xi\in f(\zeta)\text{ for $\mu$-a.e. }\zeta\}
+		}
+
+		is club\footnote{See \cite[Exercise 1.1.14]{Larson}.} and in particular has measure one, so that $\gamma_\xi\in f(\gamma_\eta)=E$ for every $\xi\in[\alpha,\eta)$.
+	}
+	
+	Note that if $\mu$ is the measure on $\kappa$ and letting $j_\mu\colon V\to\M_\mu$, $a(\kappa)$ would still be stationary inside $\M_\mu$ as $V_{\kappa+1}^V=V_{\kappa+1}^{\M_\mu}$, so that by elementarity there is some inaccessible $\lambda<\kappa$ such that, in $V$, $a(\lambda)$ is stationary and $\mathbb P\in V_\lambda$. Assume without loss of generality that $\lambda<\delta$ and let $G\subset\mathbb P_{<\delta}$ be $V$-generic with $a(\lambda)\in G$ with associated embedding $j\colon V\to\M$.
+
+	\qquad Let's pause for a moment and consider what (i)-(iii) actually means in terms of $\M$. First of all, since $X\mapsto\ot(X\cap\lambda)$ represents $\lambda$ in $\M$, (i) says that $\lambda=j(\omega_1)$. Recall that we assumed $\ch$, so that elementarity of $j$ implies that we can enumerate $\mathbb R^{\M}=\{x_\xi\mid\xi<\lambda\}$. Item (ii) implies that in $V[G]$, $G\cap V_\lambda$ is $V$-generic for $\mathbb Q_{<\lambda}$.\footnote{See e.g. the argument in the proof of \cite[Lemma 2.7.14]{Larson}.} Lastly, since $a(\lambda)\in G$ and $\cup a(\lambda)=V_{\lambda+1}$, we get that $j"V_{\lambda+1}\in j(a(\lambda))$. As the transitive collapse of $j"V_{\lambda+1}$ is $V_\lambda$, (iii) implies that there is a club $C\in\p(\lambda)^{\M}$ such that
+	\begin{itemize}
+		\item[(a)] every $\gamma\in C$ is Woodin in $V_\lambda$;
+		\item[(b)] for every limit point $\gamma\in C$ and club subset $E\in\p(\gamma)^{V_\lambda}$, $E$ contains a tail of $C\cap\gamma$.\\
+	\end{itemize}
+
+	\qquad Continuing with the proof, we first need to establish some facts about what we can do inside $\M$. Let $j_\lambda\colon V\to\M_\lambda$ be the embedding induced by $G\cap V_\lambda$. We get a factorisation
+	\cd{
+		V\ar[dr]_{j_\lambda}\ar[rr]^j && \M\\
+		& \M_\lambda\ar[ur]_k
+	}
+
+	where $k[f]_{G\cap V_\lambda}:=[f]_G$. As $j(\omega_1)=\lambda$ and $j_\lambda(\omega_1)=\lambda$, $\crit k>\lambda$, so that $\M$ agrees with $\M_\lambda$ below $\lambda$. In particular $\M$, $\M_\lambda$, $V[G]$ and $V[G\cap V_\lambda]$ all have the same reals. Pick any $V$-inaccessible $\zeta\in(\lambda,\delta)$. Since $\M$ is closed under $<\delta$-sequences in $V[G]$, $V_\zeta,G\cap V_\lambda\in\M$ as well.
+	
+	\qquad We still need to find a $V$-generic filter for $\mathbb P$. We know that $\mathbb P$ is countable inside $V[G\cap V_\lambda]$, so we can at least find a $V$-generic $g\in\p(\mathbb P)\cap V[G\cap V_\lambda]\cap\M$, where the last two have non-empty intersection as $G\cap V_\lambda\in\M$.
+
+	\qquad Note that in $V[g]$, $C$ still have the above properties (a) and (b). Indeed, for (a) note that $\mathbb P$ is $\zeta$-small for some $\zeta<\lambda$, so that a tail of $C$ continues to contain only Woodin cardinals -- without loss of generality assume $C$ is this tail. For (b), first note that $\mathbb P$ has the $\rho$-cc for some $\rho<\lambda$, so that given any regular $\xi\geq\rho$, every club subset of $\xi$ in $V[g]$ contains a club in $V$, showing that $C-\rho$ satisfies (b). Without loss of generality, we can thus assume that $C$ satisfies both (a) and (b).
+	
+	\qquad We now want to use $C$ to construct $\omega_1$ many $V[g]$-forcings (inside $\M$), all lying nested into eachother and each one capturing one of $\M$'s reals.
+
+	\clai{
+		In $\M$, there is a continuous increasing sequence of ordinals $\bra{\eta_\xi\mid\xi<\omega_1}\subset C$ and a sequence $\bra{H_\xi\mid\xi<\lambda}$ such that
+		\begin{itemize}
+			\item[(I)] $H_\xi\subset\mathbb Q_{<\eta_\xi}^{V[g]}$ is $V[g]$-generic;
+			\item[(II)] $x_\xi\in V_\zeta\cap V[h][H_{\xi+1}]$;
+			\item[(III)] if $\xi<\xi'$ then $H_\xi=H_{\xi'}\cap(V_{\eta_\xi}\cap V[g])$.
+		\end{itemize}
+	}
+	\cproof{
+		By \cite[Lemma 2.7.14]{Larson} we get that there is a condition $a_{\eta_\xi\gamma}\in\mathbb Q_{<\gamma}$ for every $\gamma>\eta_\alpha$ compatible with every condition in $\mathbb Q_{<\eta_\xi}$ such that letting $\mathbb Q_{<\gamma}(a_{\eta_xi\gamma}):=\{p\in\mathbb Q_{<\gamma}\mid p\leq a_{\eta_xi\gamma}\}$, the quotient $(\mathbb Q_{<\gamma}(a_{\eta_\xi\gamma})/\mathbb Q_{<\eta_xi})^{V[g]}$ is a $\mathbb Q_{<\eta_xi}^{V[g]}$-name for a forcing such that in $V[g]$, $\mathbb Q_{<\eta_xi}*(\mathbb Q_{<\gamma}(a_{\eta_xi\gamma})/\mathbb Q_{<\eta_\xi})$ is forcing equivalent to $\mathbb Q_{<\gamma}(a_{\eta_\xi\gamma})$.
+
+		\qquad Now, towards showing (II), assume that $x_\xi\notin V[g][H_\xi]$, so that $x_\xi$ is generic over $V[g][H_\xi]$ by some $\lambda$-small forcing. By Lemma \ref{lemm.forcing3}, such a forcing is subsumed by $(\mathbb Q_{<\gamma}(a_{\eta_xi\gamma})/\mathbb Q_{<\eta_\xi})^{V[g]}_{H_\xi}$ for some $\gamma>\eta_\xi$ in $C$. Letting $\eta_{\xi+1}:=\gamma$ and $H_{xi+1}\subset\mathbb Q_{<\eta_{\xi+1}}^{V[h]}$ be $V[h]$-generic extending $H_\xi$ then makes sure that (II) is satisfied. At these successor stages, (I) is clearly satisfied as well.
+
+		\qquad For limit stages $\alpha$ we just let $\eta_\alpha:=\sup_{\beta<\alpha}\eta_\beta$ and $H_\alpha:=\bigcup_{\beta<\alpha}H_\beta$. At these limit stages (I) is still satisfied. Indeed, as any predense set in $\mathbb Q_{<\eta_\alpha}^{V[g]}$ is predense in $\mathbb Q_{<\beta}^{V[g]}$ for a club set of $\beta<\eta_\alpha$, and that each such club intersects $\{\eta_\beta\mid\beta<\alpha\}$, $H_\alpha$ is $V[g]$-generic. Lastly note that (III) is satisfied by construction.
+	}
+
+	Now let $C^*:=\{\eta_\xi\mid\xi<\omega_1\}$, which is a club subset of $\lambda$, so that $H:=\bigcup_{\xi<\omega_1}H_\xi\subset\mathbb Q_{<\lambda}\in\M$ is $V[g]$-generic by (I) and (III). By (II), $V[g][H]$ and $\M$ have the same reals. Now letting $j^*\colon V[g]\cap V_\zeta\to\M^*$ be the embedding induced by $H$, $\M^*$ and $V[g][H]$ have the same reals, so $\M^*$ and $\M^*$ also have the same reals. But by elementarity of $j^*$, $\M^*\models\varphi[r]$, so that $\M\models\varphi[r]$, finally concluding by elementarity of $j$ that $V\models\varphi[r]$.
+}
+
+
+\pagebreak
+\section{The genericity iteration proof}
+
+$\bra{\M,\vec E}$ will throughout this section be a transitive model of a suitable fragment of $\zfc$, where $\vec E$ is a sequence of extenders in $\M$.
+
+\theo[Woodin]{
+	\label{theo.genitext}
+	Assume $\bra{\M,\vec E}$ is $(\omega,\omega_1+1)$-iterable and $\vec E$ witnesses that a countable $\delta$ is Woodin in $\M$. Let $\kappa<\min\{\crit E\mid E\in\E\}$ and let $\mathbb P\in V_\kappa^{\M}$ be a forcing notion. If $g\subset\mathbb P$ is $\M$-generic then for every $x\subset\omega$ there is a countable iteration $j\colon\M[g]\to\M^*[g]$ and an $\M^*[g]$-generic $h\subset j(\W_{\delta,\omega}^{\M}(\vec E))$ such that $x\in\M^*[g][h]$.
+}
+\proof{
+	See \cite[Theorem 4.2]{Farah}.
+}
+
+\theo[Woodin]{
+	\label{theo.genitmw}
+	Assume $\bra{\M,\vec E}$ is $(\omega,\omega_1+1)$-iterable and $\vec E$ witnesses that a countable $\delta$ is measurable Woodin in $\M$. Then for every $x\subset\omega_1$ there is an $\omega_1$-iteration $j\colon \M\to\M^*$ and an $\M^*$-generic $g\subset j(\W_{\delta,\delta}^{\M}(\vec E))$ such that $x\in\M^*[g]$.
+}
+\proof{
+	See \cite[Theorem 4.7]{Farah}.
+}
+
+The statement is then the following.
+
+\theo[Woodin, Steel]{
+	\label{theo.absgenit}
+	Assume $\bra{\M,\vec E}$ is $(\omega,\omega_1+1)$-iterable in every forcing extension and $\vec E$ witnesses that a countable $\delta$ is measurable Woodin in $\M$. Let $r$ be a real, $\varphi(x)$ a $\Sigma^2_1$-formula and $\mathbb P,\mathbb Q$ forcing notions such that $\Vdash_{\mathbb P}\varphi[\check r]$ and $\Vdash_{\mathbb Q}\ch$. Then $\Vdash_{\mathbb Q}\varphi[\check r]$.
+}
+
+This will be a direct corollary to the following theorem.
+
+\theo[Woodin, Steel]{
+	Assume $\bra{\M,\vec E}$ is $(\omega,\omega_1+1)$-iterable in both $V$ and $V^{\col(\aleph_1,2^{\aleph_0})}$, and $\vec E$ witnesses that a countable $\delta$ is measurable Woodin in $\M$. Then to every $\Sigma^2_1$-formula $\varphi(x)$ we can uniformly assign a formula $\varphi^*(x)$ such that for any $r\in\mathbb R$,
+\begin{enumerate}
+	\item If $\varphi[r]$ holds then $\M\models\varphi^*[r]$;
+	\item If $\M\models\varphi^*[r]$ and $\ch$ holds then $\varphi[r]$ holds.
+\end{enumerate}
+}
+\proofretard
+Letting $\delta$ be the measurable Woodin in $\M$ and writing $\W:=\W_{\delta,\delta}(\vec E)$, define
+\eq{
+	\varphi^*(x):\equiv\exists p\in\W\colon p\Vdash``\varphi(x)\land |\check\delta|=\aleph_1".
+}
+
+We start by showing $(i)$, so assume that $\varphi[r]$ holds. Writing $\varphi(x)$ as $\exists X\subset\mathbb R\colon\psi(X,x)$, fix an $A\subset\mathbb R$ such that $\psi[A,r]$. Now work in $V^{\col(\aleph_1,2^{\aleph_0})}$, which has all the reals as this forcing is $\aleph_1$-closed, and also satisfies $\ch$. Fix some $x\subset\omega_1$ encoding $A$ and all the reals. By iterability of $\M$, Theorem \ref{theo.genitmw} gives us an iteration $j\colon\M\to\M^*$ of length $\omega_1$ such that $x\in\M^*[g]$ for some $\M^*$-generic $g\subset j(\W^{\M})$.
+
+\qquad As the iteration has length $\omega_1$ we get that $j(\delta)=\aleph_1^V$. As $x$ furthermore encodes $\mathbb R^V$ and $x\in\M^*[g]$, every $\alpha<\aleph_1^V$ is collapsed to $\aleph_0$ in $\M^*[g]$, so that the $j(\delta)$-cc implies that $j(\delta)=\aleph_1^{\M^*[g]}$. It also holds that $\mathbb R^V=\mathbb R^{\M^*[g]}$ as $\M^*[g]\subset V$, so since $A,r\in\M^*[g]$, $\M^*[g]\models\psi[A,r]$. We conclude that $\M\models\varphi^*[r]$, finishing the proof of $(i)$.
+
+\begin{wrapfigure}{R}{0.35\textwidth}
+	\centering
+	\begin{tikzcd}[column sep=0]
+		\mathbb R^V & \subset & \M^*[g]\\
+		&& \M^* \arrow[u,-]\\\\
+		&& \M \arrow[uu,tree={j}{\vec\T}]
+	\end{tikzcd}
+	\caption{\small The proof of $(ii)$.}
+\end{wrapfigure}
+
+\qquad For $(ii)$, assume $\ch$ and $\M\models\varphi^*[r]$. Fix some name $\dot A\in\M^{\W^{\M}}$ for a set of reals and a condition $p\in\W^{\M}$ such that $\M\models``p\Vdash\psi[\dot A,\check r]\land|\check\delta|=\aleph_1"$. Use $\ch$ to enumerate $\mathbb R=\bra{r_\xi\mid\xi<\omega_1}$. The plan is now to construct an $\omega_1$-stack of countable iteration trees $\vec\T$ on $\M$ with last model $\M^*$ and iteration map $j\colon\M\to\M^*$ such that there is some $\M^*$-generic $g\subset j(\W^{\M})$ satisfying $p=j(p)\in g$ and $\mathbb R^V=\mathbb R^{\M^*[g]}$. Then we get that $\M^*[g]\models\psi[A,r]$, so since $\M^*[g]$ contains all the reals and $\M^*[g]\subset V$, $\varphi[r]$ holds in $V$ as well.
+
+\qquad We now commence with the construction of $\vec\T$. Define $\M_0^{\T_0}:=\M$. As $\W^{\M}$ is countable in $V$ we can find some $\M$-generic $g_0\subset\W^{\M}$ such that $p\in g_0$. Measurability of $\delta$ in $\M$ gives us an elementary embedding $i_{01}^{\T_0}\colon\M\to\M_1^{\T_0}$ with $\crit i_{01}^{\T_0}=\delta$.  
+
+\qquad Let now $\delta_0\in\M_1^{\T_0}$ be the least Woodin above $\delta$ from the point of view of $\M_1^{\T_0}$, witnessed by some $\vec E_1\subset i_{01}^{\T_0}(\vec E)$ where every extender on $\vec E_1$ has critical point strictly above $\delta$. Then by Theorem \ref{theo.genitext} we get a countable genericity iteration on $\M_1^{\T_0}[g_0]$ using $\W_{\delta_0,\omega}^{\M_1^{\T_0}}(\vec E_1)$; say $\M_{\alpha_0}^{\T_0}[g_0]$ is the last model of the iteration. Then there is an $\M_{\alpha_0}^{\T_0}[g_0]$-generic $h_0\subset i_{1\alpha_0}^{\T_0}(\W_{\delta_0\omega}^{\M_1^{\T_0}}(\vec E_1))$ such that $r_0\in\M_{\alpha_0}^{\T_0}[g_0][h_0]$. Note that using the same iteration strategy we get a countable iteration on $\M_1^{\T_0}$ as well, since the critical points on the extenders are $>\delta$.
+
+\qquad Now $g_0*h_0$ is generic over $\M_{\alpha_0}^{\T_0}$ for a forcing $\mathbb P$ of size $i_{1\alpha_0}^{\T_0}(\delta_0)$.\footnote{Namely, $\mathbb P=\W^{\M}* i_{1\alpha_0}^{\T_0}(\W_{\delta_0\omega}^{\M_1^{\T_0}}(\vec E_1))$.} Since $p$ forces that $i_{0\alpha}^{\T_0}(\delta)=\aleph_1$ it also forces that $\p(i_{1\alpha_0}^{\T_0}(\delta_0))^{\M_{\alpha_0}^{\T_0}}$ is countable, so by Lemma \ref{lemm.forcing3} there is some $\mathbb P$-name $\tau$ for a forcing such that $i_{0\alpha_0}^{\T_0}(\W^{\M})\restr p\cong \mathbb P * \tau$. But then we can use Lemma \ref{lemm.forcing1} to find a generic $g_1\subset\mathbb P*\tau$ such that $g_0*h_0\subset g_1$.\footnote{Note that $g_1$ is not a generic of $i_{0\alpha_0}^{\T_0}(\W^{\M})$, but as $\mathbb P*\tau$ is forcing equivalent to that poset below $p$, we can always find a generic $G_1\subset i_{0\alpha_0}^{\T_0}(\W^{\M})$ such that $p\in G_1$ and $\M_{\alpha_0}^{\T_0}[g_1]=\M_{\alpha_0}^{\T_0}[G_1]$. But we'll work with the $g_\xi$'s until the end of the proof for bookkeeping purposes.} All in all we now have some $g_1\supset g_0$ such that $r_0\in\M_{\alpha_0}^{\T_0}[g_1]$. This finishes round 0 of our game. Now set $\M_0^{\T_1}:=\M_{\alpha_0}^{\T_0}$ and continue round 2 in the same fashion.
+
+\begin{wrapfigure}{L}{0.35\textwidth}
+	\centering
+	\begin{tikzcd}[column sep=0]
+		r_0 & \in & \M[g_1]\\
+		&& \M_{\alpha_0}^{\T_0} \arrow[u,-]\\\\
+		&& \M \arrow[uu,tree={}{\T_0}]
+	\end{tikzcd}
+	\caption{\small Round 0 of the game.}
+\end{wrapfigure}
+
+\qquad We continue in this fashion at every successor stage. At limit stages we take the direct limit along the unique branch through the stack created so far. As every maximal antichain in a direct limit is a maximal antichain at some previous stage, the union of the $g_\xi$'s is still generic. Let $\M^*$ be the $\omega_1$'th model of this $(\omega,\omega_1+1)$-iteration, which is wellfounded by our iterability assumption on $\M$. This means we get some iteration map $j\colon\M\to\M^*$ and an $\M^*$-generic $g\subset j(\W^{\M})$ (after translating via the forcing equivalence mentioned above) such that $\mathbb R^V\subset\M^*[g]$ and $\M^*[g]\models\varphi[r]$. As $\M^*[g]\subset V$ it holds that $\mathbb R^V=\mathbb R^{\M^*[g]}$, concluding that $\varphi[r]$ holds in $V$ as well.
+$\qed$\\
+
+
+\bibliographystyle{apalike}
+\nocite{*}
+\bibliography{bib}
+
+\end{document}

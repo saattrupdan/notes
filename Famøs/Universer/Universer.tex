@@ -1,0 +1,36 @@
+\documentclass{simplefamos}
+\usepackage[danish]{babel} 
+
+\begin{document}
+
+\famosarticle{}{Jagten efter et univers}{}{Dan Saattrup Nielsen}{}
+\famosprecistoc{Jagten efter et univers}
+
+En af de store udfordringer i matematikken er blandt andet, at kunne forklare hvad man laver til andre. Jeg vil her forsøge, at overkomme denne udfordring, ved at fortælle hvad \textit{indre modelteori} er for en størrelse, uden brug af tekniske definitioner og argumenter. Samtidig er det også et forsøg på at give et indblik i, hvad mængdelære i virkeligheden handler om. Et historisk indblik vil helt sikkert hjælpe med motivationen, så lad os begynde dér.
+
+Hurtigt efter mængdelæren var opfundet af Cantor i 1870'erne, spurgte Cantor om der kunne findes en overtællelig ægte delmængde af de reelle tal. Det virker ikke umiddelbart som et synderlig dybt spørgsmål, men ingen lod til at kunne besvare det. Det gik så vidt, at Hilbert til sin åbningstale for den internationale kongres for matematikere i år 1900 nævnte det som det vigtigste spørgsmål i matematikken. Spørgsmålet blev kaldt for \textit{kontinumshypotesen}.
+
+I 1930 viste Gödel sine ufuldstændighedssætninger, som sagde at der måtte findes spørgsmål i matematikken, der \textit{ikke} kunne bevises.\footnote{Under antagelse af at vores aksiomssystem er konsistent.} Dog var Gödels kanoniske eksempel på et sådan spørgsmål anset som værende ekstraordinært kunstigt, så det var den generelle konsensus at \textit{naturlige} spørgsmål selvfølgelig kunne bevises.
+
+Men Gödel gav ikke op. I 1940 viste Gödel, at man ikke kunne modbevise kontinumshypotesen. Det var selvfølgelig ikke nok, for det kunne jo stadig være, at man kunne \textit{bevise} den. Dog måtte man vente helt til år 1963, hvor Cohen endegyldigt fik lukket spørgsmålet, da han viste at man heller ikke kunne bevise den -- altså var et \textit{naturligt} spørgsmål fundet, som bevidnede Gödels ufuldstændighedssætning.
+
+Måden Gödel viste at man ikke kunne modbevise kontinumshypotesen, var ved at konstruere et \textit{univers}. Det er en konsekvens af vores aksiomer, at alle mængder ligger i et ``moderunivers'', som vi kalder for $V$. Gödel konstruerede universet $L$, der består af alle mængder, der kan skrives på formen
+\begin{align*}
+\{x\in X\mid\varphi(x)\},
+\end{align*}
+
+hvor $\varphi(x)$ er en eller anden formel. Ved første øjenkast skulle man måske tro, at \textit{alle} mængder da må kunne skrives op sådan?! Måske er det sådan. Måske ikke. For spørgsmålet om $V$ er det samme univers som $L$ er igen et af de spørgsmål, som vi har bevist at vi ikke kan bevise. Hm, nå. Hvad kan vi så bruge $L$ til? Jo, $L$ viser sig at være et utrolig pænt univers, og her har vi faktisk mulighed for at besvare en masse spørgsmål, som vi ikke kunne før (f.eks. kontinumshypotesen). Men skal vi så ikke bare glemme $V$, og bare arbejde i $L$ fra nu af?
+
+Nu begynder vi at træde ind på filosofisk grund, for om vi skal acceptere at $V=L$, kan vi kun retfærdiggøre ved filosofiske argumenter. Men hvad er argumenterne så? Argumenterne for bygger på \textit{brugbarheden} af universet \cite{Arrigoni}. Der er så mange spørgsmål, som endelig får et svar i $L$, og $L$ er stort nok til at dække al matematik, så hvad skal vi bruge potentielt set flere mængder til? Argumenterne imod bygger på et filosofisk princip, der bliver kaldt \textit{maksimér}: vores univers skal være så stort som muligt, da det jo netop skal dække alt, der findes. Da definitionen af $L$ er restriktiv (vi tager kun de mængder, som kan beskrives af formler), så strider dette imod \textit{maksimér} \cite{Maddy}. Sidstnævnte holdning er blevet den generelle mening blandt mængdeteoretikere.
+
+Det blev endnu værre for tilhængerne af $V=L$, da man kunne vise, at der findes mængder, hvis eksistens er konsistent med vores aksiomer, som \textit{ikke} eksisterer i $L$ -- disse mængder kaldes \textit{store kardinaltal}. Dette startede feltet kaldet \textit{indre modelteori}, hvis mål er, at finde universer, der har de samme fine egenskaber som $L$, men som er stort nok til også at kunne indeholde disse store kardinaltal.
+
+Der er også sket voldsomt meget fremskridt imod dette mål, og man har fundet virkelig pæne universer, der minder meget om $L$, men som kan indeholde mange flere af de store kardinaltal end $L$ kan. Man er dog ikke nået til ende endnu, men det lader til at man er tæt på: Hugh Woodin, en professor tidligere fra Berkeley og nu på Harvard, har fundet en konstruktion, som han kalder ``det ultimative $L$''. Woodin gik i Hilberts fodspor og præsenterede, ligesom Hilbert, idéerne til den internationale kongres for matematikere i 2010 \cite{Woodin}. Der er dog store åbne spørgsmål knyttet til dette ultimative $L$, som der mangler at blive besvaret. Måske kan målet, der nu er stået på i over halvtreds år, endelig blive opnået.
+
+\begin{thebibliography}{9}
+\bibitem[1]{Arrigoni}{Arrigoni, Tatiana. \textsl{$V=L$ and intuitive plausibility in set theory. A case study}. The Bulletin of Symbolic Logic, 2011.}
+\bibitem[2]{Maddy}{Maddy, Penelope. \textsl{Believing the axioms. I}. The Journal of Symbolic Logic, 1988.}
+\bibitem[3]{Woodin}{Woodin, Hugh. \textsl{Strong axioms of infinity and the search for $V$}. Proceedings of the International Congress of Mathematicians, 2010.}
+\end{thebibliography}
+
+\end{document}

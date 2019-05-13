@@ -1,0 +1,58 @@
+\documentclass{simplefamos}
+\usepackage[danish]{babel}
+
+% Specielle pakker/makroer til din artikel indlæses her
+\usepackage{xfrac}
+\newcommand{\eq}[1]{\begin{align*} #1 \end{align*}}
+
+\begin{document}
+
+\famosarticle{Side 9 Sætningen}{Algebraens fundamentalsætning}{Nu med et geometrisk bevis}{Dan Saattrup Nielsen}{}
+\famosprecistoc{Algebraens fundamentalsætning}
+
+% Her begynder din artikel
+Algebraens fundamentalsætning er en af de sætninger, som vi alle nok er bekendt med og som dukker op igen og igen. I KomAn beviser vi sætningen analytisk. I Alg3 beviser vi sætningen algebraisk\footnote{Okay okay, ikke 100\% algebraisk. Men det er tæt på.}. Man kunne så, bare sådan lidt for sjov, tænke over om man også kunne bevise den geometrisk. Svaret er ja. Here we go.
+
+\begin{saetning}[Algebraens fundamentalsætning]
+Lad $p(z)=a_nz^n+\cdots+a_1z+a_0\in\mathbb{C}[x]$ være et komplekst polynomium af grad $\geq 1$. Da har $p$ en rod i $\mathbb{C}$.
+\end{saetning}
+\begin{proof}
+Idéen i beviset er det følgende. Vi vælger en cirkel $C_r$ i $\mathbb{C}$ med tilstrækkelig stor radius $r>0$, så $p(C_r)$ ligger tæt på cirklen $C_{r^n}$ med radius $r^n$. Bemærk at $p(C_r)$ er tilnærmelsesvis ``cirkelformet'', da $p$ er kontinuert. Uden tab af generalitet er $p(0)=a_0\neq 0$, så hvis vi kontinuert formindsker $C_r$ til $0$, så vil $p(C_r)$ blive kontinuert formindsket til $a_0$. Men i denne proces vil $p(C_r)$ ramme $0$ på et tidspunkt, da $p(C_r)$ ligger rundt om $0$ fra valget af $r$. Se tegningen.
+
+\includegraphics[scale=0.15]{Tegning.jpg}
+
+Denne intuitive idé er god at huske, for det formelle bevis giver ikke ligeså meget indsigt. Antag altså at $p$ \textit{ikke} har nogen rødder i $\mathbb{C}$; vi skal vise at $p$ har grad $0$. Antag uden tab af generalitet at $p$ er monisk. Vælg nu $r>0$ så $r^n>|a_{n-1}|r^{n-1}+\cdots+|a_1|r+|a_0|$ (samme $r$ som ovenfor). Definér stien $\alpha:[0,1]\to\mathbb{S}^1$ givet ved
+\eq{
+\alpha(s):=\frac{\sfrac{p(re^{2\pi is})}{p(r)}}{|\sfrac{p(re^{2\pi is})}{p(r)}|},
+}
+
+som giver mening, da vi har antaget at $p(r)\neq 0$. Det ses at $\alpha$ er en lukket sti med $\alpha(0)=\alpha(1)=1$ (Her har vi ``normaliseret'' $p(C_r)$ til en delmængde af $\mathbb{S}^1$, så $a_0$ vil svare til punktet $1$). Lad $e_1:[0,1]\to\mathbb{S}^1$ betegne den konstante sti på $1$ ($e_1(s):=1$), og lad $\mu_n(s):[0,1]\to\mathbb{S}^1$ være standard løkken $\mu_n(s):=e^{2\pi ins}$. Vi viser at (i) $e_1\sim\alpha$ og (ii) $\mu_n\sim\alpha$,\footnote{Her betyder $\sim$ \textit{homotopiækvivalens}, som betyder, at der findes en kontinuert deformation af de to stier.} som så resulterer i $e_1\sim\mu_n$. Dette tvinger $n$ til at være $0$, da vi har isomorfien $\pi(\mathbb{S}^1,1)\cong\mathbb{Z}$ -- bemærk dog at dette resultat ikke er trivielt.\footnote{Her er $\pi(\mathbb{S}^1,1)$ gruppen af alle løkker i $\mathbb{S}^1\subseteq\mathbb{C}$ startende på $1\in\mathbb{C}$, kaldet \textit{fundamentalgruppen} af $\mathbb{S}^1$.}\\
+
+(i) Definér funktionen $H:[0,1]\times[0,1]\to\mathbb{S}^1$ givet ved
+\eq{
+H(s,t):=\frac{\sfrac{p(tre^{2\pi is})}{p(tr)}}{|\sfrac{p(tre^{2\pi is})}{p(tr)}|}.
+}
+
+Det kan tjekkes at $H$ faktisk er en homotopi mellem $e_1$ til $\alpha$. Dette er den tidligere nævnte formindskning af cirklerne.\\
+
+(ii) Definér funktionen $G:\mathbb{C}\times[0,1]\to\mathbb{C}$ givet ved $G(z,t):=(1-t)z^n+tp(z)$ og definér derudover $F:[0,1]\times[0,1]\to\mathbb{S}^1$ givet ved
+\eq{
+F(s,t):=\frac{\sfrac{G(re^{2\pi is},t)}{G(r,t)}}{|\sfrac{G(re^{2\pi is},t)}{G(r,t)}|}.
+}
+
+Denne homotopi svarer altså til deformationen mellem $p(C_r)$ og $C_{r^n}$. Vi starter med at tjekke at vi ikke dividerer med nul her. Per definition af $G$ har vi at $z^n=G(z,t)-t(a_{n-1}z^{n-1}+\cdots+a_1z+a_0)$, hvor vi brugte antagelsen om at $p$ er monisk, og trekantsuligheden giver da at
+\eq{
+|z^n|\leq|G(z,t)|+t(|a_{n-1}||z|^{n-1}+\cdots+|a_1||z|+|a_0|).
+}
+
+Da får vi at
+\eq{
+|G(re^{2\pi is},t)|&\geq r^n-t(|a_{n-1}|r^{n-1}+\cdots+|a_1|r+|a_0|)\\
+&\geq r^n-(|a_{n-1}|r^{n-1}+\cdots+|a_1|r+|a_0|)\\
+&>0,
+}
+
+hvor sidste ulighed kom fra valget af $r$. Altså er $F$ veldefineret. Ved indsætning ses det også at $F(s,0)=\mu_n(s)$ og $F(s,1)=\alpha(s)$, så $F$ er dermed en homotopi fra $\mu_n$ til $\alpha$, som ønsket. Da er $n=0$ fra det tidligere argument.
+\end{proof}
+
+\end{document}

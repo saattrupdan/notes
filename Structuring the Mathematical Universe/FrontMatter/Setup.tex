@@ -1,0 +1,67 @@
+% Document definition
+\documentclass[a4paper,12pt,openany]{book}
+
+% Packages
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+%\usepackage{hyperref}
+
+% Font size
+\sectionfont{\large}
+\chapterfont{\LARGE}
+
+% No indent
+\setlength{\parindent}{0in}
+
+% Theorem environment
+\theoremstyle{plain}
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{proposition}[subsection]{Proposition}
+\newtheorem{lemma}[subsection]{Lemma}
+\newtheorem{corollary}[subsection]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+\newtheorem{axiom}[subsection]{Axiom}
+\newtheorem{example}[subsection]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[subsection]{Remark}
+
+% User-defined commands
+\renewcommand{\labelenumi}{(\roman{enumi}) }
+\newcommand{\biglor}{\bigvee}
+\newcommand{\bigland}{\bigwedge}
+\newcommand{\ip}[2]{\left<#1,#2\right>}
+\newcommand{\src}[1]{\left[#1\right]}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\renewcommand{\b}[1]{{\bf #1}}
+\newcommand{\theo}[2][]{\begin{theorem}[#1]#2\end{theorem}}
+\newcommand{\prop}[2][]{\begin{proposition}[#1]#2\end{proposition}}
+\newcommand{\lemm}[2][]{\begin{lemma}[#1]#2\end{lemma}}
+\newcommand{\coro}[2][]{\begin{corollary}[#1]#2\end{corollary}}
+\newcommand{\defi}[2][]{\begin{definition}[#1]#2\end{definition}}
+\newcommand{\axio}[2][]{\begin{axiom}[#1]#2\\\end{axiom}}
+\newcommand{\exam}[2][]{\begin{example}[#1]#2\\\end{example}}
+\newcommand{\rema}[2][]{\begin{remark}[#1]#2\end{remark}}
+\renewcommand{\qed}{\hfill\blacksquare}
+\newcommand{\qedeq}{\tag*{$\blacksquare$}}
+\newcommand{\mrep}[3]{_{\mathscr #3}#1_{\mathscr #2}}
+\newcommand{\lr}{\Leftrightarrow}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\vc}[1]{\underline{#1}}
+\newcommand{\vto}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\newcommand{\mx}[1]{\underline{\underline{#1}}}
+\newcommand{\mto}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4\end{pmatrix}}
+\newcommand{\mtre}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}}
+\newcommand{\eq}[1]{\begin{align*} #1\\ \end{align*}}
+\newcommand{\pic}[1]{\begin{center}\includegraphics[scale=.5]{#1.png}\\\end{center}}
+\renewcommand{\subset}{\subseteq}
+\newcommand{\bra}[1]{\left<#1\right>}

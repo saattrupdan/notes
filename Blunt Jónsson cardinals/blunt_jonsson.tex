@@ -1,0 +1,88 @@
+\newcommand{\mytitle}{The consistency strength of blunt Jónsson cardinals}
+\newcommand{\myauthor}{Dan Saattrup Nielsen}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\abstract{
+	We introduce the concept of a \textit{blunt} Jónsson cardinal, being a regular Jónsson cardinal with a subset having no sharp, and show that the existence of a blunt Jónsson cardinal implies the existence of an inner model with a Woodin cardinal. This improves a result of \cite{Welch}.
+}
+
+\defi{
+	A cardinal $\kappa$ is a \textbf{blunt Jónsson cardinal} if it's a regular Jónsson cardinal such that $A^\sharp$ doesn't exist for some $A\subset\kappa$.
+}
+
+\qtheo[\cite{Welch}]{
+	If there is a blunt Jónsson cardinal then $0^\pistol$ exists.
+}
+
+\theo[N.]{
+	If there is a blunt Jónsson cardinal then there exists an inner model with a Woodin cardinal.
+}
+\proof{
+	Let $\kappa$ be blunt Jónsson. If $\kappa$ is a successor cardinal then it's already known that we get an inner model with a Woodin cardinal, so we may assume that $\kappa$ is weakly inaccessible and that there is no inner model with a Woodin cardinal. Let $A\subset\kappa$ witness the bluntness of $\kappa$ and assume without loss of generality that $K\l\kappa\subset L[A]$, using the weak inaccessibility of $\kappa$. Let $\theta\gg\kappa$ be regular and let $i:M\to H_\theta$ be a Jónsson embedding with $A\in\ran i$. Restrict $i$ to $L_\kappa[\bar A]$ to get an embedding $j:L_\kappa[\bar A]\to L_\kappa[A]$. Using the regularity of $\kappa$ we can lift $j$ to $j^+:L[\bar A]\to L[A]$. Now $\bar A^\sharp$ doesn't exist either, as otherwise we would be able to transfer the indiscernibles of $L[\bar A]$ to $L[A]$ via $j^+$.
+
+	\qquad As there's no inner model with a Woodin we can form $K$ as well as internal variants $K^{L[\bar A]}$ and $K^{L[A]}$. Let $\pi:=j^+\restr(K^{L[\bar A]}\l\lambda^+)$, where $\lambda:=\crit j$, so that $\pi:K^{L[\bar A]}\l\lambda^+\to K^{L[A]}\l j(\lambda^+)=K\l j(\lambda^+)$, where we used that $j(\lambda^+)<\kappa$ and $K\l\kappa\subset L[A]$. Now compare $K\l\lambda^+$ with $K^{L[\bar A]}\l\lambda^+$, noting that $K\l\lambda^+$ is universal for premice of height $\leq\lambda^+$ by \cite{SchimmerlingSteel} since $\lambda^+$ is a $V$-cardinal. This means that we get iteration trees $\T$ and $\U$ with last models $\P$ and $\Q$ on $K\l\lambda^+$ and $K^{L[\bar A]}\l\lambda^+$, respectively, and that $\Q\init\P$.
+	
+	\eq{
+		\xymatrix@C=.5em{
+			\P & \unrhd & \Q\\
+			K\l\lambda^+\ar@{~}[u]_{\T} && K^{L[\bar A]}\l\lambda^+\ar@{~|>}[u]_{\U}
+		}
+	}
+	
+	\clai{
+		Both $\T$ and $\U$ have no drops.
+	}
+
+	\cproof{
+	First note that both $K$ and $K^{L[\bar A]}$ are universal weasels, as they both compute the successors of stationarily many ordinals correctly (this is where we use that $\bar A^\sharp$ doesn't exist). This means that the trees in the comparison between $K$ and $K^{L[\bar A]}$ can't drop, and as $\T$ and $\U$ are subtrees of these trees, they can't drop either.
+	}
+
+	Let $\alpha$ be the least disagreement between $K$ and $K^{L[\bar A]}$.
+	
+	\clai{
+		$\alpha\in(\lambda,\lambda^{+K})$.
+	}
+
+	\cproof{
+		Firstly $\alpha>\lambda$ simply since it's the least disagreement and $\lambda$ being the critical point of $j$. Assume that $\alpha\geq\lambda^{+K}$, so that $\pi$ gives rise to an embedding $\pi\restr(K^{L[\bar A]}\l\lambda^{+K}):K\l\l\lambda^{+K}\to K\l\l j(\lambda^{+K})$. We can form the $(\lambda,\lambda^{+K})$-pre-extender $E$ over $K$ and form the ultrapower embedding $i_E:K\to\ult(K,E)$. We claim that the ultrapower is wellfounded. To see this, first note $\mu^+$ can't be Jónsson for any regular cardinal $\mu>\lambda$, so $j(\mu^+)>\mu^+$ and thus $j(\xi)>\xi$ for any $\xi<\kappa$ with $\cof^V\xi=\mu^+$. We could therefore have picked $\lambda$ to be one of these $\xi$ instead, ensuring that $\cof^V\lambda>\aleph_0$, making the ultrapower wellfounded. But then $i_E:K\to K$, $\contr$.
+	}
+
+	Now perform the copy construction to $\pi$ to get a non-dropping tree $\pi\U$ on $K\l j(\lambda^+)$ with a last model $\R$, and with an elementary embedding $\tilde\pi:\Q\to\R$ such that $\tilde\pi\circ i^{\U}=i^{\pi\U}\circ\pi$. By definition of the copy construction all extenders used in $\pi\U$ are indexed $\geq j(\alpha)>j(\lambda)\geq\lambda^+$, where the last inequality is because $j(\lambda)=i(\lambda)\geq\lambda^+$ since $i:M\to H_\theta$.
+
+	\eq{
+		\xymatrix@C=.5em{
+			\N &&&& \P\ar[llll]_-{i_E} & \unrhd & \Q\ar[rr]^{\tilde\pi} && \R\\
+			&&&& K\l\lambda^+\ar@{~|>}[u]_{\T} && K^{L[\bar A]}\l\lambda^+\ar@{~|>}[u]_{\U}\ar[rr]^{\pi} && K\l\pi(\lambda^+)\ar@{~|>}[u]_{\pi\U}
+		}
+	}
+
+	By agreement of extenders in iteration trees we then get that $\R$ agrees with $K$ below $j(\alpha)$. But if we then let $E$ be the $(\lambda,j(\alpha))$-extender over $L_{j(\alpha)}(\P)$ derived from $\tilde\pi$, we get an ultrapower embedding $i_E:L_{j(\alpha)}(\P)\to\ult(L_{j(\alpha)}(\P),E)$, which we can restrict to $i_E\restr\P:\P\to\N$. Since the ultrapower agrees with $K$ below $j(\alpha)$, $\N$ agrees with $K$ below $j(\alpha)$ as well. But now we get the composite map $i_E\circ i^{\T}:K\l\lambda^+\to\N$.
+
+	\clai{
+		$\T$ is trivial.
+	}
+
+	\cproof{
+		Assume not and let $F$ be the first extender used in $\T$. By coherence and normality, no extenders on the $\P$-sequence are indexed at $\index F$. But after applying $i_E$ we get that very same $F$ back, as $\N$ agrees with $K$ below $j(\alpha)$. This means that there is some extender $G$ on the $\P$-sequence with $\index G<\crit F$ and $i_E(\index G)=\index F$ and $j(\crit G)=i_E(\crit G)=\crit F$. Thus $\lambda=\crit i_E\leq\crit G$. But then $\index F>j(\lambda)\geq\lambda^+$ and $F$ is on the $(K\l\lambda^+)$-sequence, $\contr$.
+	}
+
+	\clai{
+		$\U$ is trivial.
+	}
+
+	\cproof{
+		Assume not and let $F$ be the first extender used in $\U$. Then $F$ is necessarily indexed at $\alpha$ since $\T$ is trivial, making $\alpha$ a cardinal in $\Q$ by properties of iteration trees. This implies that $\alpha$ is also a cardinal in $\P=K\l\lambda^+$, using that $\p^K(\alpha)\subset K\l\alpha^+\subset K\l\lambda^+$. But $\alpha\in(\lambda,\lambda^{+K})$, $\contr$.
+	}
+
+	But now $\pi:K\l\lambda^+\to K\l j(\lambda^+)$, which we can then lift to an embedding $K\to K$ using the $V$-regularity of $\lambda^+$, $\contr$. Hence there is an inner model with a Woodin cardinal.
+}
+
+\bibliographystyle{apalike}
+\nocite{*}
+\bibliography{bib}
+
+
+\end{document}

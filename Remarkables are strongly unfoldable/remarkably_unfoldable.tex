@@ -1,0 +1,39 @@
+\newcommand{\mytitle}{Remarkables are strongly unfoldable}
+\newcommand{\myauthor}{Dan Saattrup Nielsen}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\defi{
+	A cardinal $\kappa$ is \textbf{remarkable} if for all regular cardinals $\theta>\kappa$ there exists countable transitive $M$ and $N$ with elementary embeddings $\pi:M\to H_\theta$ and $j:M\to N$ such that, letting $\bar\kappa:=\pi^{-1}(\kappa)$,
+	\begin{enumerate}
+		\item $\crit j=\bar\kappa$;
+		\item $o(M)$ is a regular cardinal in $N$;
+		\item $j(\bar\kappa)>o(M)$;
+		\item $M=H_{o(M)}^N$.
+	\end{enumerate}
+}
+
+\defi{
+	A cardinal $\kappa$ is \textbf{strongly unfoldable} if every $\lambda>\kappa$ and $A\subset\kappa$ there exists a transitive $\kappa$-model $M$ with $A\in M$ and an elementary embedding $j:M\to N$ with $N$ transitive, and such that $\crit j=\kappa$, $j(\kappa)\geq\lambda$ and $V_\lambda\subset N$.
+}
+
+\theo{
+	Every remarkable cardinal is strongly unfoldable.
+}
+\proof{
+	Let $\kappa$ be remarkable, $\theta\gg\kappa$ and let $j:M\to N$ and $\pi:M\to H_\theta$ witness the remarkability of $\kappa\in\ran\pi$. It suffices to show that $\bar\kappa:=\pi^{-1}(\kappa)$ is strongly unfoldable in $M$. Let $A\subset\bar\kappa$ be fixed, where $A\in M$. Let $\alpha\in(\bar\kappa,\bar\kappa^{+M})$ be such that $M\l\alpha\models\zfc^-$, $A\in M\l\alpha$ and
+	\eq{
+		M\models (M\l\alpha)^{<\kappa}\subset M\l\alpha.
+	}
+	
+	\qquad Let $\lambda<o(M)$ and note that $j\restr(M\l\alpha)\in H_{\bar\kappa^{+M}}^N\subset M$, using that we could've picked $\theta$ such that $\bar\kappa$ is \textit{not} the largest cardinal in $M$. Let $E\in M$ be the $(\bar\kappa,\lambda)$-extender derived from $j\restr(M\l\alpha)$ over $M$ and let $k:\ult(M\l\alpha,E)\to N$ be the factor map. Then, in $M$, $i_E$ and $M\l\alpha$ witness unfoldability of $\bar\kappa$, and as $k\restr\lambda=\id$,
+	\eq{
+		V_\lambda^M=V_\lambda^N\subset\ult(M\l\alpha,E),
+	}
+	
+	showing that $\bar\kappa$ is strongly unfoldable in $M$, which is what we wanted to show.
+}
+
+\end{document}

@@ -1,0 +1,25 @@
+@book{Larson,
+	author		= "Larson, Paul B.",
+	title			= "The Stationary Tower -- Notes on a course by W. Hugh Woodin",
+	publisher	= "AMS University Lecture Series",
+	volume		= "32",
+	year			= "2004",
+}
+
+@article{Farah,
+	author		= "Farah, Ilijas",
+	title			= "The Extender Algebra and {$\bf\Sigma^2_1$}-absoluteness",
+	journal		= "The Cabal Seminar II",
+	year			= "2007",
+}
+
+@incollection{Steel,
+	author		= "Steel, John",
+	title			= "An Outline of Inner Model Theory",
+	booktitle	= "Handbook of Set Theory",
+	chapter		= "19",
+	publisher	= "Springer",
+	year			= "2010",
+	editor		= "Foreman, Matthew and Kanamori, Akihiro",
+}
+

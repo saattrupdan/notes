@@ -1,0 +1,531 @@
+\newcommand{\mytitle}{Some facts about Jónsson cardinals}
+\newcommand{\myauthor}{Dan Saattrup Nielsen}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\section{A plethora of characterisations}
+
+\theo{
+\label{theo.characterisations}
+Let $\kappa$ be a cardinal. Then the following are equivalent:
+\begin{enumerate}
+  \item (Jónsson '62) Every algebra of size $\kappa$ has a proper subalgebra of the same size;
+  \item (Keisler-Rowbottom '65) Every transitive structure $\M$ of size $\kappa$ in a countable language has a proper elementary substructure $X\prec\M$ of the same size;
+  \item (Erd\H os-Hajnal '66) $\kappa\to[\kappa]^{<\omega}_\kappa$; i.e. for every $c:[\kappa]^{<\omega}\to\kappa$ there exists $H\in[\kappa]^\kappa$ such that $c"[H]^n\neq\kappa$ for every $n<\omega$.
+  \item (Tryba '84) There exists $\theta>\kappa$ and an elementary embedding $j:M\to H_\theta$ such that $j(\kappa)=\kappa$ and $\crit j<\kappa$;
+  \item (Tryba '84) For every limit cardinal $\lambda\leq\kappa$, $\delta<\lambda$, $\theta>\kappa$ and $A\subset\kappa$ there exists an elementary embedding $j:M\to H_\theta$ such that $j(\kappa)=\kappa$, $\crit j\in(\delta,\lambda)$ and $A\in\ran j$;
+  \item For every $A\subset\kappa$ there exists a proper $\bra{X,\in,A\cap X}\prec\bra{V_\kappa,\in,A}$ of size $\kappa$;
+  \item For every $A\subset\kappa$ there exists a proper $\bra{X,\in,A\cap X}\prec\bra{L_\kappa[A],\in,A}$ of size $\kappa$;
+\end{enumerate}
+}
+\proof{
+\todo{Missing}
+}
+
+\defi{
+A cardinal $\kappa$ is a \textbf{Jónsson cardinal} if it satisfies any of the equivalent properties in Theorem \ref{theo.characterisations}.
+}
+
+\qtheo[Rowbottom-Devlin '73]{
+The least Jónsson cardinal is either singular of countable cofinality or weakly inaccessible.
+}
+
+
+\section{Singular Jónssons}
+
+\qtheo[P\v rikrý '70]{
+Every singular limit of measurables is Jónsson.
+}
+
+\qtheo[P\v rikrý '70]{
+Adding a P\v rikrý sequence to a measurable cardinal makes it singular Jónsson of countably cofinality in the generic extension.
+}
+
+\qtheo[Mitchell '79]{
+Assuming there is no inner model with a measurable cardinal, every Jónsson cardinal is Ramsey in $K$. Consequently, if there exists a singular Jónsson cardinal then there exists an inner model with a measurable cardinal.
+}
+
+\qcoro{
+The following theories are equiconsistent:
+\begin{itemize}
+  \item There exists a singular Jónsson cardinal of cofinality $\omega$;
+  \item There exists a measurable cardinal.
+\end{itemize}
+}
+
+\qtheo[Tryba '84]{
+If $\kappa$ is a singular Jónsson cardinal of uncountable cofinality then there is a club $C\subset\kappa$ consisting of Jónsson cardinals.
+}
+
+\qtheo[Koepke '88]{
+The following theories are equiconsistent:
+\begin{itemize}
+  \item There exists a singular Jónsson of uncountable cofinality $\delta$;
+  \item There exist $\delta$ measurable cardinals.
+\end{itemize}
+}
+
+\defi{
+Say a cardinal $\kappa$ is an \textbf{small Jónsson cardinal} if it's a singular Jónsson cardinal satisfying $\kappa<\aleph_\kappa$.
+}
+
+\qtheo[Koepke '88]{
+If there exists a small Jónsson cardinal then $0^{\text{long}}$ exists. In particular, there exists an inner model with $\alpha$ measurables for every $\alpha\in\on$.
+}
+
+\qtheo[Todor\v cevi\' c '85]{
+	If $\aleph_\omega$ is Jónsson then $\Box_{\aleph_n}$ fails for some $n<\omega$.
+}
+
+
+
+\section{Regular Jónssons}
+
+\subsection{Stationary reflection}
+
+\defi{
+$\refl(\lambda,\kappa)$ is the statement that given any $\leq\lambda$-sized collection
+\eq{
+\{S_\alpha\subset\kappa\mid\alpha\leq\lambda\}
+}
+
+of stationary sets of $\kappa$, there exists $\gamma<\kappa$ such that $S_\alpha\cap\gamma$ is stationary in $\gamma$ for every $\alpha<\kappa$. Such a $\gamma$ is called a \textbf{reflection point}.
+}
+
+\defi{
+	Say a cardinal $\kappa$ is \textbf{$\alpha$-reflecting} if $\refl(\alpha,\kappa)$ holds.
+}
+
+\theo[Tryba-Woodin '84]{
+\label{theo.refl}
+Every regular Jónsson cardinal $\kappa$ is 1-reflecting.
+}
+\proof{
+Let $S\subset\kappa$ be stationary and fix an elementary $j:\M\to H_\theta$ with $\theta\gg\kappa$, $S\in\ran j$, $j(\kappa)=\kappa$ and $\crit j<\kappa$.
+
+\clai{
+$\{\alpha\in S\mid j(\alpha)>\alpha\}$ is stationary in $\kappa$.
+}
+\cproof{
+Assume not and pick a club $C\subset\kappa$ such that
+\eq{
+C\cap S\subset\{\alpha\in S\mid j(\alpha)=\alpha\}.
+}
+
+In $\M$ partition $\bar S$ into $\bar S_\alpha$ for $\alpha<\kappa$ (using the regularity of $\kappa$) and let $\bar f\in\M\cap{^{\bar S}\kappa}$ be such that $\bar f^{-1}[\{\alpha\}]=\bar S_\alpha$ for every $\alpha<\kappa$. Fix $\alpha$ such that $j(\alpha)>\alpha$ and note that $C\cap S_\alpha\neq\emptyset$. As $S_\alpha\subset S$ we get that $C\cap S_\alpha\subset\{\xi\in S\mid j(\xi)=\xi\}$. Fix $\beta\in C\cap S_\alpha$ (note that $j(\beta)=\beta$), so that $j(\alpha)=j(\bar f(\beta))=f(\beta)=\alpha$, $\contr$.
+}
+
+Use now the claim to pick $\delta\in S$ such that $j(\delta)>\delta$ which also without loss of generality satisfies $j[\delta]\subset\delta$, as there are club many such. We then claim that $j(\delta)$ is a reflection point for $S$.
+
+\qquad Assume not, so there's a club $C\subset j(\delta)$ disjoint from $S$. By elementarity we may assume that $C\in\ran j$. For any $\alpha<\delta$ we get $j(\alpha)<\delta$ as well, and since $\bar C$ is club in $\delta$ we can find $\gamma\in\bar C$ above $j(\alpha)$, so that $\alpha<j(\gamma)<\delta$. As $\alpha$ was arbitrary, $\delta$ is a limit point of $C$ and thus $\delta\in C$. But $\delta\in S$ and $C\cap S=\emptyset$, $\contr$.
+}
+
+Note that the above proof shows that there are stationarily many reflection points to each stationary $S\subset\kappa$. Jónsson successors satisfy a much stronger reflection principle.
+
+\qtheo[Eisworth '12]{
+	Every successor cardinal $\rho^+$ is $<\cof(\rho)$-reflecting.
+}
+
+
+\subsection{Squares and threadables}
+
+\defi{
+	Say a cardinal $\kappa$ is \textbf{$\alpha$-threadable} for $\alpha<\kappa$ if $\Box(\kappa,\alpha)$ fails, and \textbf{threadable} if it's 1-threadable.
+}
+
+\qtheo[Rinot '14]{
+	Every regular Jónsson cardinal is threadable.
+}
+
+\qtheo[Hayut, Lambie-Hanson '16]{
+	For a cardinal $\lambda$, every $<\lambda$-reflecting regular cardinal is $<\lambda$-threadable.
+}
+
+\qcoro{
+	Every successor Jónsson $\rho^+$ is $<\cof(\rho)$-threadable.
+}
+
+\qtheo[Welch '98]{
+Assume there's no inner model with a Woodin cardinal. Then
+\begin{enumerate}
+\item $\kappa^{+K}=\kappa^+$ holds for every Jónsson cardinal $\kappa$;
+\item $\lambda^{+K}=\lambda^+$ holds for stationarily many regular $\lambda<\kappa$.
+\end{enumerate}
+}
+
+\qcoro{
+If there's no inner model with a Woodin cardinal and $\kappa$ is regular Jónsson, then
+\begin{enumerate}
+\item $\Box_\kappa$ holds;
+\item $\Box_\lambda$ holds for stationarily many regular $\lambda<\kappa$.
+\end{enumerate}
+}
+
+
+\subsection{Diamonds}
+
+\theo[Shelah '10]{
+Let $\kappa$ be uncountable. Then $\diamondsuit_{\kappa^+}$ holds iff $2^\kappa=\kappa^+$.
+}
+
+\qtheo[Erd\H os-Hajnal-Rado]{
+If $\kappa^+=2^\kappa$ then $\kappa^+$ is not Jónsson.
+}
+
+These above two results then gives us some more information about the Jónsson successors.
+
+\coro{
+If $\kappa$ is a Jónsson successor then $\diamondsuit_\kappa$ fails.
+}
+
+
+\subsection{Sharps}
+
+\begin{comment}
+\theo[Welch '98]{
+Assume $0^\pistol$ doesn't exist and let $\kappa$ be a Jónsson cardinal. Then $A^\sharp$ exists for every $A\subset\kappa$.
+}
+\proof{
+	\textit{(Original proof)}
+	Suppose not. We can without loss of generality assume that $K\l\kappa\subset V_\kappa^{L[A]}$. Let $j:L_\kappa[\bar A]\to L_\kappa[A]$ be a Jónsson embedding and use regularity of $\kappa$ to lift $j$ to $\tilde j:L[\bar A]\to L[A]$. Now we also get that $\bar A^\sharp$ doesn't exist, as otherwise we could transfer the indiscernibles of $L[\bar A]$ to indiscernibles of $L[A]$ via $\tilde j$. Covering then implies that $\kappa^{+L[\bar A]}$ and $\kappa^{+L[A]}$ have cofinality $\geq\kappa$.
+
+	\clai{
+		$K^{L[A]}$ and $K^{L[\bar A]}$ are universal weasels.
+	}
+
+	\cproof{
+		We show it for $L[A]$. By weak covering applied in $L[A]$ we get that all singular cardinals $\rho>\kappa$ have their successor computed correctly in $K^{L[A]}$. As $\lnot 0^\pistol$ holds this implies that they're both universal weasels.
+	}
+
+	Since $\lnot 0^\pistol$, the claim implies that $K^{L[A]}$ and $K^{L[\bar A]}$ are non-dropping iterates of $K$ with iterating embeddings $\tau_A:K\to K^{L[A]}$ and $\tau_{\bar A}:K\to K^{L[\bar A]}$. Now run a comparison of $K^{L[\bar A]}$ and $K^{L[A]}$ up to agreement below $\kappa$, producing trees $\T$ and $\U$ on $K^{L[\bar A]}$ and $K^{L[A]}$, respectively. Here $\T$ will then be trivial since we assured that $K\l\kappa\subset L[A]$. Let $\P$ be the last model of $\U$, so that $\P\l\kappa=K^{L[\bar A]}\l\kappa$.
+
+	\qquad We can now consider the embedding $j\restr K^{L[\bar A]}:K^{L[\bar A]}\l\kappa\to K^{L_\kappa[A]}\l\kappa$, whose domain is exactly $\P\l\kappa$, so that regularity of $\kappa$ again ensures that we can lift this embedding to $\bar j:\P\to\Q$ with $K\l\kappa\subset\Q$ since $K\l\kappa\subset L[A]$.
+	
+	\clai{
+		$\Q$ is iterable.
+	}
+
+	\cproof{
+		By elementarity of $\bar j$ we get that any set-sized initial segment is iterable. But as $\lnot 0^\pistol$ we can define a "universal" iteration of $\Q$ which can be defined \textit{internally} to $\Q$\todo{Reference}, so since all initial segments of $\Q$ are iterable by this strategy, $\Q$ is iterable.
+	}
+
+	This claim then ensures that $\Q$ is a universal weasel, so we have a non-dropping iteration from $K$ to $\Q$ with iteration embedding $\sigma:K\to\Q$. By uniqueness of the embedding, again using that $\lnot 0^\pistol$, we get that $\sigma=\bar j\circ i^{\U}\circ\tau_A$. But now since $\crit\sigma\leq\crit\bar j<\kappa$ and since $\sigma$ is an iteration embedding, this means that for some $\nu>\kappa$, $\crit E_\nu^K=\crit\sigma$.
+
+	\qquad But then by the initial segment condition this means that $\{\delta\mid\crit E_\delta^K=\crit E_\nu^K\}$ is cofinal in every $K$-cardinal $\lambda\leq\kappa$ with $\crit E_\nu^K<\lambda$. As $\lnot 0^\pistol$ we can't have any extenders on the $K$-sequence overlapping the interval $(\crit\sigma,\kappa)$. But this implies that $\U$ is trivial, so that $K\l\kappa\subset K^{L[\bar A]}$ as well.
+
+	\qquad But then $\bar j$ is really a map $\bar j:K\to\Q$ which is then necessarily an iteration embedding as $\lnot 0^\pistol$, so $\crit\sigma$ is measurable in $K$. But since $K\l\kappa\subset\Q$ and $j(\crit\sigma)<\kappa$, $j(\crit\sigma)$ is also measurable in $K$, $\contr$.
+}
+
+\proof{
+	\textit{(New proof)}
+	Assume not, witnessed by $A\subset\kappa$ and where we without loss of generality may assume that $K\l\kappa\subset L[A]$. Let $j:L_\kappa[\bar A]\to L_\kappa[A]$ be a Jónsson embedding and use regularity of $\kappa$ to lift $j$ to the ultrapower embedding $i_E:L[\bar A]\to\ult(L[\bar A],E)=L[A]$, where $E$ is the long $(\crit j,\kappa)$-extender over $L[\bar A]$ derived from $j$. Now $\bar A^\sharp$ can't exist either, as otherwise we could move the indiscernibles of $L(\bar A]$ to indiscernibles of $L[A]$ via $i_E$. This means that covering holds in both $L[\bar A]$ and $L[A]$ above $\kappa$.
+
+	\qquad Now from the internal core models $K^{L[\bar A]}$ and $K^{L[A]}$. Since $K\l\kappa=K^{L[A]}\l\kappa$ and $K\l\kappa$ is universal for premice of height $\leq\kappa$, we can compare $K^{L[\bar A]}$ and $K\l\kappa$ to get an iterate $\P$ of $K\l\kappa$ such that $K^{L[\bar A]}\init\P$, as the $K^{L[\bar A]}$-side doesn't move in the coiteration (this is where we're using that $0^\pistol$ doesn't exist). Since $K^{L[\bar A]}\l\kappa$ is an initial segment of the universal weasel $K^{L[\bar A]}$ (universal because it computes a tail of successors correctly), the $K\l\kappa$-to-$\P$ branch doesn't drop, granting us an iteration map $i:K\l\kappa\to\P$.
+
+	\qquad Now let $F$ be the long $(\crit j,\kappa)$-extender over $\P$ derived from $i_E\restr(K^{L[\bar A]}\l\kappa)$, again using the regularity of $\kappa$. We then get the composition
+	\eq{
+		\sigma:K\l\kappa\to\P\to\Q,
+	}
+
+	where $\Q:=\ult(\P,F)$. Note that $K\l\kappa\subset\Q$ since $K\l\kappa\subset L[A]$.
+
+	\clai{
+		$\U$ is trivial.
+	}
+	
+	\cproof{
+		Assume not and let $G$ be the first extender used in $\U$. Then by coherence and normality, no extender is indexed at $\text{index}(G)$ on the $\P$-sequence. But $G$ appears again after applying $i_F$ since $K\l\kappa\subset\Q$, so there must be an extender $H$ on the $\P$-sequence with $\crit H<\crit G$ and $\text{index}(H)<\text{index}(G)$.
+		
+		\qquad But $K\l\text{index}(G)=\P\l\text{index}(G)$ as $G$ was the first extender on $\U$, so that $H$ is on the $K$-sequence as well. But since $H$ is moved to $G$, this can only happen if some $H_1$ on the $\P$-sequence is moved to $H$. Repeating this argument we get an infinitely decreasing sequence of ordinals $\text{index}(H)>\text{index}(H_1)>\cdots$, a contradiction.
+	}
+
+	Now since $\U$ is trivial, $K^{L[\bar A]}\l\kappa=K\l\kappa$, so we get an embedding $K\l\kappa\to K\l\kappa$ and thus also an embedding $K\to K$ by regularity of $\kappa$, $\contr$.
+}
+
+
+\theo{
+	Assume there is no inner model with a Woodin cardinal and let $\kappa$ be an inaccessible Jónsson cardinal. Then $A^\sharp$ exists for every subset $A\subset\kappa$.
+}
+\proof{
+	Assume not, witnessed by some $A\subset\kappa$. Let $j:L_\kappa[\bar A]\to L_\kappa[A]$ be a Jónsson embedding, where we also without loss of generality assume that $V_\kappa\subset L_\kappa[A]$, using that $\kappa$ is inaccessible. Using the regularity of $\kappa$ we can lift $j$ to $j^+:L[\bar A]\to L[A]$. Now $\bar A^\sharp$ doesn't exist either, as otherwise we would be able to transfer the indiscernibles of $L[\bar A]$ to $L[A]$ via $j^+$.
+
+	\qquad As there's no inner model with a Woodin we can form $K$ as well as internal variants $K^{L[\bar A]}$ and $K^{L[A]}$. Let $\pi:=j^+\restr(K^{L[\bar A]}\l\lambda^+)$, where $\lambda:=\crit j$, so that $\pi:K^{L[\bar A]}\l\lambda^+\to K^{L[A]}\l j(\lambda^+)=K\l j(\lambda^+)$, where we used that $j(\lambda^+)<\kappa$ and $V_\kappa\subset L[A]$. Now compare $K\l\lambda^+$ with $K^{L[\bar A]}\l\lambda^+$, noting that $K\l\lambda^+$ is universal for premice of height $\leq\lambda^+$ by Schimmerling and Steel (1999), since $\lambda^+$ is a $V$-cardinal. This means that we get iteration trees $\T$ and $\U$ with last models $\P$ and $\Q$ on $K\l\lambda^+$ and $K^{L[\bar A]}\l\lambda^+$, respectively, and that $\Q\init\P$.
+	
+	\clai{
+		Both $\T$ and $\U$ have no drops.
+	}
+
+	\cproof{
+	First note that both $K$ and $K^{L[\bar A]}$ are universal weasels, as they both compute the successors of stationarily many ordinals correctly (this is where we use that $\bar A^\sharp$ doesn't exist). This means that the trees in the comparison between $K$ and $K^{L[\bar A]}$ can't drop, and as $\T$ and $\U$ are subtrees of these trees, they can't drop either.
+	}
+
+	Let $\alpha$ be the least disagreement between $K$ and $K^{L[\bar A]}$.
+	
+	\clai{
+		$\alpha\in(\lambda,\lambda^{+K})$.
+	}
+
+	\cproof{
+		Firstly $\alpha>\lambda$ simply since it's the least disagreement and $\lambda$ being the critical point of $j$. Assume that $\alpha\geq\lambda^{+K}$, so that $\pi$ gives rise to an embedding $\pi\restr(K^{L[\bar A]}\l\lambda^{+K}):K\l\l\lambda^{+K}\to K\l\l j(\lambda^{+K})$. We can form the $(\lambda,\lambda^{+K})$-pre-extender $E$ over $K$ and form the ultrapower embedding $i_E:K\to\ult(K,E)$. We claim that the ultrapower is wellfounded. To see this, first note that picking any regular cardinal $\mu>\lambda$ $\mu^+$ can't be Jónsson, so $j(\mu^+)>\mu^+$ and thus $j(\xi)>\xi$ for any $\xi<\kappa$ with $\cof^V\xi=\mu^+$. We could therefore have picked $\lambda$ to be one of these $\xi$ instead, ensuring that $\cof^V\lambda>\aleph_0$, making the ultrapower wellfounded. But then $i_E:K\to K$, $\contr$.
+	}
+
+	Now perform the copy construction to $\pi$ to get a non-dropping tree $\pi\U$ on $K\l j(\lambda^+)$ with a last model $\R$, and with an elementary embedding $\tilde\pi:\Q\to\R$ such that $\tilde\pi\circ i^{\U}=i^{\pi\U}\circ\pi$. By definition of the copy construction all extenders used in $\pi\U$ are indexed $\geq j(\alpha)>j(\lambda)\geq\lambda^+$, where the last inequality is because $V_\kappa\subset L[A]$ again.
+
+	\qquad By agreement of extenders in iteration trees we then get that $\R$ agrees with $K$ below $j(\alpha)$. But if we then let $E$ be the $(\lambda,j(\alpha))$-extender over $L_{j(\alpha)}(\P)$ derived from $\tilde\pi$, we get an ultrapower embedding $i_E:L_{j(\alpha)}(\P)\to\ult(L_{j(\alpha)}(\P),E)$, which we can restrict to $i_E\restr\P:\P\to\N$. Since the ultrapower agrees with $K$ below $j(\alpha)$, $\N$ agrees with $K$ below $j(\alpha)$ as well. But now we get the composite map $i_E\circ i^{\T}:K\l\lambda^+\to\N$.
+
+	\clai{
+		$\T$ is trivial.
+	}
+
+	\cproof{
+		Assume not and let $F$ be the first extender used in $\T$. By coherence and normality, no extenders on the $\P$-sequence are indexed at $\text{index}(F)$. But after applying $i_E$ we get that very same $F$ back, as $\N$ agrees with $K$ below $j(\alpha)$. This means that there is some extender $G$ on the $\P$-sequence with $\text{index}(G)<\crit F$ and $i_E(\text{index}(G))=\text{index}(F)$ and $j(\crit G)=i_E(\crit G)=\crit F$. Thus $\lambda=\crit i_E\leq\crit G$. But then $\text{index}(F)>j(\lambda)\geq\lambda^+$ and $F$ is on the $(K\l\lambda^+)$-sequence, $\contr$.
+	}
+
+	\clai{
+		$\U$ is trivial.
+	}
+
+	\cproof{
+		Assume not and let $F$ be the first extender used in $\U$. Then $F$ is necessarily indexed at $\alpha$ since $\T$ is trivial, making $\alpha$ a cardinal in $\Q$ by properties of iteration trees. This implies that $\alpha$ is also a cardinal in $\P=K\l\lambda^+$, using that $\p^K(\alpha)\subset K\l\alpha^+\subset K\l\lambda^+$. But $\alpha\in(\lambda,\lambda^{+K})$, $\contr$.
+	}
+
+	But now $\pi:K\l\lambda^+\to K\l j(\lambda^+)$, which we can then lift to an embedding $K\to K$ using the $V$-regularity of $\lambda^+$, $\contr$. Hence $A^\sharp$ exists.
+}
+\end{comment}
+
+\theo[Rinot-Steel-Schindler '14]{
+	Let $\kappa$ be regular Jónsson. Then $A^\sharp$ exists for every $A\subset\kappa$.
+}
+\proof{
+	As every bounded subset of $\kappa$ has a sharp, it suffices to show that mouse reflection holds at $\kappa$. But by Lemma 2.1.6 in Schindler and Steel (2014) it suffices to show that $\kappa\geq\aleph_2$ is threadable. But every Jónsson satisfies $\kappa\geq\aleph_2$ and by Rinot (2014) every regular Jónsson is threadable.
+}
+
+
+\subsection{Successor Jónssons}
+
+\qtheo[Mitchell-Steel-Schimmerling '94]{
+If $\Box_\rho$ fails for a singular $\rho$ then there exists an inner model with a Woodin cardinal.
+}
+
+\qtheo[Adolf '17]{
+If $\Box_\rho$ fails for a singular strong limit $\rho$ then there exists a transitive model containing all the ordinals and reals, and which satisfies $\godel{\zf+\ad_{\mathbb R}+\Theta\text{ is regular}}$.
+}
+
+\qcoro{
+Assume there exists a successor Jónsson $\rho^+$. Then there exists an inner model with a Woodin cardinal. If furthermore $\rho$ is a strong limit then there exists a transitive model containing all the ordinals and reals, and which satisfies $\godel{\zf+\ad_{\mathbb R}+\Theta\text{ is regular}}$.
+}
+
+We have the following restrictions to an eventual Jónsson successor.
+
+\qtheo{
+Assume $\rho^+$ is Jónsson. Then
+\begin{enumerate}
+	\item (Chang-Rowbottom-Erd\H os-Hajnal '66) $\rho$ is Jónsson;
+	\item (Shelah '78) $\rho$ is a limit of weakly inaccessible Jónssons, so $\rho$ is not small;
+	\item (Tryba-Woodin '84) $\rho$ is singular;
+	\item (Shelah '94) $\rho^+\not\rightarrow[\cof\rho]^2_{\cof\rho}$;
+	\item (Shelah-Abraham-Magidor '10) If $\cof(\rho)>\omega$ then there are club many $\lambda<\rho$ such that $\lambda^+$ is Jónsson;
+	\item (Eisworth '12) $\rho^+$ is $<\cof(\rho)$-reflecting;
+	\item (Hayut, Lambie-Hanson '16) $\rho^+$ is $<\cof(\rho)$-threadable.
+\end{enumerate}
+}
+
+The Shelah-Abraham-Magidor ('10) result above implies that the first Jónsson successor $\rho^+$ satisfies $\cof\rho=\omega$, so since $\Box(\rho)$ holds iff $\Box(\cof\rho)$ holds (Lemma 2.1 in Schimmerling '07), we get the following when also coupling it with the result of Hayut and Lambie-Hanson ('16) above.
+
+\qcoro{
+	If $\rho^+$ is the first Jónsson successor cardinal then $\rho$ is threadable and $\rho^+$ is $<\omega$-reflecting (in particular also $<\omega$-threadable).
+}
+
+
+\subsection{Weakly inaccessible Jónssons}
+
+\qtheo[Shelah '98]{
+Weakly inaccessible Jónsson cardinals are weakly hyper-Mahlo.
+}
+
+\qtheo[Mitchell '99]{
+Assume there's no inner model with a Woodin cardinal. Then every weakly inaccessible Jónsson is Ramsey in $K$.
+}
+
+The above theorem is usually stated for all regular Jónsson cardinals. But given that a successor Jónsson has a lot higher consistency strength than a Woodin, this formulation is equivalent.
+
+\qcoro{
+The following theories are equiconsistent.
+\begin{itemize}
+  \item $\godel{\zfc+\text{there exists a Jónsson cardinal}}$;
+  \item $\godel{\zfc+\text{there exists a weakly inaccessible Jónsson cardinal}}$;
+  \item $\godel{\zfc+\text{there exists an inaccessible Jónsson cardinal}}$;
+  \item $\godel{\zfc+\text{there exists a Ramsey cardinal}}$.
+\end{itemize}
+}
+
+
+
+\subsection{Structural Reflection}
+
+\defi[Bagaria]{
+$\text{SR}_\alpha(A)$ holds if every $\Sigma_1(A)$-definable class $\mathcal C$ of structures has the property that whenever $\M\in\mathcal C$ then there exists $\N\in\mathcal C\cap V_\alpha$ and an elementary $j:\N\to\M$.
+}
+
+\theo[N.]{
+A cardinal $\kappa$ is Jónsson if and only if $\text{SR}_{\kappa^+}(\kappa)$ holds.
+}
+\proof{
+$(\Leftarrow)$: Assume $\text{SR}_{\kappa^+}(\kappa)$ and define the class
+\eq{
+\mathcal C:=\{(L_\kappa[x],\in,x,\kappa)\mid x\subset\kappa\},
+}
+
+which is $\Sigma_1(\kappa)$-definable. Fix any $x\subset\kappa$ and consider $\M:=(L_\kappa[x],\in,x)$. By $\text{SR}_{\kappa^+}(\kappa)$ we get an elementary
+\eq{
+j:(L_\kappa[\bar x],\in,\bar x,\kappa)\to(L_\kappa[x],\in,x,\kappa),
+}
+
+so $\crit j<\kappa$, which then witnesses Jónssonness.
+
+\qquad $(\Rightarrow)$: Let $\kappa$ be Jónsson and $\mathcal C$ a $\Sigma_1(\kappa)$-definable class of structures. Let $\M\in\mathcal C$, $\theta\gg 0$ and $j:\h\to H_\theta$ a Jónsson embedding with $\M\in\ran j$; i.e. that $\crit j<\kappa$ and $j(\kappa)=\kappa$. Since $\kappa$ is fixed we get that $\overline\M\in\mathcal C$, but we don't know if $\abs{\overline\M}<\kappa^+$ yet. Set
+\eq{
+\N:=\chull^{\h}((V_\kappa\cap\h)\cup\{\kappa\})
+}
+
+and let $\pi:\overline{\overline\M}\to\overline\M$ be the uncollapse, which again fixes $\kappa$, so by elementarity $\overline{\overline\M}\in\mathcal C$, and we now also get that $\abs{\overline{\overline\M}}<\kappa^+$, obtaining $\text{SR}_{\kappa^+}(\kappa)$.
+}
+
+
+\section{Woodin cardinals}
+
+\prop{
+	Every 1-reflecting Woodin cardinal is a hyper limit of Woodins.
+}
+\proof{
+	Every weakly compact Woodin cardinal is a hyper limit of Woodins, which means that every Woodin which is \textit{not} a hyper limit of Woodins is provably non-weakly compact. But since we can't prove the existence of a non-weakly compact 1-reflecting Mahlo cardinal, every Woodin that isn't a hyper limit of Woodins can't be 1-reflecting (Woodins are always Mahlo), so that every 1-reflecting Woodin \textit{is} a hyper limit of Woodins.
+}
+
+\prop{
+  If there exists a threadable Woodin $\delta$ then every $A\subset\delta$ has a sharp, so that $M_1^\sharp(A)$ exists for all $A\subset\delta$.
+}
+\proof{
+  Woodins are stationary limits of measurables, so every bounded subset of $\delta$ immediately has a sharp. But as regular threadable cardinals satisfy mouse reflection, this holds for all subsets of $\delta$. As $\delta$ being Woodin is witnessed by extenders $\vec E\subset\delta$, we immediately get that $M_1^\sharp(A)$ exists for every $A\subset\delta$.
+}
+
+
+\section{Weakly $n$-Jónssons}
+
+\defi{
+	Say a cardinal $\kappa$ is \textbf{weakly $n$-Jónsson} if $\kappa$ is uncountable and $\kappa\to[\kappa]^n_\kappa$. Say $\kappa$ is \textbf{weakly Jónsson} if it's weakly 2-Jónsson.
+}
+
+\rema{
+	Every uncountable cardinal $\kappa$ is weakly $1$-Jónsson. Indeed, let $f:\kappa\to\kappa$ be a colouring and define $A:=f^{-1}(\{0\})$. If $\abs A=\kappa$ we're done, so assume not. Then $\abs{\lnot A}=\kappa$ and $0\notin f"\lnot A$, so $\lnot A$ works.
+}
+
+\qprop{
+	Every Jónsson cardinal is weakly $n$-Jónsson for every $n<\omega$.
+}
+
+\qprop{
+	Every weakly compact cardinal is weakly $n$-Jónsson for every $n<\omega$.
+}
+
+\qtheo[Todor\v cevi\' c '87]{
+	$\aleph_1$ is not weakly Jónsson.
+}
+
+A lot of the results concerning Jónssons are really about weakly Jónssons.
+
+\theo{
+	Let $\kappa$ be a regular weakly Jónsson cardinal. Then
+	\begin{enumerate}
+		\item (Todor\v cevi\' c '81) There exists no $\kappa$-Souslin tree, so $\kappa$ is fully $\Box$-inaccessible;
+		\item (Todor\v cevi\' c '87) $\kappa$ is 1-reflecting;
+		\item (Shelah '94) $\kappa$ is $\omega$-Mahlo;
+		\item (Rinot '14) $\kappa$ is threadable;
+		\item (Schindler-Steel '14) Mouse reflection holds at $\kappa$.$\hfill\dashv$
+	\end{enumerate}
+}
+
+\qtheo[Todor\v cevi\' c '87]{
+	Every uncountable threadable cardinal is weakly compact in $L$.
+}
+
+\coro{
+	Regular weakly Jónssons are weakly compact in $L$, so that, for every $n<\omega$,
+	\eq{
+		\con(\exists\text{weakly compact})\Leftrightarrow\con(\exists\text{regular weakly $n$-Jónsson}).\tag*{$\dashv$}
+	}
+}
+
+\theo{
+	If $\rho^+$ is weakly Jónsson then
+	\begin{enumerate}
+		\item (Erd\H os-Hajnal-Rado '65) $\ch_\kappa$ fails;
+		\item (Todor\v cevi\' c '90) $\rho$ is a singular limit of regular weakly Jónssons;
+		\item (Shelah '94) $\pr_1(\rho^+,\rho^+,\cof\rho,\cof\rho)$ fails;
+		\item (Eisworth '12) $\rho^+$ is $<\cof(\rho)$-reflecting;
+		\item (Eisworth '13) $\pp(\rho)>\rho^+$, i.e. $\rho^{\cof\rho}>\rho^+$;
+		\item (Hayut, Lambie-Hanson '16) $\rho^+$ is $<\cof(\rho)$-threadable.$\hfill\dashv$
+	\end{enumerate}
+}
+
+We also get a few slightly different results. The following is by tweaking the proof the above Chang-Rowbottom-Erd\H os-Hajnal result.
+
+\qtheo[Chang-Rowbottom-Erd\H os-Hajnal '65]{
+	If $\rho^+$ is weakly $(n+1)$-Jónsson then $\rho$ is weakly $n$-Jónsson.
+}
+
+
+\section{Open questions}
+
+\subsection{Regular Jónssons}
+\ques{
+  \label{q_reg1}
+	Does every regular Jónsson provably have the tree property? As a special case, is every inaccessible Jónsson provably weakly compact? (Conjecture: no)
+}
+
+\ques{
+  \label{q_reg2}
+	Is every regular Jónsson 1.5-reflecting? I.e. given a stationary-co-stationary $A\subset\kappa$ for $\kappa$ a regular Jónsson, do $A$ and $\lnot A$ simultaneously reflect?
+}
+
+A negative answer to question \ref{q_reg1} would motivate a lot of the investigations of properties of regular Jónsson cardinals, as they all follow from the tree property. A positive answer to question \ref{q_reg2} would unify reflection and threadability of regular Jónssons, as 1.5-reflecting implies both 1-reflecting and threadable, whereas 1-reflecting does not imply threadability.
+
+
+\subsection{Successor Jónssons}
+\ques{
+  \label{q_succ2}
+	Is the existence of a successor Jónsson consistent, relative to large cardinals?
+}
+
+\ques{
+  \label{q_succ3}
+	Does the existence of a successor Jónsson $\rho^+$ imply $\ad^{L(\mathbb R)}$? (Conjecture: yes. It already implies $\textsf{PD}$, and if $\rho$ is a strong limit then it implies $\con(\ad_{\mathbb R}+\Theta\text{ is regular})$)
+}
+
+Question \ref{q_succ2} is a major open problem and a positive answer to question \ref{q_succ3} would shed some more light on question \ref{q_succ2}.
+
+
+\subsection{Small Jónssons}
+\ques{
+  \label{q_small1}
+	Is the existence of a small Jónsson consistent, relative to large cardinals?
+}
+
+\ques{
+  \label{q_small2}
+	Does the existence of a small Jónsson imply $0^\pistol$? (Conjecture: yes)
+}
+
+Question \ref{q_small1} is a major open problem, since $\aleph_\omega$ is small, and a positive answer to question \ref{q_small2} would shed some more light on question \ref{q_small1}.
+
+
+\subsection{Woodins}
+\ques{
+  \label{q_wdn2}
+	Does $\con(\text{Jónsson Woodin})\Rightarrow\con(\text{Weakly compact Woodin})$? (Conjecture: yes)
+}
+
+An answer to question \ref{q_wdn2} would give some more information about the Jónsson Woodins.
+
+\end{document}

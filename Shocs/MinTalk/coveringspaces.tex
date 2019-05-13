@@ -1,0 +1,219 @@
+\newcommand{\mytitle}{Classification of covering spaces}
+\input{/home/leidem/Dropbox/std_preamble.tex}
+\input{/home/leidem/Dropbox/art.tex}
+
+\abstract{
+asd
+}
+
+\section{Basic results}
+We start off with recalling the basic definitions and the two lifting theorems regarding covering spaces.
+
+\defi{
+Let $X$ be a topological space. Then $p:\tilde X\to X$ is a \textbf{covering map} and $\tilde X$ a \textbf{covering space} if $p$ is a surjective continuous map such that for every $x\in X$ there exists some open neighborhood $U\subset X$ around $x$ which satisfies that $p^{-1}(U)=\coprod_i\tilde U_i$, where $\tilde U_i\subset\tilde X$ are open sets and $p\restr\tilde U_i$ is a homeomorphism onto $U$.
+}
+
+\qprop{
+Every covering map is a quotient map.
+}
+
+\qtheo{
+Let $p:\tilde X\to X$ be a covering map, $A$ a topological space and $h:A\times I\to X$ a homotopy. Given a diagram
+\cd{
+A\times\{0\}\ar[rr]^-{\tilde h_0}\ar@{^{(}->}[d] && \tilde X\ar@{->>}[d]^p\\
+A\times I\ar[rr]_h\ar@{.>}[urr]_-{\tilde h} && X
+}
+
+there is a \textit{unique} $\tilde h:A\times I\to\tilde X$ such that both above triangles commute.
+}
+
+For the special case where $A$ is the trivial space, we get the \textit{unique path lifting theorem}: given any $\tilde x\in\tilde X$ and any path $u:I\to X$ in $X$ starting at $u(\tilde x)$, there's a unique lift of $u$ to the path $\tilde x\cdot u:I\to\tilde X$, starting at $\tilde x$.
+
+\defi{
+A topological space $X$ is \textbf{path connected} (abbreviated pc) if there exists a path between every two points in $X$. $X$ is \textbf{locally path connected} (abbreviated lpc) if $X$ has a basis of path connected sets.
+}
+
+\qtheo{
+Let $p:\tilde X\to X$ be a covering map, $A$ a topological space and $f:(A,a_0)\to(X,x_0)$ a pointed map. If $A$ is path connected and locally path connected then $f_*\pi_1(A,a_0)\subset p_*\pi_1(\tilde X,\tilde x_0)$ iff there is a \textit{unique} map $\tilde f:(A,a_b)\to(\tilde X,\tilde x_0)$ where $\tilde x_0\in p^{-1}(\{x_0\})$ such that the following diagram commutes:
+\cd{
+&& (\tilde X,\tilde x_0)\ar[d]^p\\
+(A,a_0)\ar@{.>}[urr]^{\tilde f}\ar[rr]_f && (X,x_0)
+}
+}
+
+\section{Category of covering spaces}
+
+\defi{
+Let $X$ be a topological space. Then $\textsf{Cov}(X)$ is the category with covering maps over $X$ as objects and a map between $p_1:\tilde X_1\to X$ and $p_2:\tilde X_2\to X$ is a continuous map $h:\tilde X_1\to\tilde X_2$ such that $p_1=p_2\circ h$.
+}
+
+Thus, $\textsf{Cov}(X)$ is a full subcategory of the slice category $\textsf{Top}/X$. Recall that the \textbf{fundamental groupoid} $\pi(X)$ of a topological space $X$ is the category with objects the elements of $X$ and arrows $f:x\to y$ being path homotopy classes of paths between $x$ and $y$.
+
+\defi{
+Let $p:\tilde X\to X$ be a covering map. Then the \textbf{monodromy functor} of $p$ is the functor $F_p:\pi(X)\to\textsf{Set}$ defined as
+\begin{itemize}
+\item $F_p(x):=p^{-1}(\{x\})$;
+\item $F_p(u:x\to y):=(\tilde x\mapsto(\tilde x\cdot u)(1))$.
+\end{itemize}
+}
+
+\prop{
+The monodromy functor $F_p$ is a functor for every covering map $p:\tilde X\to X$.
+}
+\proof{
+Follows from the uniqueness of the lifted paths.
+}
+
+\defi{
+For $X$ a topological space, define $\Phi_X:\textsf{Cov}(X)\to\textsf{Set}^{\pi(X)}$ as
+\begin{itemize}
+\item $\Phi_X(p:\tilde X\to X):=F_p$;
+\item $\Phi_X(h:p\to p'):=(\tau_x:\tilde x\mapsto h\tilde x)$.
+\end{itemize}
+}
+
+\prop{
+$\Phi_X$ is a well-defined functor for every topological space $X$.
+}
+\proof{
+To show that $\Phi_X$ is well-defined, we only need to show that $\tau:=\Phi_X(h:p_1\to p_2)$ \textit{is} in fact a natural transformation $\tau:F_{p_1}\Rightarrow F_{p_2}$. But we have the commutative diagram
+\cd{
+p_1^{-1}(\{x\})\ar[rrr]^{\tau_x}\ar[ddd]_{F_{p_1}(u)} &&& p_2^{-1}(\{x\})\ar[ddd]^{F_{p_2}(u)}\\
+& \tilde x\ar@{|->}[r]\ar@{|->}[d] & h\tilde x\ar@{|->}[d]\\
+& (\tilde y\cdot u)(1)\ar@{|->}[r] & h((\tilde y\cdot u)(1))=(h\tilde y\cdot u)(1)\\
+p_1^{-1}(\{y\})\ar[rrr]_{\tau_y} &&& p_2^{-1}(\{y\})
+}
+
+The equality is due to uniqueness of path lifting. Hence $\Phi_X$ is well-defined, and it's clear that it's a functor.
+}
+
+\defi{
+A topological space $X$ is \textbf{semi-locally simply connected} (abbreviated slsc) if any neighborhood around any point $x\in X$ contains a neighborhood $U$ of $x$ such that any loop at $x$ in $U$ is contractible in $X$. Equivalently, $i_*:\pi_1(U,x)\to\pi_1(X,x)$ is the zero map
+}
+
+\defi{
+Given a functor $F:\pi(X)\to\mathsf{Set}$, define
+\begin{itemize}
+\item $\tilde X_F:=\coprod_{x\in X}F(x)$;
+\item $p_F:\tilde X_F\to X$, where $p_F"F(x):=\{x\}$.
+\end{itemize}
+}
+
+\lemm{
+Let $X$ be a topological space and $F:\pi(X)\to\mathsf{Set}$ a functor. If $X$ is slsc and lpc then there is a topology on $\tilde X_F$ such that $p_F$ is a covering map.
+}
+\proof{
+Let $x\in X$ and $U\subset X$ an open pc neighborhood of $x$ such that any loop in $U$ on $x$ is nullhomotopic in $X$. This implies that there's a unique path homotopy class $u_y$ from $x$ to any $y\in U$. Define $f:U\times F(x)\to p_F^{-1}(U)$ as $f(y,z):=F(u_y)(z)$. Then $f$ is bijective as $f\restr(\{y\}\times F(x))$ for every $y\in U$ and $f=\coprod_{y\in U}f\restr(\{y\}\times F(x))$.
+
+\qquad For each $z\in F(x)$ set $(U,z):=f"(U\times\{z\})$. By assumption, $X$ has a basis of such $U$ as described above. Now the sets $(U,z)$ form a basis for a topology on $\tilde X$. Indeed, assume $w\in(U,z)\cap(V,z')$. Then there is some $y\in U$ and $y'\in V$ such that $F(u_y)(z)=w=F(u_{y'})(z')$. But then $w\in F(y)\cap F(y')$, meaning $y=y'\in U\cap V$ as the fibers under $F$ are disjoint. Now $F(u_y)(z)=F(u_y)(z')$, so $z=z'$ as $F(u_y)$ is a bijection. Thus $w\in (U\cap V,z)\subset (U,z)\cap(V,z')$.
+
+\qquad Clearly $p_F^{-1}(U)=\coprod_{y\in U}\tilde U_y$ with $p_F\restr\tilde U_y$ a homeomorphism, so $p_F$ is also continuous and hence a covering map.
+}
+
+\defi{
+Let $X$ be a topological space which is both slsc and lpc. Then define $\Psi_X:\textsf{Set}^{\pi(X)}\to\textsf{Cov}(X)$ given by
+\begin{itemize}
+\item $\Psi_X(F):=p_F$;
+\item $\Psi_X(\tau:F\Rightarrow G):=(\coprod_{x\in X}\tau_x:\coprod_{x\in X}F(x)\to\coprod_{x\in X}G(x))$.
+\end{itemize}
+}
+
+\theo{
+Assume $X$ is a topological space which is both slsc and lpc. Then
+\eq{
+\Phi_X:\textsf{Cov}(X)\cong\textsf{Set}^{\pi(X)}.
+}
+}
+\proof{
+We have that
+\begin{itemize}
+\item $\Phi_X\Psi_X(F)=\Phi_X(p_F)=F_{p_F}=F$;
+\item $\Phi_X\Psi_X(\tau:F\Rightarrow G)=\Phi_X(\coprod_{x\in X}\tau_x)=(\tau'_x:\tilde x\mapsto\coprod_{x\in X}\tau_x(\tilde x))=\tau$;
+\item $\Psi_X\Phi_X(p)=\Psi_X(F_p)=p_{F_p}=p$;
+\item $\Psi_X\Phi_X(h:p\to p')=\Psi_X(\tau_x:\tilde x\mapsto h\tilde x)=\coprod_{x\in X}\tau_x=h$.\\
+\end{itemize}
+
+Hence it only remains to check that the topologies on $\tilde X$ and $\coprod_{x\in X}F_p(x)=\coprod_{x\in X}p^{-1}(\{x\})$ are the same. \textbf{missing!}
+}
+
+\defi{
+Let $G$ be a group. Then $G\textsf{Set}$ is the category of $G$-sets and $G$-maps between them.
+}
+
+\prop{
+\label{cov gset prop}
+Let $X$ be a topological space which is pc, lpc and slsc. Then
+\eq{
+\textsf{Cov}(X)&\simeq\pi_1(X,x_0)\textsf{Set}\\
+(p:\tilde x\to x)&\mapsto p^{-1}(\{x_0\})
+}
+
+is an equivalence of categories.
+}
+\proof{
+The inclusion $\pi_1(X,x_0)\to\pi(X)$ is an equivalence since it's essentially surjective as $X$ is pc and clearly fully faithful. Then the induced functor
+\eq{
+\textsf{Set}^{\pi(X)}\to\textsf{Set}^{\pi_1(X,x_0)}
+}
+
+is also an equivalence as functors preserve equivalences. But notice that
+\eq{
+\textsf{Set}^{\pi_1(X,x_0)}\cong\pi_1(X,x_0)\textsf{Set}
+}
+
+via the functors $G:\textsf{Set}^{\pi_1(X,x_0)}\to\pi_1(X,x_0)\textsf{Set}:H$ given by
+\begin{itemize}
+\item $G(F):=F(x_0)$;
+\item $G(\tau:F\Rightarrow F'):=(\tau_{x_0}:F(x_0)\to F'(x_0))$;
+\item $H(A)(x_0):=A$ and $H(A)(g:x_0\to x_0):=(a\mapsto a.g)$;
+\item $H(f:A\to B):=(\tau_{x_0}:=f)$.\\
+\end{itemize}
+
+\textbf{missing details!} 
+
+Hence we now have that
+\eq{
+\textsf{Cov}(X)\cong\textsf{Set}^{\pi(X)}\simeq\textsf{Set}^{\pi_1(X,x_0)}\cong\pi_1(X,x_0)\textsf{Set}.
+}
+}
+
+\defi{
+Let $G$ be a group. Let $\textsf{Conj(G)}$ be the category consisting of subgroups of $G$ and arrows $\text{Inn}(H_2n):H_1\to H_2$, where $nH_1n^{-1}\subset H_2$ and $\text{Inn}(H_2n)$ is conjugation with the unique element in $\{x\in H_2n\mid\forall h\in H_2-\{1\}: h\nmid x\}$.
+}
+
+\defi{
+Let $\textsf{Cov}_0(X)$ be the full subcategory of $\textsf{Cov}(X)$ generated by all the pc covering spaces over $X$.
+}
+
+We aim to prove the following:
+
+\theo{
+\label{mainresult}
+Let $X$ be a topological space which is pc, lpc and slsc. Then
+\eq{
+\textsf{Cov}_0(X)\simeq\textsf{Conj}(\pi_1(X,x_0))
+}
+
+is an equivalence of categories.
+}
+
+To get there, however, requires working through some more categories.
+
+\defi{
+The \textbf{orbit category} $\mathcal{O}_G$ of a group $G$ is the full subcategory of $G\textsf{Set}$, generated by the transistive $G$-sets, i.e. the ones with a single orbit.
+}
+
+\lemm{
+Let $X$ be a topological space which is pc, lpc and slsc. Then
+\eq{
+\textsf{Cov}_0(X)&\simeq\mathcal{O}_{\pi_1(X,x_0)}\\
+(p:\tilde X\to X)&\mapsto p^{-1}(\{x_0\})
+}
+
+is an equivalence of categories.
+}
+\proof{
+We show that $\tilde X$ is pc iff $p^{-1}(\{x_0\})$ is a transitive $\pi_1(X,x_0)$-set with action $\tilde x.u:=(\tilde x\cdot u)(1)$, because then we can just restrict the equivalence from Proposition \ref{cov gset prop} to $\textsf{Cov}_0(X)$ and we're done.
+}
+
+\end{document}

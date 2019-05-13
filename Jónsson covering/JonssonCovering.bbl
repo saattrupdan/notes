@@ -1,0 +1,29 @@
+\begin{thebibliography}{}
+
+\bibitem[Jensen and Steel, 2013]{KwoM}
+Jensen, R. and Steel, J. (2013).
+\newblock K without the measurable.
+\newblock {\em Journal of Symbolic Logic}, 78(3):708--734.
+
+\bibitem[Nielsen, 2016]{MSc}
+Nielsen, D. (2016).
+\newblock Inner model theory -- an introduction.
+\newblock Master's thesis, University of Copenhagen.
+\newblock Revised edition. \url{https://dsnielsen.com/papers-and-notes}.
+
+\bibitem[Shelah, 1994]{Shelah}
+Shelah, S. (1994).
+\newblock {\em Cardinal Arithmetic (Oxford Logic Guides)}.
+\newblock Oxford University Press.
+
+\bibitem[Steel, 1996]{CMIP}
+Steel, J. (1996).
+\newblock {\em The Core Model Iterability Problem}.
+\newblock Springer Verlag.
+
+\bibitem[Welch, 2000]{Welch}
+Welch, P.~D. (2000).
+\newblock Some remarks on the maximality of inner models.
+\newblock {\em Logical Colloquium '98}.
+
+\end{thebibliography}

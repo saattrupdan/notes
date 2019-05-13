@@ -1,0 +1,106 @@
+\chapter{Group structures}
+\thispagestyle{fancy}
+
+\defi{
+A \textit{binary operation} on a set $X\neq\emptyset$ is a map $\cdot:X\times X\to X$, often denoted with infix notation $a\cdot b$ instead of the usual prefix $\cdot(a,b)$.\\
+}
+
+\section{Magmas}
+\defi{
+A \textit{magma} $\langle A,\cdot\rangle$ is a set $A$ along with a binary operation $\cdot$.\\
+}
+
+\section{Semigroups}
+\defi{
+A \textit{semigroup} $\langle A,\cdot\rangle$ is a magma satisfying $A\neq\emptyset$ and that $\cdot$ is associative:
+\eq{
+\forall a,b,c\in A: a(bc)=(ab)c.
+}
+}
+
+\section{Monoids}
+\defi{
+A \textit{monoid} $\langle A,\cdot,e\rangle$ is a semigroup $\langle A,\cdot\rangle$ with an identity element $e$:
+\eq{
+\exists e\in A\forall a\in A: ae=ea=a.
+}
+}
+
+\section{Quasigroups}
+\defi{
+A \textit{quasigroup} $\langle A,\cdot,\backslash,/\rangle$ is a magma $\langle A,\cdot\rangle$, satisfying:
+\begin{enumerate}
+\item $A\neq\emptyset$
+\item $\forall a,b\in A\exists x,y\in A: ax=b\land ya=b$
+\end{enumerate}
+The unique solutions to these equations are $x=a\backslash b$ and $y=b/a$, called resp. left and right division.\\
+}
+
+\exam{
+The nonzero rationals with division $\langle\mathbb{Q}\backslash\{0\},\div\rangle$ form a quasigroup $\langle\mathbb{Q}\backslash\{0\},\div,\backslash,/\rangle$ with $a\backslash b=b\div a$ and $a/b=a\div b$.\\
+}
+
+\section{Loops}
+\defi{
+A \textit{loop} $\langle A,\cdot,\backslash,/,e\rangle$ is a quasigroup $\langle A,\cdot,\backslash,/\rangle$ with an identity element $e$:
+\eq{
+\exists e\in A\forall x\in A: xe=ex=x.
+}
+}
+
+\exam{
+The nonzero \textit{octonions} $\mathbb{O}$, which are an extension of the quaternions $\mathbb{H}$ (which again are an extension of the complex numbers $\mathbb{C}$), form a nonassociative loop under multiplication - this loop is known as the \textit{Moufang loop}.\\
+}
+
+\section{Groups}
+\defi{
+A \textit{group} $\langle A,\cdot,e,^{-1}\rangle$ is a monoid $\langle A,\cdot,e\rangle$, in which every element $x$ has an inverse $x^{-1}$:
+\eq{
+\forall a\in G\exists a^{-1}\in G: aa^{-1}=a^{-1}a=e.
+}
+}
+
+\theo{
+Every group $\langle A,\cdot,e,^{-1}\rangle$ induces a loop $\langle A,\cdot,e,^{-1},\backslash,/\rangle$.
+}
+\textit{Proof.}
+Let $\b{A}:=\langle A,\cdot,e,^{-1}\rangle$ be a group. Since every loop is a magma, it has to be shown that $\cdot$ has an identity element and that left and right division are well-defined on $\b{A}$. $\b{A}$ has an identity element since it is a monoid. For every $a,b\in A$, define $x:=a^{-1}b$ and $y:=ba^{-1}$. Then
+\eq{
+&ax=a(a^{-1}b)=(aa^{-1})b=eb=b\\
+&ya=(ba^{-1})a=b(a^{-1}a)=be=b,
+}
+
+making \b{A} induce a loop.$\qed$\\
+
+\section{Abelian groups}
+\defi{
+An \textit{Abelian group} $\langle A,\cdot,e,^{-1}\rangle$ is a group in which $\cdot$ is commutative:
+\eq{
+\forall a,b\in A: ab=ba.
+}
+}
+
+\section{Bands}
+\defi{
+A \textit{band} $\langle A,\cdot\rangle$ is a semigroup in which every element is idempotent:
+\eq{
+\forall a\in A: aa=a.
+}
+}
+
+\section{Semilattices}
+\defi{
+A \textit{semilattice} $\langle A,\cdot\rangle$ is a commutative band. The binary operation is often either $\land$, called ``meet", or $\lor$, called ``join".\\
+}
+
+\section{Bounded semilattices}
+\defi{
+A \textit{bounded semilattice} $\langle A,\cdot,e\rangle$ is a semilattice $\langle A,\cdot\rangle$ with an identity element $e$:
+\eq{
+\forall a\in A: ae=a.
+}
+}
+
+\rema{
+A bounded semilattice is equivalent to an idempotent commutative monoid.\\
+}

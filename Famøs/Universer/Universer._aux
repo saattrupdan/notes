@@ -1,0 +1,19 @@
+\relax 
+\providecommand*{\memsetcounter}[2]{}
+\catcode `"\active 
+\select@language{danish}
+\@writefile{toc}{\select@language{danish}}
+\@writefile{lof}{\select@language{danish}}
+\@writefile{lot}{\select@language{danish}}
+\@writefile{lof}{\addvspace {10pt}}
+\@writefile{lot}{\addvspace {10pt}}
+\@writefile{toc}{\contentsline {chapter}{Jagten efter et univers}{1}}
+\citation{Arrigoni}
+\citation{Maddy}
+\citation{Woodin}
+\bibcite{Arrigoni}{1}
+\bibcite{Maddy}{2}
+\bibcite{Woodin}{3}
+\@writefile{toc}{\contentsline {subsection}{Litteratur}{3}}
+\memsetcounter{lastsheet}{3}
+\memsetcounter{lastpage}{3}

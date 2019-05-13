@@ -1,0 +1,97 @@
+\chapter{Module structures}
+\thispagestyle{fancy}
+
+\section{Groups with operators}
+\defi{
+A \textit{group with operators} $\langle \b{A},\Omega,f\rangle$ is a group $\b{A}$ along with a set $\Omega$ and the action $f:\Omega\times A\to A$ which satisfies
+\eq{
+\forall a,b\in A,\gamma\in\Omega: f(\gamma,ab)=f(\gamma,a)f(\gamma,b).
+}
+}
+
+\rema{
+Every group $\b{A}$ trivially induces a group with operators $\langle \b{A},\emptyset,f\rangle$.\\
+}
+
+\section{Modules}
+\defi{
+Let $\b{R}$ be a ring. An ($\b{R}$-)\textit{module} $\langle A,+,e,-,\lambda\rangle$ is an Abelian group $\langle A,+,e,-\rangle$ together with a map $\lambda:R\to A^A$, such that for all $r,s\in R$ and $a,b\in A$:
+\begin{enumerate}
+\item $\lambda_r(a+b)=\lambda_r(a)+\lambda_r(b)$
+\item $\lambda_{rs}(a)=\lambda_r(a)+\lambda_s(a)$
+\item $\lambda_r(\lambda_s(a))=\lambda_{rs}(a)$\\
+\end{enumerate}
+}
+
+\theo{
+Every module induces a group with operators.
+}
+\textit{Proof.}
+Let $\Omega=R$ and $f(r,a)=\lambda_r(a)$. Then it follows from $\lambda$'s first property.$\qed$\\
+
+\theo{
+\label{ringismodule}
+Every ring $\b{R}:=\bra{A,+,e,-,\cdot}$ induces a module $\bra{\b{R},\lambda}$.
+}
+\textit{Proof.}
+Set $\lambda:R\to R^R$ be given by $\lambda_r(s):=r+s$.$\qed$\\
+
+\section{Unitary modules}
+\defi{
+Let $\b{R}$ be a unitary ring. Then a module \textbf{A} over $\b{R}$ is called a \textit{unitary module}.\\
+}
+
+\section{Vector spaces}
+\defi{
+An $(\mathbb{F})$-\textit{vector space} $\b{A}$ is an $(\mathbb{F})$-module, where $\mathbb{F}$ is a field.\\
+}
+
+\section{Nonassociative algebras}
+\defi{
+A \textit{nonassociative }($\b{R}$-)\textit{algebra} $\b{A}=\langle\b{M},[\cdot,\cdot]\rangle$ is an $\b{R}$-module $\b{M}$ over a commutative ring $\b{R}$ equipped with a binary operation $[\cdot,\cdot]$ on $A$, called $\b{A}$-multiplication, which satisfies for all $r,s\in R$ and $a,b,c\in A$:
+\begin{enumerate}
+\item $[\lambda_r(a)+\lambda_s(b),c]=\lambda_r([a,c])+\lambda_s([b,c])$
+\item $[c,\lambda_r(a)+\lambda_s(b)]=\lambda_r([c,a])+\lambda_s([c,b])$\\
+\end{enumerate}
+}
+
+\section{Algebras}
+\defi{
+An $\b{R}-$\textit{algebra} $\b{A}$ is a nonassociative $\b{R}-$algebra, in which its binary operation $[\cdot,\cdot]:A\times A\to A$ is associative:
+\eq{
+\forall a,b,c\in A: [[a,b],c]=[a,[b,c]].
+}
+}
+
+\section{Banach algebras}
+\defi{
+A \textit{Banach algebra} $\langle\b{A},[\cdot,\cdot]\rangle$ is an $\b{R}-$algebra over a Banach space $\b{A}$, which satisfies
+\eq{
+\forall a,b\in A: \norm{ab}\leq\norm{a}\norm{b}.
+}
+}
+
+\section{$^*$-algebras}
+\defi{
+A \textit{$^*$-algebra} $\b{A}$ is an $\b{R}-$algebra $\b{A}$, in which the ring $\b{R}$ in addition is a $^*$-ring, $R\subset A$ and
+\eq{
+\forall r,s\in R,a,b\in A: (\lambda_r(a)+\lambda_s(b))^*=\lambda_{r^*}(a^*)+\lambda_{s^*}(b^*).
+}
+}
+
+\section{C$^*$-algebras}
+\defi{
+A \textit{$C^*$-algebra} $\b{A}$ is a complex Banach algebra and a $^*$-algebra, which satisfies
+\eq{
+\forall a\in A: \norm{a^*a}=\norm{a}^2.
+}
+}
+
+\section{Lie algebras}
+\defi{
+A \textit{Lie algebra} $\b{A}$ is a nonassociative $\mathbb{F}$-algebra over a field $\mathbb{F}$, in which the binary operation $[\cdot,\cdot]$ satisfies alternation and the Jacobi identity:
+\begin{enumerate}
+\item $\forall a\in A: [a,a]=e$
+\item $\forall a,b,c\in A: [a,[b,c]]+[b,[c,a]]+[c,[a,b]]=e$\\
+\end{enumerate}
+}

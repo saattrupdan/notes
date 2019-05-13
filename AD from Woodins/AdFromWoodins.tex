@@ -1,0 +1,364 @@
+\newcommand{\mytitle}{From Woodins to Determinacy}
+%\input{/home/leidem/Dropbox/std_preamble.tex}
+%\input{/home/leidem/Dropbox/art.tex}
+\input{/Users/dn16382/Dropbox/std_preamble.tex}
+\input{/Users/dn16382/Dropbox/art.tex}
+
+\abstract{
+	We provide a proof of $\ad^{L(\mathbb R)}$ from a limit of Woodins with a measurable above, based on the approach in \cite{Larson} using the stationary tower.
+}
+
+This note is dedicated to proving the following theorem.
+
+\theo[The Main Theorem \ref{theorem1}]{
+	\label{theorem}
+	Assume there is a limit of Woodins with a measurable above. Then $\ad^{L(\mathbb R)}$ holds.
+}
+
+This will be done by extensive use of Woodin's stationary tower, following the proof in \cite{Larson}. I've split the proof into five steps, which is essentially what is also done in Larson, albeit implicitly and not in the same order. Arguments have furthermore been elaborated a bit more. I'm assuming knowledge of the stationary tower corresponding to the first two chapters of \cite{Larson}. The five steps of the proof are as follows, where we will assume appropriate large cardinals along the way:\\
+
+\begin{enumerate}
+	\item[(1)] All homogeneously Suslin sets of reals are determined;
+	\item[(2)] The complement of a weakly homogeneously Suslin set of reals is homogeneously Suslin;
+	\item[(3)] Every universally Baire set of reals is weakly homogeneously Suslin;
+	\item[(4)] Every set of reals which is definable from a real, absolutely in all forcing extensions, is universally Baire;
+	\item[(5)] Every set of reals in $L(\mathbb R)$ is definable from a real, absolutely in all forcing extensions.\\
+\end{enumerate}
+
+The above steps are only morally correct, as you'll see in due time.
+
+
+\pagebreak
+\section{Determinacy of homogeneously Suslin sets}
+
+We start by recalling the definition of a homogeneously Suslin set of reals. For any set $X$ let $m(X)$ be the set of countably complete measures on $X$.
+
+\defi{
+	Let $X$ be any set, $k\leq n$ finite ordinals and $\mu_k\in m(^kX),\mu_n\in m(^nX)$. Then $\mu_n$ and $\mu_k$ are \textbf{compatible} if, for all $A\subset {^k X}$, $A\in\mu_k\text{ iff }\{s\in {^n\omega}\mid s\restr k\in A\}\in\mu_n$.
+}
+
+\defi{
+	An $\omega$-sequence $\bra{\mu_n\mid n<\omega}$ is a \textbf{tower of measures} if they're all pairwise compatible and $^k X\in\mu_k$ for every $k<\omega$. The tower is \textbf{countably complete} if for every sequence $\vec A\in\Pi_{k<\omega}\mu_k$ there is a function $f:\omega\to X$ such that $f\restr k\in A_k$ for every $k<\omega$.
+}
+
+A tower of measures is countably complete iff it's associated ultrapower is wellfounded \cite[1.2.2]{Larson}.
+
+\defi{
+	Let $\kappa$ be a cardinal and $X$ any set. Then a tree $T$ on $\omega\times X$ is \textbf{$\kappa$-homogeneous} if there exists a partial function $\pi:{^{<\omega}}\omega\to m(^{<\omega}\kappa)$ such that $\pi(s)$ is a $\kappa$-complete measure with $T_s\in\pi(s)$ for every $s\in\dom\pi$ and furthermore for any $x\in{^{\omega}}\omega$ it holds that $x\in p[T]$ iff $\bra{\pi(x\restr n)\mid n<\omega}$ is a countably complete tower.
+}
+
+\defi{
+	For $\kappa$ an cardinal say that a set of reals $A$ is \textbf{$\kappa$-homogeneously Suslin} ($\kappa$-hS) if $A=p[T]$ for a $\kappa$-homogeneous tree $T$. $A$ is called \textbf{homogeneously Suslin} (hS) if it's $\kappa$-hS for some $\kappa$.
+}
+
+One of the basic results on hS sets of reals is that they're determined, which is the first step of our proof of Theorem \ref{theorem}.
+
+\prop{
+	\label{prop.step1}
+	Let $A$ be a hS set of reals. Then $A$ is determined.
+}
+\proof{
+	Say that $A=p[T]$ for some $\kappa$-homogeneous tree on $\omega\times X$, witnessed by $\pi:{^{<\omega}\omega}\to m({^{<\omega}\kappa})$. We want to show that $G_\omega(A)$ is determined and towards that consider the following auxiliary game $G^*$:
+	\game{\bra{x_0,g_0}}{x_1}{\bra{x_2,g_1}}{x_3}{\bra{x_4,g_2}}{x_5}{\cdots}{\cdots}
+
+	Here the $x_i$'s are finite ordinals and $g_i\in X$ for every $i<\omega$. Then $I$ wins iff $\bra{x,g}\in[T]$. Since $[T]$ is closed, the game $G^*$ is determined. If $I$ has a winning strategy in $G^*$ then he also has one in $G_\omega(A)$ by just ignoring the $g_i$'s. Assume thus that $II$ has a winning strategy $\tau$ in $G^*$ -- we have to show that she then also has one in $G_\omega(A)$.
+
+	\qquad For $n<\omega$, $s\in{^{2n+1}\omega}$ and $t\in{^{n+1}X}$ let $\tau(s,t)\in\omega$ be the strategic response according to $\tau$ to $\bra{\bra{s_0,t_0},s_1,\cdots,\bra{s_{2n},t_n}}$.	For $s\in{^{2n+1}\omega}$ and $k<\omega$ set
+	\eq{
+		Z_{s,k}:=\{t\in T_{s\restr(n+1)}\mid \tau(s,t)=k\}
+	}
+	
+	and define a strategy $\tilde\tau:\bigcup_{n<\omega}{^{2n+1}\omega}\to\omega$ by $\tilde\tau(s):=k$ iff $Z_{s,k}\in\pi(s\restr(n+1))$. That this is welldefined follows from the $\aleph_1$-completeness of the measures, as it implies that there's a unique $k<\omega$ such that $Z_{s,k}\in\pi(s\restr(n+1))$. Assume for a contradiction that $\tilde\tau$ is \textit{not} winning and let $x\in A$ witness that. By homogeneity of $T$ there is a function $f:\omega\to X$ such that
+	\eq{
+		f\restr(n+1)\in Z_{x\restr(2n+1),\tilde\tau(x\restr(2n+1))},
+	}
+
+	so by definition of the $Z_{s,k}$'s we get that $\bra{x,f}\in[T]$ and so corresponds to a play of $G^*$. But again by definition of the $Z_{s,k}$'s this play is a play according to $\tau$ and $\tau$ was winning, $\contr$. Thus $\tilde\tau$ is winning.
+}
+
+
+\section{From weakly homogeneously Suslin sets to homogeneously Suslin sets}
+The next notion we'll recall is that of a weakly homogeneously Suslin set of reals.
+
+\defi{
+	Let $\kappa$ be a cardinal and $X$ any set. Then a tree $T$ on $\omega\times X$ is \textbf{$\kappa$-weakly homogeneous} if there exists a countable set $\sigma\subset m({^{<\omega}X})$ of $\kappa$-complete measures such that for any $x\in p[T]$ there is a countably complete tower $\bra{\mu_n\mid n<\omega}\in{^\omega\sigma}$ with $T_{x\restr n}\in\mu_n$ for every $n<\omega$.
+}
+
+\defi{
+	For $\kappa$ a cardinal, say that a set of reals $A$ is \textbf{$\kappa$-weakly homogeneously Suslin} ($\kappa$-whS) if $A=p[T]$ for a $\kappa$-weakly homogeneous tree, and $A$ is \textbf{weakly homogeneously Suslin} (whS) if it's $\kappa$-whS for some $\kappa$.
+}
+
+A result connecting the hS sets and the whS sets is the following.
+
+\prop{
+	Let $\kappa$ be a cardinal. Then a set of reals $A$ is $\kappa$-whS iff $A=pB$ for a $\kappa$-hS set $B$.
+}
+\proof{
+	See \cite[Exercise 32.3]{Kanamori}.
+}
+
+Of course, for the above Proposition to make sense we have to slightly generalise the definition of whS- and hS sets to subsets of $^k(^\omega\omega)$ for any $k<\omega$. The ingredient in this second step of the proof of Theorem \ref{theorem} is then the following result.
+
+\qtheo{
+	\label{theo.ms}
+	Assume that $\delta$ is a Woodin cardinal and let $A$ be a $\delta^+$-whS set of reals. Then $\lnot A$ is $\alpha$-hS for every $\alpha<\delta$.
+}
+
+This is the main theorem in \cite{MartinSteel}, and I will omit it in this note.
+
+\coro{
+	\label{coro.step2}
+	If $\delta$ is a Woodin then $\Det(\delta^+\text{-whS})$ holds.
+}
+\proof{
+	Directly from Theorem \ref{theo.ms} and Proposition \ref{prop.step1}.
+}
+
+
+\section{From universally Baire sets to weakly homogeneously Suslin sets}
+We now come to the notion of a universally Baire set of reals.
+
+\defi{
+	Let $\kappa$ be a cardinal and $A$ a set of reals. Then $A$ is \textbf{$\kappa$-universally Baire} ($\kappa$-uB) if there exist trees $T$ and $S$ such that $A=p[T]$ and given any forcing notion $\mathbb P\in V_\kappa$ it holds that $\forces_{\mathbb P} p[\check T]=\lnot p[\check S]$. We say that $A$ is \textbf{universally Baire} (uB) if it's $\kappa$-uB for \textit{all} $\kappa$.
+}
+
+Step three of the proof of Theorem \ref{theorem} is then the following. Recall that $\mathbb Q_{<\delta}$ is the countable stationary tower at $\delta$.
+
+\theo{
+	\label{theo.uBwhS}
+	Let $\delta$ be a Woodin. Assume that $T$ and $S$ are trees projecting to sets of reals such that $\forces_{\mathbb Q_{<\delta}} p[\check T]=\lnot p[\check S]$. Then $S$ and $T$ are $\alpha$-weakly homogeneous for every $\alpha<\delta$. In particular, if $A$ is a $\delta^+$-uB set of reals then $A$ is $\alpha$-whS for every $\alpha<\delta$.
+}
+\proof{
+	Fix a $V$-generic $g\subset\mathbb Q_{<\delta}$. Let $X$ and $Y$ be sets such that $T$ is a tree on $\omega\times X$ and $S$ is a tree on $\omega\times Y$.
+
+	\clai{
+		We can without loss of generality assume that $X=Y=\delta$.
+	}
+
+	\cproof{
+		Let $\eta\gg\delta$ such that $T,S\in V_\eta$, and define then $T^*:=T\cap\Sigma_\omega^{V_\eta}(V_\delta\cup\{T,S,\delta\})$ and $S^*:=S\cap\Sigma_\omega^{V_\eta}(V_\delta\cup\{T,S,\delta\})$. Since $|T^*|,|S^*|\leq\delta$ is suffices to show that $p[T^*]=p[T]$ and $p[S^*]=p[S]$, as then $T^*$ and $S^*$ still project to complements in $V[g]$. But note that every real in $V[g]$ is the realisation of a $\mathbb Q_{<\gamma}$-name for a real, for some inaccessible $\gamma<\delta$, making it definable with parameters from $V_\delta$. As we can then furthermore define the least $\alpha<\delta$ such that $\bra{r,\alpha}\in[T]$ for any $r\in\mathbb R^{V[g]}$, we get that $p[T]=p[T^*]$. The result for $S$ is analogous.
+	}
+
+	Fix now a ${<\delta}-T-$strong $\kappa<\delta$. As there are cofinally many of such $\kappa$ (using the above claim to ensure that $T$ can be encoded as a subset of $\delta$), it suffices to show that $T$ is $\kappa$-weakly homogeneous. Using the ${<\delta}-T-$strongness of $\kappa$ fix for each $\lambda\in(\kappa,\delta$ an elementary embedding $j_\lambda:V\to\M_\lambda$ with $\crit j_\lambda=\kappa$ such that $V_\lambda\subset\M_\lambda$ and $j(T)\cap V_\lambda=T\cap V_\lambda$. For every $\lambda\in(\kappa,\delta)$ we will now define a continuous function
+	\eq{
+		\Sigma_\lambda^*:[T\cap V_\lambda]\to{^\omega}\p\p({^{<\omega}}\kappa)
+	}
+	
+	such that $\Sigma_\lambda^*(x,f)$ is a countably complete tower of $\kappa$-complete measures. Firstly define $\Sigma_\lambda:\T\cap V_\lambda\to\p\p({^{<\omega}}\kappa)$ as $\Sigma_\lambda(s,u):=\{X\subset{^{<\omega}}\kappa\mid u\in j_\lambda(X)\}$. Note here that $u\in{^{<\omega}}\lambda$, so these measures are simply just the induced ones from the $u$'s and $j_\lambda$'s, making them $\kappa$-complete and concentrating on $T_s\cap\kappa$. It's also simple to see that these measures are compatible, so that $\Sigma_\lambda^*(x,f):=\bra{\Sigma_\lambda(x\restr n,f\restr n)\mid n<\omega}$ is indeed a tower of $\kappa$-complete measures. We now just need to show that the towers are countably complete. But if $\bra{x,f}\in[T\cap V_\lambda]$ then $\ult(V,\Sigma_\lambda^*(x,f))$ is isomorphic to $\{j_\lambda(g)(f\restr n)\mid g:{^{<\omega}}\kappa\to V\land g\in V\land n<\omega\}$, which is an elementary submodel of $\M_\lambda$, making it wellfounded.
+
+	\qquad Now let $i:V\to\N$ be the stationary tower embedding induced by $g$.
+
+	\clai{
+		The set $\sigma:=\{\mu\in i[m({^{<\omega}}\kappa)]\mid\N\models\mu\text{ is $i(\kappa)$-complete}\}$ witnesses that $i(T)$ is $i(\kappa)$-weakly homogeneous in $\N$.
+	}
+
+	\cproof{
+		First of all $\sigma$ is countable in $\N$ as $i(\aleph_1)=\delta$, so let $x\in p[i(T)]\cap\N$ -- we have to find a countably complete tower of measures from $\sigma$ with the $n$'th measure concentrating on $i(T)_{x\restr n}$ for every $n<\omega$. First notice that $p[T]\subset p[i(T)]$, $p[S]\subset p[i(S)]$ and $p[i(T)]\cap p[i(S)]$. As we've assume that $p[T]=\lnot p[S]$ in $V[g]$, it then holds that $x\in p[T]$. Fix some $\lambda<\delta$ such that $x\in p[T\cap V_\lambda]$ and pick some $f$ such that $\bra{x,f}\in[T\cap V_\lambda]$. Now the tower $\bra{i(\Sigma_\lambda)(x\restr n,i(f\restr n))\mid n<\omega}$ is an element of $\N$ as $\N$ is closed under countable sequences in $V[g]$. By elementarity this tower is countably complete and satisfies that $i(\Sigma_\lambda)(x\restr n,i(f\restr n))$ is an $i(\kappa)$-complete measure concentrating on $i(T)_{x\restr n}$, for every $n<\omega$.
+	}
+
+	Using this claim, elementarity then implies that $T$ is $\kappa$-weakly homogeneous, which is what we wanted to show.
+}
+
+\coro{
+	\label{coro.step3}
+	If $\delta_0<\delta_1$ are Woodins then $\Det(\delta_1^+\text{-uB})$ holds.
+}
+\proof{
+	Directly from Theorem \ref{theo.uBwhS} and Corollary \ref{coro.step2}.
+}
+
+
+\section{From forcing absolute definability to universally Baire sets}
+
+\theo{
+	\label{theo.defuB}
+	Let $\delta$ be a Woodin and let $\varphi,\psi$ be binary formulas, $x,y$ sets and assume that, for every real $r\in V^{\mathbb Q_{<\delta}}$,
+	\eq{
+		\forces_{\mathbb Q_{<\delta}}(\M\models\psi[r,j(\check y)]\Leftrightarrow \check V[r]\models\varphi[r,\check x]),
+	}
+
+	where $j:V\to\M$ is the embedding induced by the countable tower $\mathbb Q_{<\delta}$. Then $\{r\in\mathbb R\mid\psi[r,y]\}$ is $\delta$-uB.
+}
+\proof{
+	Firstly fix some $\lambda\gg\delta$ such that $\cof\lambda>\delta$, $\{x,y\}\in V_\lambda$ and that $\varphi$ and $\psi$ reflect to $V[g]_\lambda$ in every forcing extension $V[g]$ by a $\delta$-small forcing. For the remainder of this proof say that $Z\prec V_\lambda$ is \textbf{good} if $\{x,y,\delta\}\in Z$ and, letting $\pi:Z\to\bar Z$ be the transitive collapse, it holds that given any forcing $\mathbb P\in V_\delta\cap Z$, $\bar Z$-generic $g\subset\pi(\mathbb P)$ and real $r\in\bar Z[g]$,
+	\eq{
+		\psi[r,y]\Leftrightarrow\bar Z[r]\models\varphi[r,\pi(x)].
+	}
+
+	Of course, $Z$ is \textbf{bad} if it's not good, witnessed by a triple $\bra{\mathbb P,g,r}$. The key point is then the following claim.
+
+	\clai{
+		$\{Z\in\p_{\aleph_1}V_\lambda\mid Z\prec V_\lambda\text{ is good}\}$ contains a club.
+	}
+	
+	\cproof{
+		Set $a:=\{Z\in\p_{\aleph_1}V_\lambda\mid Z\prec V_\lambda\text{ is bad}\}$ and assume towards a contradiction that $a$ is stationary. To be able to use our stationary tower machinery we have to "reduce" $a$ to a stationary subset of $\p_{\aleph_1}V_\kappa$ for some $\kappa<\delta$, making it an element of $\mathbb Q_{<\delta}$. Towards this define $f:a\to V_\lambda$ which associates to each $Z\in a$ a (code for a) pair $\bra{\mathbb P,r}$ which is a part of a badness witness of $Z$. As such $\mathbb P,r$ are elements of $Z$, normality of the club filter on $\p_{\aleph_1}V_\lambda$ implies that there is a stationary $b\subset a$ such that for a fixed $\mathbb P$ and $\tau$, for every $Z\in b$ with $\pi:Z\to\bar Z$ the collapse, there's a $g\subset\pi(\mathbb P$ such that $\bra{\mathbb P,g,\pi(\tau)_g}$ is a badness witness for $Z$. Pick some inaccessible $\kappa<\delta$ such that $\mathbb P\in V_\kappa$. Assume for simplicity that $\pi(\tau)_g$ determines $g$\todo{Why can we assume this?}.
+
+		\qquad But $b$ is still only stationary over $\p_{\aleph_1}V_\lambda$, so define now $c\subset\p_{\aleph_1}V_\kappa$ as all the countable elementary submodels $Y\prec V_\kappa$ such that $Y=Z\cap V_\kappa$ for some $Z\in b$, so $c$ is now stationary over $\p_{\aleph_1}V_\kappa$, and $\mathbb P,\tau$ are now a part of a witness to the badness of every countable $Z\prec V_\lambda$ with $Z\cap V_\kappa\in c$. Now with our stationary $c\subset\p_{\aleph_1}V_\kappa$ at hand, we're able to throw our theory of the stationary tower at our problem: let $h\subset\mathbb Q_{<\delta}$ be $V$-generic with $c\in h$ and $j:V\to\M$ the associated embedding. Now, in $V$, pick $X\prec V_\lambda$ of cardinality $<\delta$ with $V_\kappa\subset X$. As $^\omega\M\subset\M$ in $V[h]$, $j"X\prec j(V_\lambda)$ is countable in $\M$.
+
+		\qquad As $c\in h$ we get that $j"V_\kappa\in j(c)$, so since $j"V_\kappa=j"X\cap j(V_\kappa)$, $j"X$ is a bad elementary substructure of $j(V_\kappa)$ in $\M$, with $j(\mathbb P)$ and $j(\tau)$ being a part of the witness for it. Now let $\bar X$ be the transitive collapse of $X$ and let $\bar{\mathbb P},\bar\tau,\bar x$ be the images of $\mathbb P,\tau,x$ under this collapse. Note that $\bar X$ is also the collapse of $j"X$ and the images of $j(\mathbb P),j(\tau),j(x)$ under this latter collapse is still $\bar{\mathbb P},\bar\tau,\bar x$. Pick an $\bar X$-generic $g\subset\bar{\mathbb P}$ in $\M$ so that $\bra{j(\mathbb P),g,r}$, with $r:=\bar\tau_g$, is a badness witness for $j"X$. We now get that 
+		\eq{
+			\bar X[r]\models\varphi[r,\bar x]\Leftrightarrow V[r]_\lambda\models\varphi[r,x]\Leftrightarrow V[r]\models\varphi[r,x],\tag*{$(1)$}
+		}
+
+		where $\bar X[r]$ makes sense because $\p(\mathbb P)\subset X$ and that $r$ determined the corresponding $\mathbb P$-generic filter. Here the first equivalence is then by elementarity and the second by choice of $\lambda$. The badness of $j"X$ in $\M$ also implies that
+		\eq{
+			\bar X[r]\models\varphi[r,\bar x]\Leftrightarrow\M\models\lnot\psi[r,j(y)].\tag*{$(2)$}
+		}
+
+		But now $(1)$ and $(2)$ contradicts the assumption that $\M\models\psi[r,j(y)]$ holds iff $V[r]\models\varphi[r,x]$.
+	}
+
+	The idea is now to associate to each real a pair $\bra{Z,g}$ of a good countable elementary substructure $Z\prec V_\lambda$ and a $Z$-generic $g\subset\mathbb P\cap Z$ for some forcing notion $\mathbb P$. This is goiing to be done in a tree-like fashion, resulting in $A:=\{r\in\mathbb R\mid\psi[r,y]\}$ being the projection of the tree, which is the first step towards showing that $A$ is $\delta$-uB. Towards building the tree, the above claim implies that we may fix a function $F:[V_\lambda]^{<\omega}\to V_\lambda$ such that whenever we have a countable set closed under $F$, that set is a good elementary substructure of $V_\lambda$. Now, slightly abusing notation, let $T$ be the tree of triples $\bra{s,t,u}\in{^{<\omega}}(\omega\times\p_{\aleph_0}V_\lambda\times V_\delta)$ such that
+	\begin{enumerate}
+		\item $t_0=\{\mathbb P,\tau\}$, where $\mathbb P\in V_\delta$ is a forcing notion and $\tau$ a $\mathbb P$-name for a real;
+		\item $t_{n+1}=F"[\ran u\restr(n+1)\cup\ran t\restr(n+1)]^{<\omega}$ for every $n<\omega$;
+		\item $u$ is a $<_{\mathbb P}$-decreasing sequence of elements of $\mathbb P$ such that $u_n$ is in all open dense subsets of $\mathbb P$ which are in $t_n$;
+		\item $u_0\forces_{\mathbb P}\check V[\tau]\models\varphi[\tau,\check x]$.
+		\item $u_n$ determines the value of $\tau\restr n$, which is equal to $s\restr n$, for every $n<\omega$;
+	\end{enumerate}
+
+	Now, whenever $\bra{x,y,z}\in[T]$ we have that $Z:=\cup\ran y$ is a good elementary substructure of $V_\lambda$, $g:=\{p\in\mathbb P\mid\exists q\in\ran y:q\leq_{\mathbb P} p\}\subset Z\cap\mathbb P$ is a $Z$-generic filter and $x=\tau_g$ is a real. These satisfy that, setting $\bar Z$ to be the transitive collapse of $Z$ and $\bar x$ the image of $x$ under this collapse, $\bar Z[r]\models\varphi[r,\bar x]$. Furthermore define $\tilde T$ to be the same tree, but where condition $(iv)$ is changed to $u_0\forces_{\mathbb P}\check V[\tau]\models\lnot\varphi[\tau,\check x]$.
+
+	\qquad We then claim that $A=p[T]=\lnot p[\tilde T]$. First of all, as $Z$ is good, $\bar Z[r]\models\varphi[r,\bar x]$ holds iff $\psi[r,y]$, giving us that $p[T]\subset A$. Given any $r\in A$ we can also just take the trivial forcing $\mathbb P$ and its name for $r$, showing that $r\in p[T]$. The second equality is analogous. It remains to show that that $T$ and $\tilde T$ still project to complements in any $\delta$-small forcing extension, which is shown in the following claim.
+
+	\clai{
+		$\forces_{\col(\omega,{<\delta})} p[\check T]=\lnot p[\check{\tilde T}]$.
+	}
+	
+	\cproof{
+		Firstly note that $p[T]\cap p[\tilde T]=\emptyset$, and as we can witness this fact by the wellfoundedness of the tree of attempts to get a common branch of the two, this fact is absolute between all forcing extensions. Let now $g\subset\col(\omega,{<\delta})$ be $V$-generic; we want to show that given any real $r\in V[g]$, either $r\in p[T]$ or $r\in p[\tilde T]$. Using that $\col(\omega,{<\delta})$ has the $\delta$-cc we can fix some $\kappa<\delta$ such that $h:=g\cap\col(\omega,{<\kappa})$ is $V$-generic with $r\in V[h]$.
+
+		\qquad First suppose that $V[r]\models\varphi[r,x]$. Then we can build a tree $T$ as before starting with $t_0:=\{\col(\omega,{<\kappa}),\tau\}$ where $\tau_h=r$, so that $r\in p[T]$. As $\col(\omega,{<\kappa})\in V[g]$ this tree can be built within $V[g]$, so that this fact holds within $V[g]$ as well. Analogously, if $V[r]\models\lnot\varphi[r,x]$ then we get that $r\in p[\tilde T]$ inside $V[g]$.
+	}
+
+	As every $\delta$-small forcing notion is absorbed by $\col(\omega,{<\delta})$, we can then conclude that $A$ is $\delta$-uB.
+}
+
+\coro{
+	\label{coro.step4}
+	If $\delta_0<\delta_1<\delta_2$ are Woodins and $A$ is a set of reals such that there exists a real $r$ satisfying that $\forces_{\mathbb P}A=\{x\in\mathbb R^{\check V}\mid\varphi[x,\check r]\}$ for any $\delta_2$-small forcing notion $\mathbb P$, then $A$ is determined.
+}
+\proof{
+	Note that the assumptions and \ref{theo.defuB} imply that $A$ is $\delta_2$-uB, so that Corollary \ref{coro.step3} implies that it's determined.
+}
+
+
+\section{From $L(\mathbb R)$ to forcing absolute definability}
+
+\lemm{
+	\label{lemm.symmext}
+	Let $\M$ be a transitive model of $\zfc$, $\kappa$ a strong limit cardinal in $\M$ and $\sigma\subset\mathbb R$ be a set of reals each generic over $\M$ such that $\sigma=\mathbb R\cap\M(\sigma)$. Then
+		\begin{center}
+			In some generic extension of $\M$ there is an $\M$-generic\\ $H\subset\col(\omega,{<\kappa})$ such that $\sigma=\bigcup_{\alpha<\kappa}\mathbb R\cap\M[H\cap\col(\omega,{<\alpha})]$
+		\end{center}
+		
+		iff every $x\in\sigma$ is $\M$-generic for some $\kappa$-small forcing and $\kappa=\sup\{\aleph_1^{\M[x]}\mid x\in\sigma\}$.
+}
+\proof{
+	The forward direction is clear, so assume the latter statement. Define
+	\eq{
+		\mathbb P:=\bigcup_{x\in\sigma}\{g\in\M[x]\mid\exists\alpha<\kappa:g\subset\col(\omega,{<\alpha})\text{ is $\M$-generic}\},
+	}
+
+	ordered by extension. Then $\mathbb P\in\M(\sigma)$ and since every $\alpha<\kappa$ is countable in $\M[x]$ for some $x\in\sigma$ and $\kappa$ is a strong limit, $\mathbb P\neq\emptyset$. Now assume that $G\subset\mathbb P$ is $\M(\sigma)$-generic and set $H:=\bigcup G$, making $H\subset\col(\omega,{<\kappa})$ a filter.
+
+	\clai{
+		$H\subset\col(\omega,{<\kappa})$ is an $\M$-generic filter.
+	}
+	
+	\cproof{
+		Let $D\subset\col(\omega,{<\kappa})$ be dense in $\M$ and define
+		\eq{
+			D':=\{g\in\mathbb P\mid\exists p\in D:p\in g\}.
+		}
+	
+		We'll first show that $D'$ is dense in $\mathbb P$. Pick $g\in\mathbb P$ and $\eta<\kappa$ such that $g$ is $\M$-generic for $\col(\omega,{<\eta})$.  As $g$ is $\M$-generic and $\{p\cap\col(\omega,{<\eta})\mid p\in D\}$ is dense in $\col(\omega,{<\eta})$, we can find some $p\in D$ such that $p\cap\col(\omega,{<\eta})\in g$.
+		
+		\qquad Pick some $\eta'\in[\eta,\kappa)$ such that $p\in D\cap\col(\omega,{<\eta'})$. As $\col(\omega,{<\eta})$ regularly embeds into $\col(\omega,{<\eta'})$ and $2^{\eta'}<\delta$ in $\M$, we can find some $y\in\sigma$ and an $\M$-generic $g'\subset\col(\omega,{<\eta'})$ in $\M[y]$ extending $g$ with $p\in g'$. This shows that $D'$ is dense in $\mathbb P$. Now, genericity of $G$ implies that there is a $g\in G$ with $g\cap D\neq\emptyset$; i.e. that there is some $p\in H\cap D$, which shows that $H$ is $\M$-generic.
+	}
+
+	Now note that $\bigcup_{\alpha<\kappa}\mathbb R\cap\M[H\cap\col(\omega,{<\alpha})]\subset\sigma$, which follows from $H\cap\col(\omega,{<\alpha})\in\M(\sigma)$ for every $\alpha<\kappa$ and that $\mathbb R\cap\M(\sigma)=\sigma$ by assumption. It remains to show the other inclusion, i.e. that
+	\eq{
+		\sigma\subset\bigcup_{\alpha<\kappa}\mathbb R\cap\M[H\cap\col(\omega,{<\alpha})]. \tag*{$(1)$}
+	}
+
+	Suppose $x\in\sigma$ and define $D_x:=\{g\in\mathbb P\mid x\in\M[g]\}$. We first show that $D_x$ is dense in $\mathbb P$. Let $g\in\mathbb P$ and fix $y\in\sigma$ and $\eta<\delta$ so that $g\in\M[y]$ and $g\subset\col(\omega,{<\eta})$ is $\M$-generic. If $x\notin\M[g]$ then $x$ is in some $\eta'$-small generic extension of $\M[g]$, for some $\eta'<\kappa$. Let $z\in\sigma$ be such that $\M\cap V_{\eta'+1}$ is countable in $\M[z]$ and $x,y\in\M[z]$.
+	
+	\qquad Then there is an $\M$-generic $g'\subset\col(\omega,{<\eta'})$ in $\M[z]$ extending $g$ such that $x\in\M[g']$. This shows that $D_x$ is dense in $\mathbb P$. But then we can pick some $g\in G$ such that $x\in\M[g]$. As $g\subset H\cap\col(\omega,{<\alpha})$ for some $\alpha<\kappa$ by definition of $g$ and $H$, equality holds as both of them are generics, showing $(1)$. This finishes the proof.
+}
+
+Say that a \textbf{successor Woodin} is a Woodin which isn't a limit of Woodins.
+
+\lemm{
+	\label{lemm.sharp}
+	Let $\kappa$ be a limit of Woodins and let $a$ be the set of countable $X\prec V_{\kappa+1}$ such that for some $\gamma<\kappa$ it holds that given any successor Woodin $\delta\in X\cap(\gamma,\kappa)$, $X$ captures every dense subset of $\mathbb Q_{<\delta}$ in $X$. Then given any stationary set $z\in V_\delta$ containing only countable sets, the set of $X\in a$ such that $z\in X$ and $X\cap({\cup z})\in z$ is stationary.
+}
+\proof{
+	Let $z\in\mathbb Q_{<\delta}$ and fix some function $F:[V_{\kappa+1}]^{<\omega}\to V_{\kappa+1}$. It will suffice to find a countable $Y\prec V_{\delta+2}$ such that $F,z\in Y$, $Y\cap({\cup z})\in z$ and $Y\cap V_{\kappa+1}\in a$. Fix some inaccessible $\gamma_0<\delta$ with $z\in\mathbb Q_{<\gamma_0}$, and let $W$ be the set of successor Woodins in $(\gamma_0,\kappa)$.
+
+	\qquad We will construct a sequence $\bra{Y_\alpha\mid\alpha<\omega_1}$ of countable elementary submodels of $V_{\delta+\omega}$ and a sequence $\bra{\delta_\alpha\mid\alpha<\omega_1}$ of elements of $W$ such that $\{z,F,\gamma_0\}\in Y_0$, $Y_0\cap({\cup z})\in z$ and for each $\alpha<\omega_1$,
+	\begin{enumerate}
+		\item $Y_0\subset Y_\alpha$ and $Y_\alpha\cap V_{\gamma_0}=Y_0\cap V_{\gamma_0}$;
+		\item $\delta_\alpha$ is the $\alpha$'th member of $Y_\alpha\cap W$;
+		\item For every $\beta\in(\alpha,\omega_1)$, if $\chi:=\gamma_0\cup\sup(W\cap\delta_\alpha)$ then $Y_\beta\cap V_\chi=Y_\alpha\cap V_\chi$;
+		\item If $\delta$ is among the first $\alpha$ many members of $Y_\alpha\cap W$ then $Y_\alpha$ captures every predense subset of $\mathbb Q_{<\delta}$ in $Y_\alpha$.\\
+	\end{enumerate}
+
+	Stationarity of $z$ implies that such a $Y_0$ exists. Also, \cite[2.7.12]{Larson} assures the existence of $Y_{\alpha+1}$ given $Y_\alpha$. Take unions at limit stages. Conditions (ii) and (iii) implies that for each $\beta<\omega_1$, $\bra{\delta_\alpha\mid\alpha<\beta}$ lists the first $\beta$ elements of $Y_\beta\cap W$.
+
+	\qquad It remains to show that $Y_\alpha\cap V_{\kappa+1}\in a$ for some $\alpha<\omega_1$. If it wasn't the case then there is a least $\delta\in W$ such that $\delta\in Y^*:=\bigcup_{\alpha<\omega_1}Y_\alpha$ but for no $\alpha<\omega_1$ is $\delta$ among the first $\alpha$ many members of $W$ in $Y_\alpha$. Fix some $\alpha_0<\omega_1$ such that $\delta\in Y_{\alpha_0}$. Condition (iii) implies that $W\cap Y^*\cap\delta$ has ordertype $\omega_1$. But a standard catch-up argument shows that there is a countable limit ordinal $\alpha>\alpha_0$ such that $W\cap Y_\alpha\cap\delta$ consists of the first $\alpha$ many members of $W\cap Y^*\cap\delta$. This implies that $\delta=\delta_\alpha$, $\contr$.
+}
+
+\theo{
+	\label{theo.sharp}
+	Assume $\kappa$ is a limit of Woodins and $\lambda>\kappa$ is a measurable. Then given any $\kappa$-small forcing $\mathbb P$ it holds that $\forces_{\mathbb P}{(\mathbb R^\sharp)^{\check V}=\mathbb R^\sharp\cap\check V}$.
+}
+\proof{
+	Define $a$ as the set of countable $X\prec V_{\kappa+1}$ such that for some $\gamma\in X\cap\kappa$ it holds that given any successor Woodin $\delta\in X\cap(\gamma,\kappa)$, $X$ captures every predense $D\subset\mathbb Q_{<\delta}$ in $X$. Then $a\in\mathbb P_{<\lambda}$ \todo{Why?} and by Lemma \ref{lemm.sharp}, defining for $z\in\mathbb Q_{<\delta}$ the sets $a_z:=\{X\in a\mid z\in X\land X\cap(\cup z)\in z\}$, $a_z$ is stationary in $\p_{\aleph_1}V_{\kappa+1}$.
+
+	\qquad Now let $g\subset\mathbb P_{<\lambda}$ be $V$-generic with $a\in g$ and $j:V\to\bra{M,E}$ the associated embedding. As $\lambda$ is measurable and hence an inaccessible limit of completely Jónsson cardinals, $j(\lambda)=\lambda$ \cite[2.3.5]{Larson}. The idea is now to show that $(\mathbb R^{\M})^\sharp$ exists in $V[g]$, but we want to use the measurable $\lambda$ to do this, and that requires that $|\mathbb R^{\M}|<\lambda$, which isn't necessarily true. The plan is then to find some suitable substructure $\M^*$ of $\M$ which \textit{does} have this property.
+
+	\qquad Letting $f:a\to V_{\kappa+1}$ associate to each $X\in a$ the least $\gamma\in X\cap\kappa$ witnessing that $X\in a$, normality ensures that there is an $a'\subset a$ in $g$ and $\gamma_g<\kappa$ such that $f$ is constant on $a'$ with value $\gamma_g$. Set $W$ to be the set of successor Woodins in $(\gamma_g,\kappa)$ and for each $\delta\in W$ let $g_\delta:=g\cap\mathbb Q_{<\delta}$.
+
+	\qquad Now as $a'\in g$, every $g_\delta\subset\mathbb Q_{<\delta}$ is $V$-generic \cite[2.7.14]{Larson}. For $\delta\in W$ let $j_\delta:V\to\M_\delta\subset V[g_\delta]$ be the associated embedding, $k_\delta:\M_\delta\to\bra{\M,E}$ the induced factorisation and $k_{\delta_0\delta_1}:\M_{\delta_0}\to\M_{\delta_1}$ the natural map for $\delta_0<\delta_1$. 
+	\cd{
+		V\ar[d]_{j_{\delta_0}}\ar[rr]^j\ar[drr]_{j_{\delta_1}} && \bra{\M,E}\\
+		\M_{\delta_0}\ar[rr]_{k_{\delta_0\delta_1}}\ar[urr]^{k_{\delta_0}} && \M_{\delta_1}\ar[u]_{k_{\delta_1}}
+	}
+
+	Now let $\bra{\M^*,E^*}$ be the direct limit of the $\M_\delta$'s along the $k_{\delta_0\delta_1}$'s, and for $\delta\in W$ let $\iota_\delta:\M_\delta\to\bra{\M^*,E^*}$ be the coprojection. Note that $\M_\delta$ is the transitive collapse of
+	\eq{
+		Z_\delta:=\{j(f)(j"{\cup b})\mid f\in{^bV}\cap V\land b\in g\},
+	}
+
+	and as $\delta_0<\delta_1$ implies $Z_{\delta_0}\subset Z_{\delta_1}$, $k_{\delta_0\delta_1}$ is the collapse of the inclusion map for $\delta_0<\delta_1$, so that we get a map $j^*:V\to\bra{\M^*,E^*}$ by $j^*(x):=j_\delta(x)$ for sufficiently large $\delta$, yielding the following commutative diagram:
+	\cd{
+		V\ar[rr]^j\ar[d]_{j_\delta}\ar[drr]^{j^*} && \bra{\M,E}\\
+		\M_\delta\ar[rr]_{\iota_\delta} && \bra{\M^*,E^*}\ar[u]_k
+	}
+
+	Now $\mathbb R^{\M^*}=\bigcup_{\delta\in W}\mathbb R^{\M_\delta}$ and for each $\delta$, $\mathbb R^{\M_\delta}=\mathbb R^{V[g_\delta]}=\mathbb R^{V[g\cap V_\delta]}$. This means that every $x\in\mathbb R^{\M^*}$ is then in some $\kappa$-small forcing extension and furthermore we also have that $\kappa=\sup\{\aleph_1^{V[x]}\mid x\in\mathbb R^{\M^*}\}$ because $\aleph_1^{V[g_\delta]}=j_\delta(\aleph_1)=\delta$ for every $\delta\in W$. These two facts then imply by Lemma \ref{lemm.symmext} that we can find a $V$-generic $h\subset\col(\omega,{<\kappa})$ such that
+	\eq{
+		\mathbb R^{\M^*}=\bigcup_{\alpha<\kappa}\mathbb R\cap V[h\cap\col(\omega,{<\alpha})].
+	}
+
+	As $\lambda$ is still measurable in $V[h]$ as it's a $\lambda$-small forcing, both $(\mathbb R^V)^\sharp$ and $(\mathbb R^{\M^*})^\sharp$ exists in $V[h]$, the latter being because $|\mathbb R^{\M^*}|<\lambda$. This means that every $V[h]$-regular $V$-cardinal ${>|\mathbb R^V|}$ is an $\mathbb R^V$-indiscernible and every $V[h]$-regular $V[h]$-cardinal ${>|\mathbb R^{\M^*}|}$ is an $\mathbb R^{\M^*}$-indiscernible.
+	
+	\qquad Noting that $\lambda$ is a limit of completely Jónsson cardinals (in $V$), cofinally many of these are fixed points of $j^*$ and that these are still regular in $V[h]$, we get that $(\mathbb R^V)^\sharp\subset(\mathbb R^{\M^*})^\sharp$, using that $j^*(\lambda)=\lambda$ implies that $j^*\restr L_\lambda(\mathbb R^V):L_\lambda(\mathbb R^V)\to L_\lambda(\mathbb R^{\M^*})$. This means that $(\mathbb R^V)^\sharp=(\mathbb R^{\M^*})^\sharp\cap V$, so since any $\kappa$-small forcing is absorbed by $\col(\omega,{<\alpha})$ for some $\alpha<\kappa$, any such forcing extension satisfies $(\mathbb R^V)^\sharp=\mathbb R^\sharp\cap V$.
+}
+
+\theo[The Main Theorem \ref{theorem}]{
+	\label{theorem1}
+	Assume there is a limit of Woodins with a measurable above. Then $\ad^{L(\mathbb R)}$ holds.
+}
+\proof{
+	Let $\kappa$ be the limit of Woodins and let $A\in L(\mathbb R)$ be a set of reals. The above theorem implies that $\mathbb R^\sharp$ exists, so that there exists some $\bra{\varphi,\vec r,\vec\alpha}\in\mathbb R^\sharp$ such that $A=\{x\in\mathbb R\mid\varphi[x,\vec r,\vec\alpha]\}$ \todo{Why?}. The theorem also implies that going to any $\kappa$-small forcing extension, $A$ will still be defined using the same formula and parameters. By Corollary \ref{coro.step4} we then get that $A$ is determined.
+}
+
+
+\bibliographystyle{apalike}
+\nocite{*}
+\bibliography{bib}
+
+\end{document}

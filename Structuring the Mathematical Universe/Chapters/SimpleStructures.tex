@@ -1,0 +1,50 @@
+\chapter{Simple structures}
+\thispagestyle{fancy}
+
+\section{Sets}
+
+Our primitive objects in our domain of discourse will be \textit{sets} $x$ and \textit{functions $f:x\to y$ between two given sets $x,y$}.\\
+
+\axio[Composition]{
+If $f,g$ is a function, then $f\circ g$ is a function as well. Furthermore $\circ$ is associative.
+}
+
+\axio[Identity function]{
+Identity functions $1_x:x\to x$ exist and satisfies $1_x\circ f=f$ for $f:y\to x$ and $g\circ 1_x=g$ for $g:x\to z$.
+}
+
+\axio[Singleton]{
+There exists a singleton set.
+}
+
+\axio[Empty set]{
+There exists a set $\emptyset$ with no elements.
+}
+
+\axio[Function equality]{
+Two functions $f,g:x\to y$ are equal if they have the same function values.
+}
+
+\axio[Products]{
+Every pair of sets $x,y$ has a product set $x\times y$.
+}
+
+\axio[Function sets]{
+Every pair of sets $x,y$ has a set of functions $y^x$ from $x$ to $y$.
+}
+
+\axio[Inverse images]{
+For every function $f:x\to y$ and element $z\in y$, the inverse image $f^{-1}(\{z\})$ exists.
+}
+
+\axio[Characteristic function]{
+Given a set $x$, every subset $y\subset x$ has a characteristic function $\chi_y:x\to\{\top,\bot\}$.
+}
+
+\axio[Natural numbers]{
+The natural numbers exist.
+}
+
+\axio[Choice]{
+Every surjection as a right inverse.
+}

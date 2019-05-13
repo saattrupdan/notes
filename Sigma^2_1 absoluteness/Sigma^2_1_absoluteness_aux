@@ -1,0 +1,71 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}A few forcing facts}{1}{section.1}}
+\newlabel{}{{1.1}{1}{}{subsection.1.1}{}}
+\newlabel{@cref}{{[definition][1][1]1.1}{1}}
+\newlabel{}{{1.2}{1}{}{subsection.1.2}{}}
+\newlabel{@cref}{{[lemma][2][1]1.2}{1}}
+\newlabel{lemm.forcing1}{{1.2}{1}{}{subsection.1.2}{}}
+\newlabel{lemm.forcing1@cref}{{[lemma][2][1]1.2}{1}}
+\newlabel{}{{1.3}{1}{}{subsection.1.3}{}}
+\newlabel{@cref}{{[lemma][3][1]1.3}{1}}
+\newlabel{lemm.forcing2}{{1.3}{1}{}{subsection.1.3}{}}
+\newlabel{lemm.forcing2@cref}{{[lemma][3][1]1.3}{1}}
+\newlabel{}{{1.4}{1}{}{subsection.1.4}{}}
+\newlabel{@cref}{{[lemma][4][1]1.4}{1}}
+\newlabel{lemm.forcing3}{{1.4}{1}{}{subsection.1.4}{}}
+\newlabel{lemm.forcing3@cref}{{[lemma][4][1]1.4}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}The stationary tower proof}{1}{section.2}}
+\newlabel{}{{2.1}{2}{Woodin, Steel}{subsection.2.1}{}}
+\newlabel{@cref}{{[theorem][1][2]2.1}{2}}
+\newlabel{theo.absforcing}{{2.1}{2}{Woodin, Steel}{subsection.2.1}{}}
+\newlabel{theo.absforcing@cref}{{[theorem][1][2]2.1}{2}}
+\citation{Larson}
+\citation{Larson}
+\citation{Larson}
+\citation{Larson}
+\@writefile{toc}{\contentsline {section}{\numberline {3}The genericity iteration proof}{6}{section.3}}
+\newlabel{}{{3.1}{6}{Woodin}{subsection.3.1}{}}
+\newlabel{@cref}{{[theorem][1][3]3.1}{6}}
+\newlabel{theo.genit}{{3.1}{6}{Woodin}{subsection.3.1}{}}
+\newlabel{theo.genit@cref}{{[theorem][1][3]3.1}{6}}
+\newlabel{}{{3.2}{6}{Woodin}{subsection.3.2}{}}
+\newlabel{@cref}{{[theorem][2][3]3.2}{6}}
+\newlabel{theo.genitmw}{{3.2}{6}{Woodin}{subsection.3.2}{}}
+\newlabel{theo.genitmw@cref}{{[theorem][2][3]3.2}{6}}
+\newlabel{}{{3.3}{6}{Woodin, Steel}{subsection.3.3}{}}
+\newlabel{@cref}{{[theorem][3][3]3.3}{6}}
+\newlabel{theo.absgenit}{{3.3}{6}{Woodin, Steel}{subsection.3.3}{}}
+\newlabel{theo.absgenit@cref}{{[theorem][3][3]3.3}{6}}
+\newlabel{}{{3.4}{6}{Woodin, Steel}{subsection.3.4}{}}
+\newlabel{@cref}{{[theorem][4][3]3.4}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \relax \fontsize  {10}{12}\selectfont  \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip The proof of $(ii)$.}}{7}{figure.1}}
+\bibstyle{apalike}
+\citation{*}
+\bibdata{bib}
+\bibcite{Larson}{{1}{2004}{{Larson}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \relax \fontsize  {10}{12}\selectfont  \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip Round 0 of the game.}}{8}{figure.2}}
+\@writefile{tdo}{\contentsline {todo}{Can I assume this?}{8}{section*.1}}
+\pgfsyspdfmark {pgfid3}{26117734}{33738296}
+\pgfsyspdfmark {pgfid6}{33621277}{33752648}
+\pgfsyspdfmark {pgfid7}{35243292}{33501482}
+\@writefile{tdo}{\contentsline {todo}{Elaborate.}{8}{section*.2}}
+\pgfsyspdfmark {pgfid8}{16885604}{30262259}
+\pgfsyspdfmark {pgfid11}{33621277}{30067306}
+\pgfsyspdfmark {pgfid12}{35243292}{29816140}

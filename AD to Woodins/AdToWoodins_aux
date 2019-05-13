@@ -1,0 +1,62 @@
+\relax 
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\citation{KoellnerWoodin}
+\newlabel{}{{0.1}{1}{Woodin\relax }{subsection.0.1}{}}
+\newlabel{@cref}{{[theorem][1][0]0.1}{1}}
+\newlabel{}{{0.2}{1}{\relax }{subsection.0.2}{}}
+\newlabel{@cref}{{[definition][2][0]0.2}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}First warm-up: measurability of $\omega _1$}{2}{section.1}}
+\newlabel{}{{1.1}{2}{$\b \Sigma ^1_1$-Boundedness; Luzin-Sierpinski\relax }{subsection.1.1}{}}
+\newlabel{@cref}{{[lemma][1][1]1.1}{2}}
+\newlabel{}{{1.2}{2}{Basic Coding; Solovay\relax }{subsection.1.2}{}}
+\newlabel{@cref}{{[lemma][2][1]1.2}{2}}
+\newlabel{fig.coding1}{{1}{3}{First warm-up: measurability of $\omega _1$\relax }{subsection.1.2}{}}
+\newlabel{fig.coding1@cref}{{[section][1][]1}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Basic coding.}}{3}{figure.1}}
+\newlabel{}{{1.3}{3}{Solovay\relax }{subsection.1.3}{}}
+\newlabel{@cref}{{[theorem][3][1]1.3}{3}}
+\newlabel{theo.warmup1}{{1.3}{3}{Solovay\relax }{subsection.1.3}{}}
+\newlabel{theo.warmup1@cref}{{[theorem][3][1]1.3}{3}}
+\newlabel{fig.analogy}{{2}{6}{Second warm-up: measurability of $(\bf \delta ^2_1)^{L(\mathbb R)}$\relax }{section.2}{}}
+\newlabel{fig.analogy@cref}{{[section][2][]2}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The analogy between the $\bf  \delta ^1_1$-case and the $\bf  \delta ^2_1$-case.}}{6}{figure.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Second warm-up: measurability of $(\bf  \delta ^2_1)^{L(\mathbb  R)}$}{6}{section.2}}
+\newlabel{}{{2.1}{6}{\relax }{subsection.2.1}{}}
+\newlabel{@cref}{{[proposition][1][2]2.1}{6}}
+\newlabel{}{{2.2}{7}{\relax }{subsection.2.2}{}}
+\newlabel{@cref}{{[proposition][2][2]2.2}{7}}
+\newlabel{}{{2.3}{7}{Moschovakis\relax }{subsection.2.3}{}}
+\newlabel{@cref}{{[lemma][3][2]2.3}{7}}
+\newlabel{}{{2.4}{7}{Moschovakis\relax }{subsection.2.4}{}}
+\newlabel{@cref}{{[lemma][4][2]2.4}{7}}
+\newlabel{}{{2.5}{8}{Moschovakis\relax }{subsection.2.5}{}}
+\newlabel{@cref}{{[theorem][5][2]2.5}{8}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Ideas used to show $\Theta $ is Woodin}{8}{section.3}}
+\newlabel{}{{3.1}{9}{Uniform coding; Moschovakis\relax }{subsection.3.1}{}}
+\newlabel{@cref}{{[theorem][1][3]3.1}{9}}
+\newlabel{fig.coding2}{{3}{10}{Ideas used to show $\Theta $ is Woodin\relax }{Item.2}{}}
+\newlabel{fig.coding2@cref}{{[section][3][]3}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Uniform coding.}}{10}{figure.3}}
+\newlabel{}{{3.2}{10}{\relax }{subsection.3.2}{}}
+\newlabel{@cref}{{[definition][2][3]3.2}{10}}
+\newlabel{}{{3.3}{10}{\relax }{subsection.3.3}{}}
+\newlabel{@cref}{{[proposition][3][3]3.3}{10}}
+\citation{KoellnerWoodin}
+\bibstyle{apalike}
+\citation{*}
+\bibdata{bib}
+\bibcite{KoellnerWoodin}{{1}{2010}{{Koellner and Woodin}}{{}}}

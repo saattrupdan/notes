@@ -1,0 +1,318 @@
+\chapter{Lattice structures}
+\thispagestyle{fancy}
+
+\section{Lattices}
+\defi{
+A \textit{lattice} $\langle A,\lor,\land\rangle$ is a structure in which $\langle A,\lor\rangle$ and $\langle A,\land\rangle$ are both semilattices, as well as satisfying the absorption laws:
+\begin{enumerate}
+\item $\forall a,b\in A: a\lor(a\land b)=a$
+\item $\forall a,b\in A: a\land(a\lor b)=a$\\
+\end{enumerate}
+}
+
+\exam{
+The ordered natural numbers $\langle \mathbb{N},\leq\rangle$ form a lattice $\langle \mathbb{N},\leq,\lor,\land\rangle$ with $a\lor b:=\max\{a,b\}$ and $a\land b:=\min\{a,b\}$.\\
+}
+
+\defi{
+A \textit{partial order} on a set $A$ is a binary relation $\leq$ satisfying:
+\begin{itemize}
+\item $\forall a\in A: a\leq a$
+\item $\forall a,b\in A: (a\leq b)\land(b\leq a)\Rightarrow a=b$
+\item $\forall a,b,c\in A: (a\leq b)\land(b\leq c)\Rightarrow a\leq c$\\
+\end{itemize}
+}
+
+\defi{
+A \textit{poset}, or a partially ordered set, $\langle A,\leq\rangle$ is a set $A$ equipped with a partial order $\leq$.\\
+}
+
+\pagebreak
+\theo[Lattice duality]{
+\label{latticeduality}
+A lattice $\langle A,\lor,\land\rangle$ is equivalent to a poset $\langle A,\leq\rangle$ in which there exist both $\sup\{a,b\}$ and $\inf\{a,b\}$ for all $a,b\in A$.
+}
+\textit{Proof.}
+Let $\langle A,\leq\rangle$ be a poset and assume that for all $a,b\in A$ exist both $\sup\{a,b\}$ and $\inf\{a,b\}$. Then define
+\eq{
+a\lor b:=\sup\{a,b\}\qquad a\land b:=\inf\{a,b\}.
+}
+
+Both the $\sup$ and $\inf$ are easily seen to be associative, idempotent and commutative. The absorption laws are shown:
+\eq{
+a\lor(b\land a)=\sup\{a,\inf\{b,a\}\}=a,\\
+a\land(b\lor a)=\inf\{a,\sup\{b,a\}\}=a.
+}
+
+Since $a\geq\inf\{b,a\}$ and $a\leq\sup\{b,a\}$. Now let $\langle A,\lor,\land\rangle$ be a lattice and define the binary relation $\leq$ as
+\eq{
+a\leq b\lr a\lor b=b\lr a\land b=a.
+}
+
+The requirements for partial orders shall be shown. $(i)$: Follows from idempotency. $(ii)$: Assume $a\lor b=b$ and $b\land a=b$. Then $a=a\land(b\lor a)=a\land(a\lor b)=a\land b=b\land a=b$, where the absorption law, commutativity and assumptions were used. $(iii)$: Assume $a\lor b=b$ and $b\lor c=c$. Then $a\lor c=a\lor(b\lor c)=(a\lor b)\lor c=b\lor c=c$, where associativity and assumptions were used. It is thus a partial order, where the infimum is given as the meet and the supremum as the join.$\qed$\\
+
+\section{Bounded lattices}
+\defi{
+A \textit{bounded lattice} $\langle A,\lor,\land,\bot,\top\rangle$ is a lattice, which satisfies the identity laws:
+\begin{enumerate}
+\item $\forall a\in A: a\lor \bot=a$
+\item $\forall a\in A: a\land \top=a$\\
+\end{enumerate}
+}
+
+\rema{
+Every bounded lattice is a bounded semilattice as well, since these satisfy their respective (join/meet-)identity law as well.\\
+}
+
+\exam{
+Let $A$ be a set. Then the power set $\mathcal{P}(A)$ form a bounded lattice $\langle \mathcal{P}(A),\cup,\cap,\emptyset,A\rangle$.\\
+}
+
+\section{Modular lattices}
+\defi{
+A \textit{modular lattice} $\langle A,\lor,\land\rangle$ is a lattice, which satisfies the modular law:
+\eq{
+\forall a,b,c\in A: (a\land b)\lor(b\land c)=(a\lor(b\land c))\land b.
+}
+}
+
+\exam{
+Let $\b{A}$ be a group. Then the normal subgroups $\mathcal{N}(\b{A})$ of $\b{A}$ form a modular lattice $\langle \mathcal{N}(\b{A}),\lor,\land\rangle$ with $\b{A}\land\b{B}:=\b{A}\cap\b{B}$ and $\b{A}\lor\b{B}:=\b{AB}=\{ab\mid a\in A,b\in B\}$.\\
+}
+
+\section{Distributive lattices}
+\defi{
+A \textit{distributive lattice} $\langle A,\lor,\land\rangle$ is a lattice, which is distributive:
+\eq{
+\forall a,b,c\in A: a\land (b\lor c)=(a\land b)\lor(a\land c).
+}
+}
+
+\exam{
+The natural numbers with multiplication $\langle \mathbb{N},\cdot\rangle$ form a distributive lattice $\langle \mathbb{N},\cdot,\lor,\land\rangle$ with $a\land b:=\gcd\{a,b\}$ and $a\lor b:=\lcm\{a,b\}$.\\
+}
+
+\theo{
+Every distributive lattice is a modular lattice.
+}
+\textit{Proof.}
+Let $\b{A}$ be a distributive lattice. It has to be checked that it satisfies the modular law. Let $a,b,c\in A$: 
+\eq{
+(a\lor(b\land c))\land b=(a\land b)\lor (b\land(b\land c))=(a\land b)\lor((b\land b)\land c)=(a\land b)\lor (b\land c),
+}
+
+where the distributive, associative, commutative and idempotent laws were used. $\qed$\\
+
+\section{Complemented lattices}
+\defi{
+A \textit{complemented lattice} $\langle A,\lor,\land,\bot,\top\rangle$ is a bounded lattice which satisfies that every element has atleast one complement b:
+\begin{enumerate}
+\item $\forall a\in A\exists b\in A: a\lor b=\top$
+\item $\forall a\in A\exists b\in A: a\land b=\bot$\\
+\end{enumerate}
+}
+
+\pagebreak
+\theo{
+\label{Booleanalguniquecompl}
+A complemented distributive lattice $\langle A,\lor,\land,\bot,\top\rangle$ has, for each $a\in A$, a unique complement $\lnot a$.
+}
+\textit{Proof.}
+Let $a\in A$ and assume $b,c\in A$ are both complements to $a$, meaning
+\begin{enumerate}
+\item $a\lor b=a\lor c=\top$
+\item $a\land b=a\land c=\bot$\\
+\end{enumerate}
+
+Then
+\eq{
+b=b\land(b\lor a)=b\land(a\lor c)=(b\land a)\lor(b\land c) = (a\land c)\lor (b\land c) = c\land (a\lor b)=c\qedeq.
+}
+
+\section{Ortholattices}
+\defi{
+An \textit{ortholattice} $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ is a complemented lattice equipped with the unary operation $\lnot:A\to C$, where $C\subset A$ is the set of complements of $A$. Furthermore, $\lnot a\in C_a$ for each $a\in A$, where $C_a\subset C$ is the set of complements to $a$. Lastly, $\lnot$ is idempotent and satisfies De Morgans laws:
+\begin{enumerate}
+\item $\forall a\in A: \lnot\lnot a=a$
+\item $\forall a,b\in A: \lnot(a\lor b)=\lnot a\land \lnot b$
+\item $\forall a,b\in A: \lnot (a\land b)=\lnot a \lor\lnot b$\\
+\end{enumerate}
+}
+
+\exam{
+Let $\b{X}$ be an inner product space. Then $\langle \mathcal{P}(X),\cup,\cap,\emptyset,X,\bot\rangle$ is an ortholattice, where $\bot:\mathcal{P}(X)\to \mathcal{P}(X)$ is defined as
+\eq{
+A^\bot:=\{x\in X\mid \forall a\in A: \left<a,x\right>=0\}.
+}
+}
+
+\section{Complete lattices}
+\defi{
+Let $\b{A}$ be a lattice and $S\subset A$ a set. The \textit{supremum} of $S$, $\biglor S$, is defined as an element $b\in A$, satisfying
+\eq{
+\biglor A:=\min\{b\in A\mid \forall a\in A: a\lor b=b\}.
+}
+
+Analogously, the \textit{infimum} of S, $\bigland S$, is defined as an element $c\in A$, satisfying
+\eq{
+\bigland A:=\max\{c\in A\mid\forall a\in A: a\land c=c\}.
+}
+}
+
+\defi{
+A \textit{complete lattice} $\langle A,\lor,\land,\bot,\top\rangle$ is a bounded lattice, in which every subset $S\subset A$ has a supremum $\biglor S$ and an infimum $\bigland S$.\\
+}
+
+\section{Heyting algebras}
+\defi{
+A \textit{Heyting algebra} $\langle A,\lor,\land,\bot,\top,\to\rangle$ is a bounded distributive lattice equipped with the binary operation $\to$, which satisfies that $a\to b$ is the largest element $x$ which satisfies $x\land a\leq b$:
+\eq{
+\forall a,b,c\in A: (a\land b\leq c)\lr(a\leq(b\to c))
+}
+}
+
+\rema{
+\label{heytingequivdef}
+An equivalent definition is for a Heyting algebra is if it holds that
+\eq{
+\forall a,b,c\in A: \biglor\{c\in A\mid a\land c\leq b\}\in\{c\in A\mid a\land c\leq b\}.
+}
+}
+
+\section{Complete JID lattices}
+\defi{
+A \textit{complete JID lattice} $\langle A,\lor,\land,\bot,\top\rangle$ is a complete distributive lattice, which satisfies the join-infinite distributive law:
+\eq{
+\forall a\in A,S\subset A: a\land \biglor S=\biglor\{a\land s\mid s\in S\}.
+}
+}
+
+\theo{
+Every complete JID lattice is a Heyting algebra.
+}
+\textit{Proof.}
+Let $\b{A}$ be a complete JID lattice. By Remark \ref{heytingequivdef} and completeness, it suffices to show that for $a,b\in A$:
+\eq{
+\biglor\{c\in A\mid a\land c\leq b\}\in\{c\in A\mid a\land c\leq b\}.
+}
+
+Notice for any $u\in\{c\in A\mid a\land c\leq b\}$ trivially $a\land u\leq b$, so by JID:
+\eq{
+a\land\biglor\{c\in A\mid a\land c\leq b\}=\biglor\{a\land c\in A\mid a\land c\leq b\}\leq b,
+}
+
+which means that $\biglor\{c\in A\mid a\land c\leq b\}\in\{c\in A\mid a\land c\leq b\}$.$\qed$\\
+
+\section{Ockham algebras}
+\defi{
+An \textit{Ockham algebra} $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ is a bounded distributive lattice with a unary operation $\lnot$, such that:
+\begin{enumerate}
+\item $\forall a,b\in A: \lnot(a\land b)=\lnot a \lor \lnot b$
+\item $\forall a,b\in A:\lnot(a\lor b)=\lnot a\land\lnot b$
+\item $\lnot \top=\bot$
+\item $\lnot \bot=\top$\\
+\end{enumerate}
+}
+
+\section{Stone algebras}
+\defi{
+A \textit{Stone algebra} $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ is an Ockham algebra satisfying
+\begin{enumerate}
+\item $\forall a\in A: \lnot\lnot a\lor \lnot a=\top$
+\item $\forall a\in A: a\land \lnot a=\bot$\\
+\end{enumerate}
+}
+
+\section{De Morgan algebras}
+\defi{
+A \textit{De Morgan algebra} $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ is an Ockham algebra in which $\lnot$ is idempotent:
+\eq{
+\forall a\in A: \lnot \lnot a=a.
+}
+}
+
+\exam{
+The standard \textit{fuzzy algebra} $\langle [0,1],\max\{a,b\},\min\{a,b\},0,1,1-a\rangle$, used in the study of fuzzy logic, is a De Morgan algebra.\\
+}
+
+\section{Kleene algebras}
+\defi{
+A \textit{Kleene algebra} $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ is a De Morgan algebra, which in addition satisfies
+\eq{
+\forall a,b\in A: (a\land \lnot a) \lor (b\lor \lnot b)=b\lor\lnot b.
+}
+}
+
+\exam{
+Let $\Sigma$ be a finite set of symbols, called an alphabet. Then the set of all formal languages $\mathfrak{L}_\Sigma$ over $\Sigma$ forms a Kleene algebra $\langle \mathfrak{L}_\Sigma,+,\cdot,\emptyset,\{\varepsilon\},^*\rangle$, where $A+B:=A\cup B$, $A\cdot B$ is concatenation and $A^*$ is the \textit{Kleene star} operation.\\
+}
+
+\section{Boolean algebras}
+\defi{
+A \textit{Boolean algebra} $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ is a complemented distributive lattice.\\
+}
+
+\rema{
+Boolean algebras complement is unique, cf. Theorem \ref{Booleanalguniquecompl}.\\
+}
+
+\exam{
+In logic, the two-element Boolean algebra $\langle \{0,1\},\lor,\land,0,1,\lnot\rangle$ is used where $0$ denotes false, $1$ denotes true, $\lor$ means ``or", $\land$ means ``and" and $\lnot$ means ``not".\\
+}
+
+\theo{
+\label{Booleanalgebraisortholat}
+Every Boolean algebra is an ortholattice.
+}
+\textit{Proof.}
+Let $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ be a Boolean algebra. Since both Boolean algebras and ortholattices are complemented lattices, it has to be shown that ortholattices additional requirements for $\lnot$ hold.\\
+
+$\b{(i)}$: $\lnot\lnot a=\lnot\lnot a\lor\bot = \lnot\lnot a\lor (a\land\lnot a)=(\lnot\lnot a \lor a)\land (\lnot\lnot a\lor \lnot a)= (\lnot\lnot a \lor a) \lor \top= (\lnot\lnot a\lor a)\land (a\lor\lnot a) = a\lor (\lnot a \land\lnot\lnot a)=a\lor\bot = a$, where the identity, distributive, commutative and complement laws were used.\\
+
+$\b{(ii)}$: Since complements in Boolean algebras are unique cf. Theorem \ref{Booleanalguniquecompl}, it suffices to show that $\lnot a\land \lnot b$ is the complement to $a\lor b$, which is equivalent to
+\begin{enumerate}
+\item[1.)] $(a\lor b)\lor(\lnot a\land\lnot b)=\top$
+\item[2.)] $(a\lor b)\land(\lnot a\land\lnot b)=\bot$\\
+\end{enumerate}
+
+$\b{1.)}$: $(a\lor b)\lor (\lnot a\land\lnot b)=((a\lor b)\lor \lnot a)\land ((a\lor b)\lor \lnot b) =(b\lor(a\lor\lnot a))\land (a\lor(b\lor\lnot b))=(b\lor\top)\land(a\lor\top)=\top\land\top=\top$, where the distributive, associative, complement, identity and idempotent laws were used.\\
+
+$\b{2.)}$: $(a\lor b)\land(\lnot a\land\lnot b)=((\lnot a\land\lnot b)\land a)\lor ((\lnot a\land\lnot b)\land b)=(\lnot b\land(a\lor\lnot a))\lor(\lnot a\land (b\land\lnot b))=(\lnot b\land\bot)\lor(\lnot a\land \bot)=\bot\lor\bot=\bot$, where the distributive, associative, complement, identity, idempotent and commutative laws were used. $\b{(iii)}$ follows analogously from $\b{(ii)}$.$\qed$\\
+
+\theo{
+\label{booleanalgebraiskleene}
+Every Boolean algebra is a Kleene algebra.
+}
+\textit{Proof.}
+Let $\b{A}$ be a Boolean algebra and $a,b\in A$. It has to be shown that
+\begin{enumerate}
+\item $\lnot(a\lor b)=\lnot a \land \lnot b$
+\item $\lnot (a\land b)=\lnot a\lor\lnot b$
+\item $\lnot \top=\bot$
+\item $\lnot\bot = \top$
+\item $\lnot\lnot a=a$
+\item $(a\land\lnot a)\lor(b\lor \lnot b)=b\lor\lnot b$\\
+\end{enumerate}
+
+$\b{(i)}$, $\b{(ii)}$ and $\b{(v)}$ follows from $\b{A}$ inducing an ortholattice cf. Theorem \ref{Booleanalgebraisortholat}. $\b{(iv)}$ will not be shown, since it follows analagously from $\b{(iii)}$. $\b{(iii)}$: $\lnot\top = \lnot(a\lor\lnot a)=\lnot a\land \lnot\lnot a = a\land\lnot a = \bot$, where the complement law and Theorem \ref{Booleanalgebraisortholat} were used. $\b{(vi)}$: $(a\land\lnot a)\lor (b\lor \lnot b)=\bot\lor\top=\top=b\lor\lnot b$, where the complement and identity laws were used.$\qed$\\
+
+\theo{
+Every Boolean algebra is a Stone algebra.
+}
+\textit{Proof.}
+Let $\b{A}$ be a Boolean algebra. By Theorem \ref{booleanalgebraiskleene}, $\b{A}$ is a Kleene algebra as well, and therefore also an Ockham algebra. It thus suffices to show that the Stone identities are satisfied. $(i)$ follows from $\b{A}$ being an ortholattice by Theorem \ref{Booleanalgebraisortholat} and complement. $(ii)$ follows directly from the complement.$\qed$\\
+
+\theo{
+Every Boolean algebra is a Heyting algebra.
+}
+\textit{Proof.}
+Let $\langle A,\lor,\land,\bot,\top,\lnot\rangle$ be a Boolean algebra. Define the map $\to:A\times A\to A$, given by
+\eq{
+a\to b:=\lnot a\lor b.
+}
+
+It has to be checked that the map $\to$ satisfies the requirements given in Heyting algebras. Let $a,b,c\in A$.\\
+
+$``\Rightarrow"$: Assume $a\land b\leq c$. Then $b\to c=\lnot b\lor c\geq \lnot b\lor (a\land b)=(\lnot b\lor a)\land(\lnot b\lor b)=(\lnot b\lor a)\land\top=\lnot b\lor a\geq a$, where the assumption, distributive law, complement, identity law and the duality of lattices to conclude $\lnot b\lor a\geq a$.\\
+
+$``\Leftarrow"$: Assume $a\leq b\to c$. Then $a\land b\leq (b\to c)\land b=(\lnot b\lor c)\land b=(\lnot b\land b)\lor(b\lor c)=\bot\lor(b\lor c)=b\lor c\geq c$, where the assumption, distributive law, complement, identity law and the duality of lattices was used to conclude $b\lor c\geq c$.$\qed$\\

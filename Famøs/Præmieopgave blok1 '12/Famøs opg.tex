@@ -1,0 +1,133 @@
+% Document definition
+\documentclass[a4paper,12pt]{article}
+
+% Packages
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage[utf8x]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+
+% Font size
+%\sectionfont{\large}
+
+% No indent
+\setlength{\parindent}{0in}
+
+% Theorem environment
+\newtheorem{theorem}[section]{Sætning}
+\newtheorem{proposition}[section]{Proposition}
+\newtheorem{lemma}[section]{Lemma}
+\newtheorem{corollary}[section]{Korollar}
+\newtheorem{definition}[section]{Definition}
+\newtheorem{remark}[section]{Remark}
+\newtheorem{example}[section]{Example}
+
+% User-defined commands
+\renewcommand{\labelenumi}{(\roman{enumi}) }
+\newcommand{\exam}[2][]{\begin{example}[#1]#2\end{example}}
+\newcommand{\defi}[2][]{\begin{definition}[#1]#2\end{definition}}
+\newcommand{\prop}[2][]{\begin{proposition}[#1]#2\end{proposition}}
+\newcommand{\theo}[2][]{\begin{theorem}[#1]#2\end{theorem}}
+\newcommand{\lemm}[2][]{\begin{lemma}[#1]#2\end{lemma}}
+\newcommand{\coro}[2][]{\begin{corollary}[#1]#2\end{corollary}}
+\newcommand{\rema}[2][]{\begin{remark}[#1]#2\end{remark}}
+\renewcommand{\qed}{\hfill\blacksquare}
+\newcommand{\qedeq}{\tag*{$\blacksquare$}}
+\newcommand{\mrep}[3]{_{\mathscr #3}#1_{\mathscr #2}}
+\newcommand{\lr}{\Leftrightarrow}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\vc}[1]{\underline{#1}}
+\newcommand{\vto}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\newcommand{\mx}[1]{\underline{\underline{#1}}}
+\newcommand{\mto}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4\end{pmatrix}}
+\newcommand{\mtre}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}}
+\newcommand{\eq}[1]{\begin{align*} #1\\ \end{align*}}
+\newcommand{\pic}[1]{\begin{center}\includegraphics[scale=.5]{#1.png}\\\end{center}}
+
+% Header definition
+\begin{document}
+\noindent
+\pagestyle{fancy}
+\fancyhead[L]{Famøs opgave}
+\fancyhead[R]{Dan '11 og Beatrix '11}
+\setlength\headsep{15pt}
+
+\subsection*{Problemet}
+\textit{På en pind afmærkes to tilfældige punkter uafhængigt af hinanden, hvorefter pinden saves over på afmærkningerne. Hvad er sandsynligheden for, at de tre stykker kan samles til en trekant?}\\
+
+\subsection*{Løsningen}
+Først skal det klargøres, hvornår stykkerne rent faktisk udgør en trekant. Dette kommer til udtryk af følgende Lemma:
+\begin{lemma}
+\label{lemma1}
+Tre linjestykker $a,b,c$ kan samles til en trekant hvis:
+\eq{
+|b-c|<a<b+c
+}
+\end{lemma}
+\textit{Bevis.}
+Det anses for velkendt at $a,b,c$ kan samles til en trekant hvis følgende uligheder gælder:
+\eq{
+a<b+c\qquad b<a+c\qquad c<a+b
+}
+
+De to sidste uligheder kan omskrives til:
+\eq{
+b<a+c\lr b-c<a\qquad c<a+b\lr b+c<a
+}
+
+Sammenlagt betyder dette netop at trekanten kan samles hvis $|b-c|<a<a+c$.$\qed$\\\\
+
+Herefter kan sandsynlighedsfordelingen udregnes i følgende sætning:
+\begin{theorem}
+\label{saetning}
+Et linjestykke med længde $l$ opsplittes i to stykker med længde $a$ og $d$, og efterfølgende opslitter $\max\{a,d\}$ i to stykker med længde $b$ og $c$. Da vil sandsynligheden $P(a)$ for at $a$, $b$ og $c$ kan samles til en trekant være fordelt efter funktionen:
+\eq{
+P(a,l)=\frac{a}{l}
+}
+\end{theorem}
+\textit{Bevis.}
+Man kan opfatte situationen som værende en problemstilling i sandsynlighedsmålrummet $([0,l],\mathcal{B}([0,l]),P)$. Først antages det at $a<l/2$ uden tab af generalitet da hvis $a>l/2$, kan $d$ og $a$ blot ombyttes, og hvis $a=1/2$ kan de tre stykker ikke blive en trekant pga. de skarpe uligheder i \ref{lemma1}. Da $a=1/2$ blot er en singleton og dermed er en $P$-nulmængde, kan det dermed antages at $a<l/2$.\\
+
+Når snittet af $d$ skal foretages, skal de to resulterende linjestykker $b,c$ opfylde uligheden fra \ref{lemma1}:
+\eq{
+|b-c|<a
+}
+
+Betragt punktet $x:=(a+l)/2$, som er midtpunktet af $d$. Da må det andet snit maksimalt afvige $a/2$ fra dette punkt, og snittet må altså kun ligge i intervallet:
+\eq{
+I:=((a+l)/2-a/2,(a+l)/2+a/2)=(l/2,l/2+a)
+}
+
+Længden af intervallet er da $a$, og da vil $P(I)=P(a,l)=a/l$.$\qed$\\\\
+
+Slutteligt kan det endelige resultat da formuleres i følgende korollar:
+\begin{corollary}
+Hvis et linjestykke opdeles i tre stykker, da er sandsynligheden $P$ for at de tre stykker kan samles til en trekant være:
+\eq{
+P=\frac{1}{4}
+}
+\end{corollary}
+\textit{Bevis.}
+Af Sætning \ref{saetning} følger det at sandsynlighedsfordelingen $P(a)$ for at de tre kan samles til en trekant, vil være $P(a)=a/l$, hvor $0<a<l/2$ per antagelse i beviset for Sætning \ref{saetning}. Da kan den samlede sandsynlighed udregnes som:
+\eq{
+P(l)=\frac{1}{l/2}\int_0^{l/2} \frac{a}{l}da=\frac{2}{l}\frac{1}{l}\int_0^{l/2}aDa(!)=\frac{2}{l}\frac{1}{l}\left[\frac{1}{2}a^2\right]_0^{l/2}=\frac{2}{l}\frac{1}{l}\frac{1}{2}\frac{l^2}{4}=\frac{1}{4}
+}
+
+Altså er den samlede sandsynlighed $1/4$.$\qed$\\\\
+
+\subsection*{Ekstraopgaven}
+Ekstraopgaven kan løses lignende, ved blot at se bort fra de korte stykke i beviset for Sætning \ref{saetning}, som dermed vil resultere i at $P(a,l)=a/(l-a)$. Dermed kan $P$ udregnes:
+\eq{
+P(l)=\frac{1}{l/2}\int_0^{l/2} \frac{a}{l-a}da=\frac{2}{l}\frac{l}{2}(\log(4)-1)=\log(4)-1
+}
+
+Dermed er $P$ i dette tilfælde $\log (4)-1$.
+
+\end{document}
